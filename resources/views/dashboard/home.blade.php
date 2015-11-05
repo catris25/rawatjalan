@@ -9,6 +9,11 @@
 
                <div class="panel-body">
                    You are logged in!
+                   @if (Auth::check())
+                   Logged in as
+                   <strong>{{Auth::user()->name}}</strong>
+                   @endif
+
                </div>
            </div>
        </div>
