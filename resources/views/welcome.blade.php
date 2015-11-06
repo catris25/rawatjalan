@@ -1,50 +1,12 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Laravel</title>
+@extends('master')
+@section('title','Home')
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-
-        <style>
-            html, body {
-                height: 100%;
-            }
-
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
-
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
-
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .title {
-                font-size: 96px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">IT WORKS!</div>
-            </div>
-
-            <div class="content">
-                <p><a href="auth/login">login</a></p>
-                <p><a href="auth/register">register</a></p>
-            </div>
+@section('content')
+    <div class="container">
+        <div class="content">
+            <h1>Selamat Datang</h1>
+            <p>di Sistem Informasi Rawat Jalan Klinik Kimia Farma Surakarta!</p>
         </div>
-    </body>
-</html>
+    </div>
+    
+@endsection

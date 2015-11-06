@@ -14,6 +14,11 @@ class PagesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function home() {
+        return view('welcome');
+    }
+
     public function index()
     {
         //
