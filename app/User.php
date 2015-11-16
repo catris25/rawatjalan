@@ -14,9 +14,9 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
 class User extends Model implements AuthenticatableContract,
                                     AuthorizableContract,
-                                    CanResetPasswordContract
+                                    CanResetPasswordContract,HasRoleAndPermissionContract
 {
-    use Authenticatable, Authorizable, CanResetPassword;
+    use Authenticatable, Authorizable, CanResetPassword, HasRoleAndPermission;
 
     /**
      * The database table used by the model.
@@ -30,7 +30,7 @@ class User extends Model implements AuthenticatableContract,
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password'];
+    protected $fillable = ['email', 'password'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -38,4 +38,27 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+    // public function role()
+    // {
+    //     return $this->belongsToMany('App\Role','role_user','user_id','role_id');
+    // }
+
+    public function role()
+    {
+        return $this->belongsTo('App\Role');
+    }
+
+    public function admin() {
+        return $this->belongsTo('App\Admin','email','email');
+    }
+
+    public function getId() {
+      return $this->id;
+    }
+
+    // public function dokter() {
+    //     return $this->belongsTo('App\Dokter','email','email');
+    // }
+
 }
