@@ -11,8 +11,19 @@
                    You are logged in!
                    @if (Auth::check())
                    Logged in as
-                   <strong>{{Auth::user()->name}}</strong>
+                   <strong>{{Auth::user()->email}}</strong>
                    @endif
+                   @role('admin')
+                   Selamat bekerja, <strong> Admin!</strong>
+                   @endrole
+
+                   @role('dokter')
+                   Selamat bekerja, <strong> Dokter!</strong>
+                   @endrole
+
+                   @role('super.user')
+                   Selamat bekerja, <strong> Super User!</strong>
+                   @endrole
 
                </div>
            </div>

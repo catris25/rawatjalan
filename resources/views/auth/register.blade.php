@@ -22,14 +22,42 @@
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">Name</label>
+							<label class="col-md-4 control-label">Nama</label>
 							<div class="col-md-6">
-								<input type="text" class="form-control" name="name" value="{{ old('name') }}">
+								<input type="text" class="form-control" name="nama_admin" value="{{ old('nama_admin') }}">
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">E-Mail Address</label>
+							<label class="col-md-4 control-label">NIK</label>
+							<div class="col-md-6">
+								<input type="number" class="form-control" name="NIK" value="{{ old('NIK') }}">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-md-4 control-label">Alamat</label>
+							<div class="col-md-6">
+								<input type="text" class="form-control" name="alamat" value="{{ old('alamat') }}">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-md-4 control-label">Nomor Telepon</label>
+							<div class="col-md-6">
+								<input type="number" class="form-control" name="telepon" value="{{ old('telepon') }}">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-md-4 control-label">Tanggal Lahir</label>
+							<div class="col-md-6">
+								<input type="date" class="form-control" name="tanggal_lahir" value="{{ old('tanggal_lahir') }}">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-md-4 control-label">E-Mail</label>
 							<div class="col-md-6">
 								<input type="email" class="form-control" name="email" value="{{ old('email') }}">
 							</div>

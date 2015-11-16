@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAdminTable extends Migration
+class CreateUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,14 @@ class CreateAdminTable extends Migration
      */
     public function up()
     {
-        Schema::create('admin', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
+        Schema::create('users', function (Blueprint $table) {
+            $table->string('id',6);
             $table->string('email')->unique();
             $table->string('password', 60);
+            $table->boolean('status_aktif')->default(1);
             $table->rememberToken();
             $table->timestamps();
+            $table->primary('id');
         });
     }
 
@@ -29,6 +30,6 @@ class CreateAdminTable extends Migration
      */
     public function down()
     {
-        Schema::drop('admin');
+        Schema::drop('users');
     }
 }
