@@ -18,13 +18,13 @@ class UsersTableSeeder extends Seeder
     {
 
         $user = User::create([
-            'name' => 'Hitsugaya',
-            'email' => 'hitsu@zen.com',
+            'name' => 'Puyeng',
+            'email' => 'puyeng@sekali.com',
             'password' => bcrypt('qwerty'),
         ]);
-        
-        $new_users = User::find('USR027');
-        $superUserRole = Role::find('RL012');
+
+        $new_users = User::find('USR002');
+        $superUserRole = Role::find('RL003');
         $new_users->attachRole($superUserRole);
 
 
