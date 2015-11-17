@@ -12,6 +12,10 @@
          return view('dashboard.home');
      }
 
+     public function error() {
+        return view('errors.roleerror');
+     }
+
      public function __construct()
      {
        $this->middleware('auth');

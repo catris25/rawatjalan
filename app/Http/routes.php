@@ -11,24 +11,25 @@
 |
 */
 
-Route::get('/','PagesController@home');
+//Route::get('/','PagesController@home');
 Route::get('dashboard', 'Dash\DashboardController@home');
+Route::get('roleerror', 'Dash\DashboardController@error');
 
 // Authentication routes...
-Route::get('auth/login', 'Auth\AuthController@getLogin');
-Route::post('auth/login', 'Auth\AuthController@postLogin');
-Route::get('auth/logout', 'Auth\AuthController@getLogout');
+Route::get('/', 'Auth\AuthController@getLogin');
+Route::post('/auth/login', 'Auth\AuthController@postLogin');
+Route::get('/logout', 'Auth\AuthController@getLogout');
 
 // Registration admin
-Route::get('auth/register', ['as' => 'auth.adsignup','uses' => 'UsersController@getAdminRegister']);
-Route::post('auth/register', ['as' => 'auth.adregister', 'uses' => 'UsersController@postAdminRegister']);
+Route::get('auth/register', ['as' => 'auth.adsignup', 'middleware' => 'role:super.user','uses' => 'UsersController@getAdminRegister']);
+Route::post('auth/register', ['as' => 'auth.adregister', 'middleware' => 'role:super.user', 'uses' => 'UsersController@postAdminRegister']);
 
 //Registration dokter
-Route::get('auth/drregister', ['as' => 'auth.drsignup','uses' => 'UsersController@getDokterRegister']);
-Route::post('auth/drregister', ['as' => 'auth.drregister', 'uses' => 'UsersController@postDokterRegister']);
+Route::get('auth/drregister', ['as' => 'auth.drsignup', 'middleware' => 'role:super.user', 'uses' => 'UsersController@getDokterRegister']);
+Route::post('auth/drregister', ['as' => 'auth.drregister', 'middleware' => 'role:super.user', 'uses' => 'UsersController@postDokterRegister']);
 
 //Rekam Medik
-Route::get('auth/rekammedik', ['as' => 'auth.rm','middleware' => 'role:admin|superuser','uses' => 'RekamMedikController@home']);
+Route::get('auth/rekammedik', ['as' => 'auth.rm','middleware' => 'role:admin|super.user','uses' => 'RekamMedikController@home']);
 
 // Password reset link request routes...
 Route::get('password/email', 'Auth\PasswordController@getEmail');
