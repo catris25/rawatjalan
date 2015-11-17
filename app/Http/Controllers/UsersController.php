@@ -6,12 +6,8 @@ use App\Admin;
 use App\Dokter;
 use App\Http\Controllers\Controller;
 use Input;
-<<<<<<< HEAD
 use Session;
 use Redirect;
-=======
-use DB;
->>>>>>> 8b5f2fbb5f3f440e43a2900dbc44c726d2b28bde
 use Bican\Roles\Exceptions\PermissionDeniedException;
 use Bican\Roles\Models\Permission;
 use Bican\Roles\Models\Role;
@@ -52,17 +48,17 @@ class UsersController extends Controller{
             'password' => bcrypt($request->input('password')),
         ]);
 
-<<<<<<< HEAD
-        $lastInsertedID = $new_users->email;
-        $userID = DB::table('users')->where('email', $lastInsertedID)->value('id');
-        var_dump($userID);
-        if($new_users){
-          $new_users = User::find($userID);
-          $role = Role::find('RL001');
-          $new_users->attachRole($role);
-          Session::flash('message', 'Admin baru berhasil ditambahkan!');
-          return redirect ('dashboard');
-=======
+
+        // $lastInsertedID = $new_users->email;
+        // $userID = DB::table('users')->where('email', $lastInsertedID)->value('id');
+        // var_dump($userID);
+        // if($new_users){
+        //   $new_users = User::find($userID);
+        //   $role = Role::find('RL001');
+        //   $new_users->attachRole($role);
+        //   Session::flash('message', 'Admin baru berhasil ditambahkan!');
+        //   return redirect ('dashboard');
+
         $lastInsertedId = $new_users->email;
         $userID = DB::table('users')->where('email', $lastInsertedId)->value('id');
         var_dump($userID);
@@ -76,7 +72,7 @@ class UsersController extends Controller{
             //$new_users = User::find('id');
             $new_user->attachRole($role);
             //flash()->success('User Added Successfully!');
->>>>>>> 8b5f2fbb5f3f440e43a2900dbc44c726d2b28bde
+
         } else {
             //flash()->error('An error occurred, try adding the User again!');
         }
