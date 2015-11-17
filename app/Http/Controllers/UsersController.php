@@ -6,6 +6,8 @@ use App\Admin;
 use App\Dokter;
 use App\Http\Controllers\Controller;
 use Input;
+use Session;
+use Redirect;
 use Bican\Roles\Exceptions\PermissionDeniedException;
 use Bican\Roles\Models\Permission;
 use Bican\Roles\Models\Role;
@@ -53,6 +55,8 @@ class UsersController extends Controller{
           $new_users = User::find($userID);
           $role = Role::find('RL001');
           $new_users->attachRole($role);
+          Session::flash('message', 'Admin baru berhasil ditambahkan!');
+          return redirect ('dashboard');
         } else {
             //flash()->error('An error occurred, try adding the User again!');
         }
