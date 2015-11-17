@@ -53,9 +53,9 @@ class User extends Model implements AuthenticatableContract,
         return $this->belongsTo('App\Admin','email','email');
     }
 
-    public function getId() {
-      return $this->id;
-    }
+    // public function getId() {
+    //   return $this->email;
+    // }
 
     // public function dokter() {
     //     return $this->belongsTo('App\Dokter','email','email');

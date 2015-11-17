@@ -5,6 +5,7 @@ use App\User;
 use App\Admin;
 use App\Dokter;
 use Input;
+use DB;
 use Bican\Roles\Exceptions\PermissionDeniedException;
 use Bican\Roles\Models\Permission;
 use Bican\Roles\Models\Role;
@@ -44,13 +45,18 @@ class UsersController extends Controller{
             'password' => bcrypt($request->input('password')),
         ]);
 
+        $lastInsertedId = $new_users->email;
+        $userID = DB::table('users')->where('email', $lastInsertedId)->value('id');
+        var_dump($userID);
+        //Log::info($lastInsertedId);
+
         if($new_users){
             //$userID = Input::get('email');
-            $userID = $users->getId();
-            $new_users = User::find($userID);
+            //$userID = $users->getId();
+            $new_user = User::find($userID);
             $role = Role::find('RL010');
             //$new_users = User::find('id');
-            $new_users->attachRole($role);
+            $new_user->attachRole($role);
             //flash()->success('User Added Successfully!');
         } else {
             //flash()->error('An error occurred, try adding the User again!');
@@ -64,9 +70,13 @@ class UsersController extends Controller{
 
     public function postDokterRegister(NewUserRequest $request, User $users, Dokter $dokter) {
         $new_users = $dokter->create([
-            'name' => $request->input('name'),
-            'email' => Str::lower($request->input('email')),
-            'password' => bcrypt($request->input('password')),
+          'nama_dokter' => $request->input('nama_dokter'),
+          'NIK' => $request->input('NIK'),
+          'alamat' => $request->input('alamat'),
+          'telepon' => $request->input('telepon'),
+          'tanggal_lahir' => $request->input('tanggal_lahir'),
+          'spesialisasi' => $request->input('spesialisasi'),
+          'email' => Str::lower($request->input('email')),
         ]);
 
         $new_users = $users->create([
@@ -74,9 +84,14 @@ class UsersController extends Controller{
             'password' => bcrypt($request->input('password')),
         ]);
 
+        $lastInsertedId = $new_users->email;
+        $userID = DB::table('users')->where('email', $lastInsertedId)->value('id');
+        var_dump($userID);
+
         if($new_users){
-            $role = Role::find(6);
-            $new_users->attachRole($role);
+            $new_user = User::find($userID);
+            $role = Role::find('RL011');
+            $new_user->attachRole($role);
             //flash()->success('User Added Successfully!');
         } else {
             //flash()->error('An error occurred, try adding the User again!');

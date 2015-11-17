@@ -2,8 +2,12 @@
 
 namespace App\Exceptions;
 
+use Bican\Roles\Exceptions\LevelDeniedException;
+use Bican\Roles\Exceptions\PermissionDeniedException;
+use Bican\Roles\Exceptions\RoleDeniedException;
 use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Session\TokenMismatchException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
@@ -45,7 +49,10 @@ class Handler extends ExceptionHandler
         if ($e instanceof ModelNotFoundException) {
             $e = new NotFoundHttpException($e->getMessage(), $e);
         }
-
+        if ($e instanceof RoleDeniedException) {
+            //flash()->error('Your role does not allow you to perform this action!');
+            return redirect()->action('Dash\DashboardController@error');
+        }
         return parent::render($request, $e);
     }
 }
