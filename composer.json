@@ -1,4 +1,5 @@
 {
+    "Illuminate/html": "5.*",
     "name": "laravel/laravel",
     "description": "The Laravel Framework.",
     "keywords": ["framework", "laravel"],
@@ -7,7 +8,8 @@
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.1.*",
-        "bican/roles": "2.1.*"
+        "bican/roles": "2.1.*",
+        "illuminate/html": "^5.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

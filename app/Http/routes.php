@@ -38,3 +38,10 @@ Route::post('password/email', 'Auth\PasswordController@postEmail');
 // Password reset routes...
 Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
+
+//Pasien routes
+Route::resource('pasien', 'PasienController');
+Route::get('pasien', 'PasienController@index'); //view all patients
+Route::get('pasien/create', 'PasienController@create'); //display the form
+Route::post('pasien/tambah', 'PasienController@store'); //handle the form input
+Route::get('pasien/edit', 'PasienController@edit');
