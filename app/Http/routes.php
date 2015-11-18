@@ -40,8 +40,9 @@ Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
 
 //Pasien routes
-Route::resource('pasien', 'PasienController');
+// Route::resource('pasien', 'PasienController');
 Route::get('pasien', 'PasienController@index'); //view all patients
-Route::get('pasien/create', 'PasienController@create'); //display the form
+Route::get('pasien/tambah', 'PasienController@create'); //display the form
 Route::post('pasien/tambah', 'PasienController@store'); //handle the form input
-Route::get('pasien/edit', 'PasienController@edit');
+Route::get('pasien/{id?}', 'PasienController@edit'); //show each patient page individually
+Route::post('pasien/{id?}', 'PasienController@update'); //update the pasien data from form
