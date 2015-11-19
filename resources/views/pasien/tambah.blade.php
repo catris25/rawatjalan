@@ -13,10 +13,15 @@
        @endforeach
      </ul>
 
+<<<<<<< HEAD
 
        <div class="col-md-8 col-md-offset-2">
 
          <form class="form s10" role="form" method="POST" action="{{ url('pasien/tambah') }}">
+=======
+       <div class="col-md-6">
+         <form class="form-horizontal" role="form" method="POST" action="{{ url('pasien/tambah') }}">
+>>>>>>> refs/remotes/catris25/master
   						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 

@@ -65,7 +65,6 @@ class PasienController extends Controller
         $pasien->fill($input)->save();
 
         Session::flash('edit_message', 'Pasien '.$id.' berhasil dimutakhirkan!');
-        // return view('pasien.edit')->with('pasien', $pasien);
         return redirect(action('PasienController@edit', $pasien->id));
     }
 
