@@ -1,90 +1,109 @@
 @extends('master')
 
 @section('content')
-<div class="container">
-   <div class="well well-lg">
-
-     <h2>Form Tambah Pasien</h2>
+<div class="container-fluid" style="margin-top:1%;">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-default" style="background-color:#FBFBFB;padding-top:3%;padding-bottom:3%;">
+    <div class="panel-body" style="background-color:#FBFBFB;margin: 0 auto;">
+     <h2 style="text-align:center;font-size:30px;">Form Tambah Pasien</h2>
       <ul>
        @foreach($errors->all()as $error)
        <li class="alert alert-danger">{{$error}} </li>
        @endforeach
      </ul>
 
-       <div class="col-md-6">
+
+
+       <div class="col-md-8 col-md-offset-2">
+
+         <form class="form s10" role="form" method="POST" action="{{ url('pasien/tambah') }}">
+
+       <div class="col-md-12">
          <form class="form-horizontal" role="form" method="POST" action="{{ url('pasien/tambah') }}">
+
   						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-  						<div class="form-group">
-  							<label class="col-md-4 control-label">Nama</label>
-  							<div class="col-md-6">
-  								<input type="text" class="form-control" name="nama_pasien" value="{{ old('nama_pasien') }}">
+
+              <div class="row">
+  							<div class="input-field col s12">
+  								<input id="nama_pasien" type="text" class="validate" name="nama_pasien" value="{{ old('nama_pasien') }}">
+                  <label for="nama_pasien">Nama</label>
   							</div>
   						</div>
 
-              <div class="form-group">
-  							<label class="col-md-4 control-label">Jenis kelamin</label>
-  							<select name="jenis_kelamin">
+              <div class="row">
+                <div class="input-field col s12">
+  							<select name="jenis_kelamin" id="jenis_kelamin">
+                  <option value="" disabled selected>Masukkan jenis kelamin</option>
                   <option value="L">Laki-laki</option>
                   <option value="P">Perempuan</option>
                 </select>
+                <label for="jenis_kelamin">Jenis Kelamin</label>
+                </div>
   						</div>
 
-              <div class="form-group">
-  							<label class="col-md-4 control-label">Tanggal lahir</label>
-  							<div class="col-md-6">
-  								<input type="date" class="form-control" name="tgl_lahir" value="{{ old('tgl_lahir') }}">
+              <div class="row">
+  							<div class="input-field col s12">
+  								<input id="tgl_lahir" type="date" class="datepicker" name="tgl_lahir" value="{{ old('tgl_lahir') }}">
+                  <label for="tgl_lahir">Tanggal lahir</label>
   							</div>
   						</div>
 
-              <div class="form-group">
-  							<label class="col-md-4 control-label">Alamat</label>
-  							<div class="col-md-6">
-  								<input type="text" class="form-control" name="alamat" value="{{ old('alamat') }}">
+              <div class="row">
+  							<div class="input-field col s12">
+  								<input id="alamat" type="text" class="validate" name="alamat" value="{{ old('alamat') }}">
+                  <label for="alamat">Alamat</label>
   							</div>
   						</div>
 
-              <div class="form-group">
-  							<label class="col-md-4 control-label">Nomor telepon</label>
-  							<div class="col-md-6">
-  								<input type="number" class="form-control" name="telepon" value="{{ old('telepon') }}">
+              <div class="row">
+  							<div class="input-field col s12">
+  								<input id="telepon" type="tel" class="validate" name="telepon" value="{{ old('telepon') }}">
+                  <label for="telepon">Nomor telepon</label>
   							</div>
   						</div>
 
-              <div class="form-group">
-  							<label class="col-md-4 control-label">Golongan darah</label>
-                <select name="gol_darah">
-                  <option value="">Tidak tahu</option>
-                  <option value="A">A</option>
-                  <option value="B">B</option>
-                  <option value="AB">AB</option>
-                  <option value="O">O</option>
-                </select>
+              <div class="row">
+                <div class="input-field col s12">
+                  <select name="gol_darah" id="gol_darah">
+                    <option value="" disabled selected>Pilih gol. darah</option>
+                    <option value="">Tidak tahu</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="AB">AB</option>
+                    <option value="O">O</option>
+                  </select>
+                  <label for="gol_darah">Golongan darah</label>
+                </div>
   						</div>
 
-              <div class="form-group">
-  							<label class="col-md-4 control-label">Alergi</label>
-  							<div class="col-md-6">
-  								<input type="text" class="form-control" name="alergi" value="{{ old('alergi') }}">
+              <div class="row">
+  							<div class="input-field col s12">
+  								<input id="alergi" type="text" class="validate" name="alergi" value="{{ old('alergi') }}">
+                  <label for="alergi">Alergi</label>
   							</div>
   						</div>
 
-              <div class="form-group">
-  							<label class="col-md-4 control-label">Riwayat penyakit</label>
-  							<div class="col-md-6">
-  								<input type="text" class="form-control" name="riwayat_penyakit" value="{{ old('riwayat_penyakit') }}">
+              <div class="row">
+  							<div class="input-field col s12">
+  								<input id="riwayat_penyakit" type="text" class="validate" name="riwayat_penyakit" value="{{ old('riwayat_penyakit') }}">
+                  <label for="riwayat_penyakit">Riwayat penyakit</label>
   							</div>
   						</div>
 
               <div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-primary">
-									Submit
-								</button>
+                <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                </button>
 							</div>
 						</div>
             </form>
+
         </div>
+      </div>
+      </div>
+      </div>
    </div>
 </div>
 
