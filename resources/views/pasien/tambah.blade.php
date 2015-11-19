@@ -11,7 +11,6 @@
        @endforeach
      </ul>
 
-
        <div class="col-md-6">
          <form class="form-horizontal" role="form" method="POST" action="{{ url('pasien/tambah') }}">
   						<input type="hidden" name="_token" value="{{ csrf_token() }}">
