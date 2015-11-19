@@ -35,6 +35,6 @@ class CreateDokterTable extends Migration
      */
     public function down()
     {
-        //
+          Schema::dropIfExists('dokter');
     }
 }

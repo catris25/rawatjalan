@@ -20,7 +20,7 @@ class PasienController extends Controller
 
     public function create()
     {
-        return view('pasien.create');
+        return view('pasien.tambah');
 
     }
 
@@ -28,6 +28,7 @@ class PasienController extends Controller
     {
         $this->validate($request,[
           'nama_pasien' => 'required',
+          'jenis_kelamin' =>'required',
           'tgl_lahir' => 'required',
           'alamat' => 'required'
         ]);
@@ -52,7 +53,20 @@ class PasienController extends Controller
 
     public function update(Request $request, $id)
     {
-        //
+        $pasien = Pasien::findOrFail($id);
+        $this->validate($request, [
+          'nama_pasien' => 'required',
+          'jenis_kelamin' =>'required',
+          'tgl_lahir' => 'required',
+          'alamat' => 'required'
+        ]);
+
+        $input = $request->all();
+        $pasien->fill($input)->save();
+
+        Session::flash('edit_message', 'Pasien '.$id.' berhasil dimutakhirkan!');
+        // return view('pasien.edit')->with('pasien', $pasien);
+        return redirect(action('PasienController@edit', $pasien->id));
     }
 
     public function destroy($id)

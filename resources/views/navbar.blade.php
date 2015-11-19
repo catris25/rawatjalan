@@ -17,7 +17,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Pasien <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="pasien/create">Tambah pasien</a></li>
+                        <li><a href="pasien/tambah">Tambah pasien</a></li>
                         <li><a href="pasien">Lihat pasien</a></li>
                     </ul>
                 </li>
