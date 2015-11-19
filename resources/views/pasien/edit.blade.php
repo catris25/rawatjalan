@@ -70,14 +70,14 @@
            <div class="form-group">
              <label class="col-md-4 control-label">Alergi</label>
              <div class="col-md-6">
-               <input type="text" class="form-control" name="alergi" value="{{ $pasien->alergi }}">
+               <input type="textarea" class="form-control" name="alergi" value="{{ $pasien->alergi }}">
              </div>
            </div>
 
            <div class="form-group">
              <label class="col-md-4 control-label">Riwayat penyakit</label>
              <div class="col-md-6">
-               <input type="text" class="form-control" name="riwayat_penyakit" value="{{ $pasien->riwayat_penyakit }}">
+               <input type="textarea" class="form-control" name="riwayat_penyakit" value="{{ $pasien->riwayat_penyakit }}">
              </div>
            </div>
 
