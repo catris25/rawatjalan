@@ -13,8 +13,6 @@
        @endforeach
      </ul>
 
-
-
        <div class="col-md-8 col-md-offset-2">
 
          <form class="form s10" role="form" method="POST" action="{{ url('pasien/tambah') }}">

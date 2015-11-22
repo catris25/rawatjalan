@@ -12,6 +12,27 @@
 
        <h2>Daftar Pasien</h2>
        <div class="well well-lg">
+
+         <div class="well well-lg">
+           <h4>Cari Pasien</h4>
+           <form class="form-horizontal" role="form" method="GET">
+             <div class="form-group">
+
+               <select name="kategori" id="kategori">
+                 <option value="id">ID Pasien</option>
+                 <option value="nama_pasien">Nama</option>
+               </select>
+
+               <input id="keyword" type="text" placeholder="Masukkan kata kunci" name="keyword">
+               <button type="submit" class="btn btn-primary" value="{{ old('keyword') }}">
+                 Submit
+               </button>
+
+             </div>
+
+           </form>
+
+         </div>
        <table class="table table-striped table-bordered">
          <thead>
            <tr>

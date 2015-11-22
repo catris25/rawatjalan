@@ -8,12 +8,19 @@ use App\Http\Requests;
 
 use Illuminate\Support\Facades\View;
 use Session;
+use Input;
 
 class PasienController extends Controller
 {
 
     public function index()
     {
+        $keyword = Input::get('keyword');
+        if(isset($keyword)){
+          $kategori = Input::get('kategori');
+          $pasien = Pasien::where($kategori, 'LIKE', '%'.$keyword.'%')->get();
+          return view('pasien.index')->with('pasien', $pasien);
+        }
         $pasien = Pasien::all();
         return view('pasien.index')->with('pasien', $pasien);
     }
@@ -67,6 +74,16 @@ class PasienController extends Controller
         Session::flash('edit_message', 'Pasien '.$id.' berhasil dimutakhirkan!');
         return redirect(action('PasienController@edit', $pasien->id));
     }
+
+    // public function search()
+    // {
+    //     $keyword = Input::get('keyword');
+    //     if(isset($keyword)){
+    //       return "Filled";
+    //     }else{
+    //
+    //     }
+    // }
 
     public function destroy($id)
     {
