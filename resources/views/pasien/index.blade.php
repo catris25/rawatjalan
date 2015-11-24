@@ -14,18 +14,20 @@
        <div class="well well-lg">
 
          <div class="well well-lg">
-           <h4>Cari Pasien</h4>
+           <h5>Cari Pasien</h5>
            <form class="form-horizontal" role="form" method="GET">
              <div class="form-group">
 
                <select name="kategori" id="kategori">
                  <option value="id">ID Pasien</option>
                  <option value="nama_pasien">Nama</option>
+                 <option value="alamat">Alamat</option>
+                 <option value="alergi">Alergi</option>
                </select>
 
-               <input id="keyword" type="text" placeholder="Masukkan kata kunci" name="keyword">
-               <button type="submit" class="btn btn-primary" value="{{ old('keyword') }}">
-                 Submit
+               <input id="keyword" type="text" placeholder="Masukkan kata kunci" name="keyword" value="{{ old('keyword') }}">
+               <button type="submit" class="btn btn-primary">
+                 Cari pasien
                </button>
 
              </div>
