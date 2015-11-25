@@ -1,13 +1,13 @@
 @extends('master')
 
 @section('content')
-<div class="container">
+<div class="container-fluid" style="margin-top:3%;">
    <div class="row">
-       <div class="col-md-10 col-md-offset-1">
-           <div class="panel panel-default">
-               <div class="panel-heading">Dashboard</div>
+       <div class="col-md-6 col-md-offset-3">
+           <div class="panel panel-default" style="background-color:#FBFBFB;padding-top:3%;padding-bottom:3%;">
+               <div class="panel-heading" style="background-color:#FBFBFB; font-size:20px;text-align:center;">Dashboard</div>
 
-               <div class="panel-body">
+               <div class="panel-body" tyle="background-color:#FBFBFB;margin: 0 auto;">
                    You are logged in!
                    @if (Auth::check())
                    Logged in as
