@@ -1,11 +1,11 @@
 @extends('master')
 
 @section('content')
-<div class="container-fluid" style="margin-top:1%;">
+<div class="container-fluid" style="margin-top:3%;">
 	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
+		<div class="col-md-4 col-md-offset-4">
 			<div class="panel panel-default" style="background-color:#FBFBFB;padding-top:3%;padding-bottom:3%;">
-				<div class="panel-heading">Login</div>
+				<div class="panel-heading" style="background-color:#FBFBFB; font-size:20px;text-align:center;">Login</div>
 				<div class="panel-body" style="background-color:#FBFBFB;margin: 0 auto;">
 					@if (count($errors) > 0)
 						<div class="alert alert-danger">
@@ -35,21 +35,18 @@
 							</div>
 						</div>
 
-						<div class="row">
-							<div class="col-md-6 col-md-offset-4">
-								<div class="checkbox">
-									<label>
-										<input type="checkbox" name="remember"> Remember Me
-									</label>
-								</div>
+						<div class="row" style="margin-top:-5%;margin-bottom:10%;">
+							<div class="input-field col s12">
+								<input id="remember" type="checkbox" name="remember" />
+								<label for="remember">Remember Me</label>
 							</div>
 						</div>
 
-						<div class="form-group">
+						<div class="row">
 							<div class="col-md-6 col-md-offset-4">
 								<button type="submit" class="btn btn-primary">Login</button>
 
-								<a class="btn btn-link" href="{{ url('/password/email') }}">Forgot Your Password?</a>
+								<!-- <a class="btn btn-link" href="{{ url('/password/email') }}">Forgot Your Password?</a> -->
 							</div>
 						</div>
 					</form>
