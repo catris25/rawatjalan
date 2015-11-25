@@ -7,13 +7,13 @@
            <div class="panel panel-default" style="background-color:#FBFBFB;padding-top:3%;padding-bottom:3%;">
                <div class="panel-heading" style="background-color:#FBFBFB; font-size:20px;text-align:center;">Dashboard</div>
 
-<<<<<<< HEAD
+
                <div class="panel-body" tyle="background-color:#FBFBFB;margin: 0 auto;">
                    You are logged in!
-=======
+
                <div class="panel-body">
                    <p>You are logged in!
->>>>>>> refs/remotes/catris25/master
+
                    @if (Auth::check())
                    Logged in as
                    <strong>{{Auth::user()->email}}</strong></p>
