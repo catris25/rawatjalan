@@ -33,6 +33,7 @@ class PasienController extends Controller
 
     public function store(Request $request)
     {
+        //Pasien $pasien;
         $this->validate($request,[
           'nama_pasien' => 'required',
           'jenis_kelamin' =>'required',
@@ -40,9 +41,19 @@ class PasienController extends Controller
           'alamat' => 'required'
         ]);
 
-        $input = $request->all();
-
-        Pasien::create($input);
+        //$input = $request->all();
+        $format_tgl_info_old = Input::get('tgl_lahir');
+        $new_users = Pasien::create([
+            'nama_pasien' => $request->input('nama_pasien'),
+            'jenis_kelamin' => $request->input('jenis_kelamin'),
+            'tgl_lahir' => date("Y-m-d", strtotime($format_tgl_info_old)),
+            'alamat' => $request->input('alamat'),
+            'telepon' => $request->input('telepon'),
+            'gol_darah' => $request->input('gol_darah'),
+            'alergi' => $request->input('alergi'),
+            'riwayat_penyakit' => $request->input('riwayat_penyakit'),
+        ]);
+        //Pasien::create($input);
         Session::flash('message', 'Pasien berhasil ditambahkan!');
         return redirect('pasien');
     }
