@@ -1,11 +1,11 @@
 @extends('master')
 
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid" style="margin-top:1%;">
 	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="panel panel-default">
-				<div class="panel-heading">Register</div>
+		<div class="col-md-6 col-md-offset-3" style="padding-top:3%;padding-bottom:3%;">
+			<div class="panel panel-default" style="background-color:#FBFBFB;margin: 0 auto;">
+				<div class="panel-heading" style="background-color:#FBFBFB; font-size:30px;text-align:center;">Register Doctor</div>
 				<div class="panel-body">
 					@if (count($errors) > 0)
 						<div class="alert alert-danger">
@@ -18,13 +18,15 @@
 						</div>
 					@endif
 
+					<div class="col-md-8 col-md-offset-2">
+					<div class="col-md-12">
 					<form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/drregister') }}">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">Nama</label>
-							<div class="col-md-6">
-								<input type="text" class="form-control" name="nama_dokter" value="{{ old('nama_dokter') }}">
+						<div class="row">
+							<div class="input-field col s12">
+								<input id="nama_dokter" type="text" class="form-control" name="nama_dokter" value="{{ old('nama_dokter') }}">
+								<label class="col-md-4 control-label">Nama</label>
 							</div>
 						</div>
 
@@ -92,6 +94,8 @@
 							</div>
 						</div>
 					</form>
+					</div>
+					</div>
 				</div>
 			</div>
 		</div>

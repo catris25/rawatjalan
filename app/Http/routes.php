@@ -25,7 +25,7 @@ Route::get('admin/tambah', ['as' => 'auth.adsignup', 'middleware' => 'role:super
 Route::post('auth/register', ['as' => 'auth.adregister', 'middleware' => 'role:super.user', 'uses' => 'UsersController@postAdminRegister']);
 
 //Registration dokter
-Route::get('auth/drregister', ['as' => 'auth.drsignup', 'middleware' => 'role:super.user', 'uses' => 'UsersController@getDokterRegister']);
+Route::get('dokter/tambah', ['as' => 'auth.drsignup', 'middleware' => 'role:super.user', 'uses' => 'UsersController@getDokterRegister']);
 Route::post('auth/drregister', ['as' => 'auth.drregister', 'middleware' => 'role:super.user', 'uses' => 'UsersController@postDokterRegister']);
 
 //Rekam Medik
