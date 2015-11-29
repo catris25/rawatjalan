@@ -51,7 +51,7 @@ class Handler extends ExceptionHandler
         }
         if ($e instanceof RoleDeniedException) {
             //flash()->error('Your role does not allow you to perform this action!');
-            return redirect()->action('Dash\DashboardController@error');
+            return redirect()->action('DashboardController@error');
         }
         return parent::render($request, $e);
     }

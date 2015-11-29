@@ -16,11 +16,12 @@ class PasienController extends Controller
     public function index()
     {
         $keyword = Input::get('keyword');
-        if(isset($keyword)){
+        if(isset($keyword)){    //check if keyword has value
           $kategori = Input::get('kategori');
           $pasien = Pasien::where($kategori, 'LIKE', '%'.$keyword.'%')->get();
           return view('pasien.index')->with('pasien', $pasien);
         }
+        //if keyword contains no value, return the following data
         $pasien = Pasien::all();
         return view('pasien.index')->with('pasien', $pasien);
     }
@@ -35,6 +36,7 @@ class PasienController extends Controller
     {
         $this->validate($request,[
           'nama_pasien' => 'required',
+          'nik' => 'required',
           'jenis_kelamin' =>'required',
           'tgl_lahir' => 'required',
           'alamat' => 'required'
@@ -63,6 +65,7 @@ class PasienController extends Controller
         $pasien = Pasien::findOrFail($id);
         $this->validate($request, [
           'nama_pasien' => 'required',
+          'nik' => 'required',
           'jenis_kelamin' =>'required',
           'tgl_lahir' => 'required',
           'alamat' => 'required'
@@ -74,16 +77,6 @@ class PasienController extends Controller
         Session::flash('edit_message', 'Pasien '.$id.' berhasil dimutakhirkan!');
         return redirect(action('PasienController@edit', $pasien->id));
     }
-
-    // public function search()
-    // {
-    //     $keyword = Input::get('keyword');
-    //     if(isset($keyword)){
-    //       return "Filled";
-    //     }else{
-    //
-    //     }
-    // }
 
     public function destroy($id)
     {

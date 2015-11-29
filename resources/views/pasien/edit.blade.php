@@ -28,6 +28,13 @@
            </div>
 
            <div class="form-group">
+             <label class="col-md-4 control-label">NIK</label>
+             <div class="col-md-6">
+               <input type="text" class="form-control" name="nik" value="{{ $pasien->nik }}">
+             </div>
+           </div>
+
+           <div class="form-group">
              <label class="col-md-4 control-label">Jenis kelamin</label>
              <select name="jenis_kelamin">
                <option value="L">Laki-laki</option>

@@ -12,8 +12,8 @@
 */
 
 //Route::get('/','PagesController@home');
-Route::get('dashboard', 'Dash\DashboardController@home');
-Route::get('roleerror', 'Dash\DashboardController@error');
+Route::get('dashboard', 'DashboardController@home');
+Route::get('roleerror', 'DashboardController@error');
 
 // Authentication routes...
 Route::get('/', 'Auth\AuthController@getLogin');
