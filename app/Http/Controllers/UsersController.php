@@ -114,6 +114,11 @@ class UsersController extends Controller{
         }
     }
 
+    public function indexAdmin() {
+        $admin = Admin::all();
+        return view('indexAdmin')->with('admin', $admin);
+    }
+
     // public function postAdminRegister(array $data) {
     //     $user = User::create([
     //         'name'=>])
