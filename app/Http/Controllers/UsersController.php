@@ -33,13 +33,13 @@ class UsersController extends Controller{
 
     public function postAdminRegister(NewUserRequest $request, User $users, Admin $admin) {
 
-
+        $format_tgl_info_old = Input::get('tanggal_lahir');
         $new_users = Admin::create([
             'nama_admin' => $request->input('nama_admin'),
             'NIK' => $request->input('NIK'),
             'alamat' => $request->input('alamat'),
             'telepon' => $request->input('telepon'),
-            'tanggal_lahir' => $request->input('tanggal_lahir'),
+            'tanggal_lahir' => date("Y-m-d", strtotime($format_tgl_info_old)),
             'email' => Str::lower($request->input('email')),
         ]);
 
@@ -84,12 +84,13 @@ class UsersController extends Controller{
     }
 
     public function postDokterRegister(NewUserRequest $request, User $users, Dokter $dokter) {
+        $format_tgl_info_old = Input::get('tanggal_lahir');
         $new_users = $dokter->create([
           'nama_dokter' => $request->input('nama_dokter'),
           'NIK' => $request->input('NIK'),
           'alamat' => $request->input('alamat'),
           'telepon' => $request->input('telepon'),
-          'tanggal_lahir' => $request->input('tanggal_lahir'),
+          'tanggal_lahir' => date("Y-m-d", strtotime($format_tgl_info_old)),
           'spesialisasi' => $request->input('spesialisasi'),
           'email' => Str::lower($request->input('email')),
         ]);
@@ -111,6 +112,11 @@ class UsersController extends Controller{
         } else {
             //flash()->error('An error occurred, try adding the User again!');
         }
+    }
+
+    public function indexAdmin() {
+        $admin = Admin::all();
+        return view('indexAdmin')->with('admin', $admin);
     }
 
     // public function postAdminRegister(array $data) {
