@@ -28,6 +28,13 @@
   							</div>
   						</div>
 
+              <div class="form-group">
+                <label class="col-md-4 control-label">NIK</label>
+                <div class="col-md-6">
+                  <input id="nik" type="text" class="form-control" name="nik" value="{{ old('nik') }}">
+                </div>
+              </div>
+
               <div class="row">
                 <div class="input-field col s12">
   							<select name="jenis_kelamin" id="jenis_kelamin">

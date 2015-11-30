@@ -12,8 +12,8 @@
 */
 
 //Route::get('/','PagesController@home');
-Route::get('dashboard', 'Dash\DashboardController@home');
-Route::get('roleerror', 'Dash\DashboardController@error');
+Route::get('dashboard', 'DashboardController@home');
+Route::get('roleerror', 'DashboardController@error');
 
 // Authentication routes...
 Route::get('/', 'Auth\AuthController@getLogin');
@@ -46,7 +46,6 @@ Route::get('pasien/tambah', ['as' => 'pasien.tambah', 'middleware' => 'role:admi
 Route::post('pasien/tambah', ['as' => 'pasien.tambah', 'middleware' => 'role:admin|super.user', 'uses' => 'PasienController@store']); //handle the form input
 Route::get('pasien/{id?}', ['as' => 'pasien.edit', 'middleware' => 'role:admin|super.user', 'uses' => 'PasienController@edit']); //show each patient page individually
 Route::post('pasien/{id?}', ['as' => 'pasien.edit', 'middleware' => 'role:admin|super.user', 'uses' => 'PasienController@update']); //update the pasien data from form
-// Route::get('pasien', ['as' => 'pasien.index', 'middleware' => 'role:admin|dokter|super.user', 'uses' => 'PasienController@search']); //search the pasien
 
 //Poli routes
 Route::get('poli', ['as' => 'poli.index', 'middleware' => 'role:admin|dokter|super.user', 'uses' => 'PoliController@index']); //view all poli records

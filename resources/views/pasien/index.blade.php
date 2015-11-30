@@ -21,6 +21,7 @@
                <select name="kategori" id="kategori">
                  <option value="id">ID Pasien</option>
                  <option value="nama_pasien">Nama</option>
+                 <option value="nik">NIK</option>
                  <option value="alamat">Alamat</option>
                  <option value="alergi">Alergi</option>
                </select>
@@ -40,6 +41,7 @@
            <tr>
              <td>ID</td>
              <td>Nama</td>
+             <td>NIK</td>
              <td>Jenis kelamin</td>
              <td>Tanggal lahir</td>
              <td>Alamat</td>
@@ -53,6 +55,7 @@
        <tr>
          <td><a href="{{URL::to('pasien/'.$p->id)}}"> {{$p->id}}</a></td>
          <td>{{$p->nama_pasien}}</td>
+         <td>{{$p->nik}}</td>
          <td>{{$p->jenis_kelamin}}</td>
          <td>{{$p->tgl_lahir}}</td>
          <td>{{$p->alamat}}</td>
