@@ -98,9 +98,10 @@
                     <tr>
                     <td>{{$b->id}}</a></td>
                     <td>{{$b->nama}}</td>
-                    <td>{{$b->NIK}}</td>
+                    
                     <td>{{$b->jenis_kelamin}}</td>
                     <td>{{$b->tgl_lahir}}</td>
+                    <td>{{$b->nik}}</td>
                     <td>{{$b->kelas_rawat}}</td>
                     <td>@if ($b->status_premi===1)
                         aktif
@@ -113,11 +114,14 @@
                    </div>
                    @endif
 
-                   <!-- @if ($pasien->NIK==$bpjs->NIK)
-                   Data pasien match!
-                   @else
-                   Data pasien TIDAK match!
-                   @endif -->
+                   @if (isset($bpjs) and isset($pasien))
+
+                    @if ($pasien->get('nik')==$bpjs->get('nik'))
+                    Data pasien match!
+                    @else
+                    Data pasien TIDAK match!
+                    @endif
+                   @endif
 
                    @endrole
 

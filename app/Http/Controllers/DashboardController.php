@@ -7,6 +7,7 @@
   use App\Pasien;
   use App\BPJS;
   use Input;
+  use Session;
   use Illuminate\Database\Eloquent\ModelNotFoundException;
 
   class DashboardController extends Controller
@@ -22,6 +23,7 @@
         }else if(isset($id_bpjs) and isset($id_pasien)){
           $pasien = Pasien::where('id', '=', $id_pasien)->get();
           $bpjs = BPJS::where('id', '=', $id_bpjs)->get();
+          
           return view('dashboard.home')->with('pasien', $pasien)->with('bpjs', $bpjs);
         }else if(empty($id_bpjs) and empty($id_pasien)){
           //if form is still empty
