@@ -14,8 +14,8 @@ class CreateBpjsTable extends Migration
     {
         Schema::create('bpjs', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama', 50);
-            $table->string('nik', 16)->unique;
+            $table->string('nama_bpjs', 50);
+            $table->string('nik', 16)->unique();
             $table->string('jenis_kelamin', 1);
             $table->date('tgl_lahir');
             $table->string('kelas_rawat', 10);

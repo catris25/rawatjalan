@@ -28,6 +28,6 @@ class CreateTrgPasienInsert extends Migration
      */
     public function down()
     {
-        DB::unprepared('DROP TRIGGER `trg_dokter_insert`');
+        DB::unprepared('DROP TRIGGER `trg_pasien_insert`');
     }
 }

@@ -7,7 +7,7 @@
     <div class="panel panel-default" style="background-color:#FBFBFB;padding-top:3%;padding-bottom:3%;">
     <div class="panel-heading" style="background-color:#FBFBFB; font-size:30px;text-align:center;">Form Tambah Pasien</div>
     <div class="panel-body">
-     
+
       <ul>
        @foreach($errors->all()as $error)
        <li class="alert alert-danger">{{$error}} </li>
@@ -37,12 +37,13 @@
 
               <div class="row">
                 <div class="input-field col s12">
+                <label for="jenis_kelamin">Jenis Kelamin</label>
   							<select name="jenis_kelamin" id="jenis_kelamin">
                   <option value="" disabled selected>Masukkan jenis kelamin</option>
                   <option value="L">Laki-laki</option>
                   <option value="P">Perempuan</option>
                 </select>
-                <label for="jenis_kelamin">Jenis Kelamin</label>
+
                 </div>
   						</div>
 

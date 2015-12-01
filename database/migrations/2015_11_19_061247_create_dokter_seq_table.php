@@ -14,6 +14,7 @@ class CreateDokterSeqTable extends Migration
     {
         Schema::create('dokter_seq', function (Blueprint $table) {
             $table->increments('id');
+            $table->timestamps();
         });
     }
 
@@ -24,6 +25,6 @@ class CreateDokterSeqTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dokter_seq');
+        Schema::drop('dokter_seq');
     }
 }

@@ -16,7 +16,8 @@ class CreateAdminTable extends Migration
 
             $table->string('id',6);
             $table->string('nama_admin',40);
-            $table->string('NIK',16);
+            $table->string('jenis_kelamin', 1);
+            $table->string('nik',16)->unique();
             $table->string('alamat',75);
             $table->string('telepon',12);
             $table->date('tanggal_lahir');
