@@ -47,6 +47,7 @@ class PasienController extends Controller
         $format_tgl_info_old = Input::get('tgl_lahir');
         $new_users = Pasien::create([
             'nama_pasien' => $request->input('nama_pasien'),
+            'nik' => $request->input('nik'),
             'jenis_kelamin' => $request->input('jenis_kelamin'),
             'tgl_lahir' => date("Y-m-d", strtotime($format_tgl_info_old)),
             'alamat' => $request->input('alamat'),

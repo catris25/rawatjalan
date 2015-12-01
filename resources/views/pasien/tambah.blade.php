@@ -28,22 +28,22 @@
   							</div>
   						</div>
 
-              <div class="form-group">
-                <label class="col-md-4 control-label">NIK</label>
-                <div class="col-md-6">
-                  <input id="nik" type="text" class="form-control" name="nik" value="{{ old('nik') }}">
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="nik" type="text" class="validate" name="nik" value="{{ old('nik') }}">
+                  <label for="nik">NIK</label>
                 </div>
               </div>
 
               <div class="row">
                 <div class="input-field col s12">
-                <label for="jenis_kelamin">Jenis Kelamin</label>
+                
   							<select name="jenis_kelamin" id="jenis_kelamin">
                   <option value="" disabled selected>Masukkan jenis kelamin</option>
                   <option value="L">Laki-laki</option>
                   <option value="P">Perempuan</option>
                 </select>
-
+                <label for="jenis_kelamin">Jenis Kelamin</label>
                 </div>
   						</div>
 
