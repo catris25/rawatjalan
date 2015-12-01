@@ -68,7 +68,7 @@ class UsersController extends Controller{
             //$userID = Input::get('email');
             //$userID = $users->getId();
             $new_user = User::find($userID);
-            $role = Role::find('RL010');
+            $role = Role::find('RL001');
             //$new_users = User::find('id');
             $new_user->attachRole($role);
             //flash()->success('User Added Successfully!');
@@ -87,7 +87,8 @@ class UsersController extends Controller{
         $format_tgl_info_old = Input::get('tanggal_lahir');
         $new_users = $dokter->create([
           'nama_dokter' => $request->input('nama_dokter'),
-          'NIK' => $request->input('NIK'),
+          'nik' => $request->input('nik'),
+          'jenis_kelamin' => $request->input('jenis_kelamin'),
           'alamat' => $request->input('alamat'),
           'telepon' => $request->input('telepon'),
           'tanggal_lahir' => date("Y-m-d", strtotime($format_tgl_info_old)),
@@ -106,7 +107,7 @@ class UsersController extends Controller{
 
         if($new_users){
             $new_user = User::find($userID);
-            $role = Role::find('RL011');
+            $role = Role::find('RL002');
             $new_user->attachRole($role);
             //flash()->success('User Added Successfully!');
         } else {
