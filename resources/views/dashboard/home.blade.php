@@ -115,12 +115,7 @@
                    @endif
 
                    @if (isset($bpjs) and isset($pasien))
-
-                    @if ($pasien->get('nik')==$bpjs->get('nik'))
-                    Data pasien match!
-                    @else
-                    Data pasien TIDAK match!
-                    @endif
+                    {{$info}}
                    @endif
 
                    @endrole

@@ -8,6 +8,7 @@
   use App\BPJS;
   use Input;
   use Session;
+  use DB;
   use Illuminate\Database\Eloquent\ModelNotFoundException;
 
   class DashboardController extends Controller
@@ -24,7 +25,12 @@
           $pasien = Pasien::where('id', '=', $id_pasien)->get();
           $bpjs = BPJS::where('id', '=', $id_bpjs)->get();
           
-          return view('dashboard.home')->with('pasien', $pasien)->with('bpjs', $bpjs);
+          $pasieninfo = DB::table('pasien')->where('id', $id_pasien)->value('nik');
+          $bpjsinfo = DB::table('bpjs')->where('id', $id_bpjs)->value('nik');
+          if($pasieninfo == $bpjsinfo) {
+            $info = "Data sama";
+          } else $info = "Data tidak sama";
+          return view('dashboard.home')->with('pasien', $pasien)->with('bpjs', $bpjs)->with('info',$info);
         }else if(empty($id_bpjs) and empty($id_pasien)){
           //if form is still empty
           return view('dashboard.home');
