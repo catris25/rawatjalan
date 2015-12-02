@@ -36,7 +36,8 @@ class UsersController extends Controller{
         $format_tgl_info_old = Input::get('tanggal_lahir');
         $new_users = Admin::create([
             'nama_admin' => $request->input('nama_admin'),
-            'NIK' => $request->input('NIK'),
+            'jenis_kelamin' => $request->input('jenis_kelamin'),
+            'nik' => $request->input('nik'),
             'alamat' => $request->input('alamat'),
             'telepon' => $request->input('telepon'),
             'tanggal_lahir' => date("Y-m-d", strtotime($format_tgl_info_old)),
@@ -85,10 +86,10 @@ class UsersController extends Controller{
 
     public function postDokterRegister(NewUserRequest $request, User $users, Dokter $dokter) {
         $format_tgl_info_old = Input::get('tanggal_lahir');
-        $new_users = $dokter->create([
+        $new_users = Dokter::create([
           'nama_dokter' => $request->input('nama_dokter'),
-          'nik' => $request->input('nik'),
           'jenis_kelamin' => $request->input('jenis_kelamin'),
+          'nik' => $request->input('nik'),
           'alamat' => $request->input('alamat'),
           'telepon' => $request->input('telepon'),
           'tanggal_lahir' => date("Y-m-d", strtotime($format_tgl_info_old)),
@@ -96,7 +97,7 @@ class UsersController extends Controller{
           'email' => Str::lower($request->input('email')),
         ]);
 
-        $new_users = $users->create([
+        $new_users = User::create([
             'email' => Str::lower($request->input('email')),
             'password' => bcrypt($request->input('password')),
         ]);

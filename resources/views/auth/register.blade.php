@@ -32,8 +32,19 @@
 
 						<div class="row">
 							<div class="input-field col s12">
-								<input id="NIK" type="text" class="validate" name="NIK" value="{{ old('NIK') }}">
-								<label for="NIK">NIK</label>
+  							<select name="jenis_kelamin" id="jenis_kelamin">
+                  				<option value="" disabled selected>Masukkan jenis kelamin</option>
+                 				 <option value="L">Laki-laki</option>
+                  				<option value="P">Perempuan</option>
+               				 </select>
+								<label for="jenis_kelamin">Jenis kelamin</label>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="input-field col s12">
+								<input id="nik" type="text" class="validate" name="nik" value="{{ old('nik') }}">
+								<label for="nik">NIK</label>
 							</div>
 						</div>
 

@@ -32,21 +32,23 @@
 
 						<div class="row">
 							<div class="input-field col s12">
-								<input id="nik" type="number" class="validate" name="nik" value="{{ old('nik') }}">
-								<label for="nik">NIK</label>
+  							<select name="jenis_kelamin" id="jenis_kelamin">
+                  				<option value="" disabled selected>Masukkan jenis kelamin</option>
+                  				<option value="L">Laki-laki</option>
+                  				<option value="P">Perempuan</option>
+                			</select>
+								<label for="jenis_kelamin">Jenis kelamin</label>
 							</div>
 						</div>
 
 						<div class="row">
 							<div class="input-field col s12">
-  							<select name="jenis_kelamin" id="jenis_kelamin">
-                  <option value="" disabled selected>Masukkan jenis kelamin</option>
-                  <option value="L">Laki-laki</option>
-                  <option value="P">Perempuan</option>
-                </select>
-								<label for="jenis_kelamin">Jenis kelamin</label>
+								<input id="nik" type="text" class="validate" name="nik" value="{{ old('nik') }}">
+								<label for="nik">NIK</label>
 							</div>
 						</div>
+
+						
 
 						<div class="row">
 							<div class="input-field col s12">
@@ -57,7 +59,7 @@
 
 						<div class="row">
 							<div class="input-field col s12">
-								<input id="telepon" type="number" class="validate" name="telepon" value="{{ old('telepon') }}">
+								<input id="telepon" type="text" class="validate" name="telepon" value="{{ old('telepon') }}">
 								<label for="telepon">Nomor Telepon</label>
 							</div>
 						</div>

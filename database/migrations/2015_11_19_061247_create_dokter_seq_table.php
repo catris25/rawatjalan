@@ -14,7 +14,7 @@ class CreateDokterSeqTable extends Migration
     {
         Schema::create('dokter_seq', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            
         });
     }
 
