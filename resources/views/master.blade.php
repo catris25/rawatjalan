@@ -8,12 +8,62 @@
     <!--<link href="/rawatjalan/public/css/material.min.css" rel="stylesheet">-->
     <link href="/rawatjalan/public/css/ripples.min.css" rel="stylesheet">
     <link href="/rawatjalan/public/css/materialize.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lato:700' rel='stylesheet' type='text/css'>
 
 </head>
 <style>
     a:hover {
       text-decoration: none;
       color:#FFFFFF;
+    }
+
+    p {
+        font-family: 'Lato';
+    }
+
+    .boxx {
+        font-family: 'Lato';
+        width:40%;
+        margin:auto;
+        height:10%;
+        border-bottom:2px solid;
+    }
+
+    .splitt {
+        margin:auto;
+        float:left;
+        width:100%;
+        display:inline-block;
+    }
+
+    .splitpt {
+        float:left;
+        width:45%;
+        display:inline-block;
+    }
+
+    .datacek {
+        width:70%;
+        margin:auto;
+    }
+
+    .boxcek {
+        font-family:'Lato';
+        text-align:center;
+        font-size:20px;
+        margin:auto;
+        width:15%;
+        height:4%;
+    }
+
+    .boxcek h3 {
+        font-size: 20px;
+        font-family: 'Lato';
+    }
+
+    h5 {
+        font-family:'Lato';
     }
 </style>
 
