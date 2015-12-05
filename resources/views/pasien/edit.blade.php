@@ -30,24 +30,21 @@
              </div>
            </div>
 
-<<<<<<< HEAD
-           <div class="form-group">
-             <label class="col-md-4 control-label">NIK</label>
-             <div class="col-md-6">
-               <input type="text" class="form-control" name="nik" value="{{ $pasien->nik }}">
+
+           <div class="row">
+             <div class="input-field col s12">
+               <input id="nik" type="text" class="validate" name="nik" value="{{ $pasien->nik }}">
+               <label for="nik">NIK</label>
              </div>
            </div>
 
-           <div class="form-group">
-             <label class="col-md-4 control-label">Jenis kelamin</label>
-             <select name="jenis_kelamin">
-=======
+           
+
            <div class="row">
              <div class="input-field col s12">
              <select id="jenis_kelamin" name="jenis_kelamin">
->>>>>>> origin/master
-               <option value="L">Laki-laki</option>
-               <option value="P">Perempuan</option>
+               <option value="L" @if ($pasien->jenis_kelamin == 'L') selected @endif>Laki-laki</option>
+               <option value="P"  @if ($pasien->jenis_kelamin == 'P') selected @endif>Perempuan</option>
              </select>
              <label class="jenis_kelamin">Jenis kelamin</label>
              </div>
@@ -61,7 +58,7 @@
            </div>
 
            <div class="row">
-             <div class="input-field col 12">
+             <div class="input-field col s12">
                <input id="alamat" type="text" class="validate" name="alamat" value="{{ $pasien->alamat }}">
                <label for="alamat">Alamat</label>
              </div>
@@ -77,11 +74,11 @@
            <div class="row">
             <div class="input-field col s12">
              <select id="gol_darah" name="gol_darah">
-               <option value="">Tidak tahu</option>
-               <option value="A">A</option>
-               <option value="B">B</option>
-               <option value="AB">AB</option>
-               <option value="O">O</option>
+               <option value="" @if ($pasien->gol_darah == '') selected @endif>Tidak tahu</option>
+               <option value="A" @if ($pasien->gol_darah == 'A') selected @endif>A</option>
+               <option value="B" @if ($pasien->gol_darah == 'B') selected @endif>B</option>
+               <option value="AB" @if ($pasien->gol_darah == 'AB') selected @endif>AB</option>
+               <option value="O" @if ($pasien->gol_darah == 'O') selected @endif>O</option>
              </select>
              <label for="gol_darah">Golongan darah</label>
              </div>

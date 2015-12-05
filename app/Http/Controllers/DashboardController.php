@@ -27,7 +27,10 @@
           
           $pasieninfo = DB::table('pasien')->where('id', $id_pasien)->value('nik');
           $bpjsinfo = DB::table('bpjs')->where('id', $id_bpjs)->value('nik');
-          if($pasieninfo == $bpjsinfo) {
+          $bpjsstatus = DB::table('bpjs')->where('id',$id_bpjs)->value('status_premi');
+          if($bpjsstatus == 0) {
+            $info = "BPJS Tidak aktif";
+          } else if($pasieninfo == $bpjsinfo) {
             $info = "Data sama";
           } else $info = "Data tidak sama";
           return view('dashboard.home')->with('pasien', $pasien)->with('bpjs', $bpjs)->with('info',$info);
