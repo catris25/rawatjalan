@@ -20,20 +20,41 @@
 
         if(isset($id_pasien) and empty($id_bpjs)){
           $pasien = Pasien::where('id', '=', $id_pasien)->get();
-          return view('dashboard.home')->with('pasien', $pasien);
+          $info = "Pasien ditemukan";
+          $tambah = true;
+          return view('dashboard.home')->with('pasien', $pasien)->with('info', $info)->with('tambah', $tambah);
         }else if(isset($id_bpjs) and isset($id_pasien)){
           $pasien = Pasien::where('id', '=', $id_pasien)->get();
           $bpjs = BPJS::where('id', '=', $id_bpjs)->get();
-          
+
           $pasieninfo = DB::table('pasien')->where('id', $id_pasien)->value('nik');
           $bpjsinfo = DB::table('bpjs')->where('id', $id_bpjs)->value('nik');
           $bpjsstatus = DB::table('bpjs')->where('id',$id_bpjs)->value('status_premi');
-          if($bpjsstatus == 0) {
-            $info = "BPJS Tidak aktif";
-          } else if($pasieninfo == $bpjsinfo) {
-            $info = "Data sama";
-          } else $info = "Data tidak sama";
-          return view('dashboard.home')->with('pasien', $pasien)->with('bpjs', $bpjs)->with('info',$info);
+          $bpjsexists = BPJS::where('id', $id_bpjs)->count();
+          $pasienexists = Pasien::where('id', $id_pasien)->count();
+
+          if($pasienexists==1){
+            if($bpjsexists==1){
+              if($bpjsstatus == 0) {
+                $info = "BPJS tidak aktif";
+                $tambah = false;
+              } else if($pasieninfo == $bpjsinfo) {
+                $info = "Data sama";
+                $tambah = true;
+              } else {
+                $info = "Data tidak sama";
+                $tambah = false;
+              }
+            }else{
+              $info = "BPJS tidak ditemukan";
+              $tambah = false;
+            }
+          }else{
+            $info="Pasien tidak ditemukan";
+            $tambah = false;
+          }
+
+          return view('dashboard.home')->with('pasien', $pasien)->with('bpjs', $bpjs)->with('info',$info)->with('tambah', $tambah);
         }else if(empty($id_bpjs) and empty($id_pasien)){
           //if form is still empty
           return view('dashboard.home');
