@@ -110,9 +110,10 @@ class UsersController extends Controller{
             $new_user = User::find($userID);
             $role = Role::find('RL002');
             $new_user->attachRole($role);
-            //flash()->success('User Added Successfully!');
+            Session::flash('message', 'Dokter berhasil ditambahkan!');
+            return redirect('auth.lihat-dokter');
         } else {
-            //flash()->error('An error occurred, try adding the User again!');
+            return view('auth.drregister');
         }
     }
 
@@ -120,6 +121,24 @@ class UsersController extends Controller{
         $admin = Admin::all();
         return view('indexAdmin')->with('admin', $admin);
     }
+
+    public function indexDokter(){
+      $keyword = Input::get('keyword');
+      if(isset($keyword)){    //check if keyword has value
+        $kategori = Input::get('kategori');
+        $dokter = Dokter::where($kategori, 'LIKE', '%'.$keyword.'%')->get();
+        return view('auth.lihat-dokter')->with('dokter', $dokter);
+      }
+      $dokter = Dokter::all();
+      return view('auth.lihat-dokter')->with('dokter', $dokter);
+    }
+
+    public function editDokter($id)
+    {
+        $dokter = Dokter::findOrFail($id);
+        return view('auth.edit-dokter')->with('dokter', $dokter);
+    }
+
 
     // public function postAdminRegister(array $data) {
     //     $user = User::create([
