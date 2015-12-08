@@ -21,11 +21,12 @@ use App\Http\Requests\NewUserRequest;
 
 class UsersController extends Controller{
 
-    // public function __construct(User $user, Admin $admin)
-    // {
-    //     $this->user = $user;
-    //     $this->something = $something;
-    // }
+    //Admin Controller
+
+    public function indexAdmin() {
+        $admin = Admin::all();
+        return view('indexAdmin')->with('admin', $admin);
+    }
 
     public function getAdminRegister() {
         return view('auth.register');
@@ -49,17 +50,6 @@ class UsersController extends Controller{
             'password' => bcrypt($request->input('password')),
         ]);
 
-
-        // $lastInsertedID = $new_users->email;
-        // $userID = DB::table('users')->where('email', $lastInsertedID)->value('id');
-        // var_dump($userID);
-        // if($new_users){
-        //   $new_users = User::find($userID);
-        //   $role = Role::find('RL001');
-        //   $new_users->attachRole($role);
-        //   Session::flash('message', 'Admin baru berhasil ditambahkan!');
-        //   return redirect ('dashboard');
-
         $lastInsertedId = $new_users->email;
         $userID = DB::table('users')->where('email', $lastInsertedId)->value('id');
         var_dump($userID);
@@ -80,11 +70,37 @@ class UsersController extends Controller{
 
     }
 
+
+    // Dokter Controller
+
+    public function indexDokter(){
+      $keyword = Input::get('keyword');
+      if(isset($keyword)){    //check if keyword has value
+        $kategori = Input::get('kategori');
+        $dokter = Dokter::where($kategori, 'LIKE', '%'.$keyword.'%')->get();
+        return view('auth.lihat-dokter')->with('dokter', $dokter);
+      }
+      $dokter = Dokter::all();
+      return view('auth.lihat-dokter')->with('dokter', $dokter);
+    }
+
     public function getDokterRegister() {
         return view('auth.drregister');
     }
 
     public function postDokterRegister(NewUserRequest $request, User $users, Dokter $dokter) {
+        $this->validate($request,[
+          'nama_dokter' => 'required',
+          'nik' => 'required',
+          'jenis_kelamin' =>'required',
+          'tanggal_lahir' => 'required',
+          'alamat' => 'required',
+          'telepon' => 'required',
+          'email' => 'required',
+          'spesialisasi' => 'required',
+          'password' => 'required'
+        ]);
+
         $format_tgl_info_old = Input::get('tanggal_lahir');
         $new_users = Dokter::create([
           'nama_dokter' => $request->input('nama_dokter'),
@@ -104,33 +120,18 @@ class UsersController extends Controller{
 
         $lastInsertedId = $new_users->email;
         $userID = DB::table('users')->where('email', $lastInsertedId)->value('id');
-        var_dump($userID);
+
+        //var_dump($userID);
 
         if($new_users){
             $new_user = User::find($userID);
             $role = Role::find('RL002');
             $new_user->attachRole($role);
             Session::flash('message', 'Dokter berhasil ditambahkan!');
-            return redirect('auth.lihat-dokter');
+            return redirect('dokter');
         } else {
-            return view('auth.drregister');
+            return redirect('dokter/tambah');
         }
-    }
-
-    public function indexAdmin() {
-        $admin = Admin::all();
-        return view('indexAdmin')->with('admin', $admin);
-    }
-
-    public function indexDokter(){
-      $keyword = Input::get('keyword');
-      if(isset($keyword)){    //check if keyword has value
-        $kategori = Input::get('kategori');
-        $dokter = Dokter::where($kategori, 'LIKE', '%'.$keyword.'%')->get();
-        return view('auth.lihat-dokter')->with('dokter', $dokter);
-      }
-      $dokter = Dokter::all();
-      return view('auth.lihat-dokter')->with('dokter', $dokter);
     }
 
     public function editDokter($id)
@@ -139,10 +140,21 @@ class UsersController extends Controller{
         return view('auth.edit-dokter')->with('dokter', $dokter);
     }
 
+    public function updateDokter(Request $request, $id){
+      $dokter = Dokter::findOrFail($id);
+      $this->validate($request, [
+        'nama_dokter' => 'required',
+        'nik' => 'required',
+        'jenis_kelamin' =>'required',
+        'tgl_lahir' => 'required',
+        'alamat' => 'required'
+      ]);
 
-    // public function postAdminRegister(array $data) {
-    //     $user = User::create([
-    //         'name'=>])
-    //}
+      $input = $request->all();
+      $dokter->fill($input)->save();
+
+      Session::flash('edit_message', 'Dokter '.$id.' berhasil dimutakhirkan!');
+      return redirect(action('UsersController@editDokter', $dokter->id));
+  }
 
 }

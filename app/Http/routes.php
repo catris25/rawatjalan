@@ -31,6 +31,7 @@ Route::get('dokter', ['as'=> 'auth.lihat-dokter', 'middleware' => 'role:super.us
 Route::get('dokter/tambah', ['as' => 'auth.drregister', 'middleware' => 'role:super.user', 'uses' => 'UsersController@getDokterRegister']);
 Route::post('dokter/tambah', ['as' => 'auth.drregister', 'middleware' => 'role:super.user', 'uses' => 'UsersController@postDokterRegister']);
 Route::get('dokter/{id?}', ['as' => 'auth.edit-dokter', 'middleware' => 'role:super.user', 'uses' => 'UsersController@editDokter']);
+Route::post('dokter/{id?}', ['as' => 'auth.edit-dokter', 'middleware' => 'role:super.user', 'uses' => 'UsersController@updateDokter']);
 
 //Rekam Medik
 // Route::get('auth/rekammedik', ['as' => 'auth.rm','middleware' => 'role:admin|super.user','uses' => 'RekamMedikController@home']);
