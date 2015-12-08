@@ -13,7 +13,7 @@
 
 //Route::get('/','PagesController@home');
 Route::get('dashboard', 'DashboardController@home');
-Route::get('dashboard/tambah-ke-poli', 'DashboardController@tambahKePoli');
+Route::get('dashboard/tambah-ke-poli', 'DashboardController@home');
 Route::get('roleerror', 'DashboardController@error');
 
 // Authentication routes...
