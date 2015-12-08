@@ -27,20 +27,22 @@
 
          <h5 style="text-align:center;">Pendaftaran pasien ke poli (Cek BPJS)</h5>
 
-         <form class="form-horizontal" role="form" method="GET">
+         <form class="form-horizontal" role="form" method="GET" >
+
              <div class="splitt" style="margin-left:2%;">
                 <div class="splitpt input-field">
-                  <input id="id_pasien" type="text" class="validate" name="id_pasien" value="{{old ('id_pasien')}}" required>
+
+                  <input id="id_pasien" type="text" class="validate" name="id_pasien" @if(isset($pasien)) value="{{$pasienid}}" @endif>
                   <label for="id_pasien">Masukkan Id Pasien</label>
                 </div>
                 <div class="splitpt input-field" style="margin-left:6%;">
-                  <input id="id_bpjs" class="validate" type="text" name="id_bpjs" value="{{old ('id_bpjs')}}">
+                  <input id="id_bpjs" class="validate" type="text" name="id_bpjs" @if(isset($bpjs)) value="{{$bpjsid}}" @endif>
                   <label for="id_bpjs">Masukkan Id BPJS</label>
                 </div>
              </div>
            <div class="form-group">
             <div class="col-md-6 col-md-offset-5" style="margin-top:1%;">
-              <button type="submit" class="btn btn-primary">
+              <button type="submit" class="btn btn-primary" name="action">
                 Cek pasien
               </button>
             </div>
@@ -56,16 +58,14 @@
         @if (isset($bpjs) and isset($pasien) or empty($bpjs) and isset($pasien))
           {{$info}}
           @if($tambah)
-          <div class="well well-md">
+          <a href="{{URL::to('dashboard/tambah-ke-poli')}}">
             Tambahkan ke poli
-          </div>
+          </a>
           @endif
         @endif
        </div>
 
        @endrole
-
-
 
    </div>
 </div>

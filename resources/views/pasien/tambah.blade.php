@@ -17,10 +17,7 @@
        <div class="col-md-8 col-md-offset-2">
        <div class="col-md-12">
          <form class="form-horizontal" role="form" method="POST" action="{{ url('pasien/tambah') }}">
-
   						<input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-
               <div class="row">
   							<div class="input-field col s12">
   								<input id="nama_pasien" type="text" class="validate" name="nama_pasien" value="{{ old('nama_pasien') }}">
@@ -37,7 +34,7 @@
 
               <div class="row">
                 <div class="input-field col s12">
-                
+
   							<select name="jenis_kelamin" id="jenis_kelamin">
                   <option value="" disabled selected>Masukkan jenis kelamin</option>
                   <option value="L">Laki-laki</option>
