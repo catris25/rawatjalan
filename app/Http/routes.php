@@ -13,6 +13,7 @@
 
 //Route::get('/','PagesController@home');
 Route::get('dashboard', 'DashboardController@home');
+Route::get('dashboard/tambah-ke-poli', 'DashboardController@home');
 Route::get('roleerror', 'DashboardController@error');
 
 // Authentication routes...
@@ -36,13 +37,13 @@ Route::post('auth/drregister', ['as' => 'auth.drregister', 'middleware' => 'role
 Route::get('password/email', 'Auth\PasswordController@getEmail');
 Route::post('password/email', 'Auth\PasswordController@postEmail');
 
-// Password reset routes...
 Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
 
 //Pasien routes
 Route::get('pasien', ['as' => 'pasien.index', 'middleware' => 'role:admin|dokter|super.user', 'uses' => 'PasienController@index']); //view all patients
 Route::get('pasien/tambah', ['as' => 'pasien.tambah', 'middleware' => 'role:admin|super.user', 'uses' => 'PasienController@create']); //display the form
+// Password reset routes...
 Route::post('pasien/tambah', ['as' => 'pasien.tambah', 'middleware' => 'role:admin|super.user', 'uses' => 'PasienController@store']); //handle the form input
 Route::get('pasien/{id?}', ['as' => 'pasien.edit', 'middleware' => 'role:admin|super.user', 'uses' => 'PasienController@edit']); //show each patient page individually
 Route::post('pasien/{id?}', ['as' => 'pasien.edit', 'middleware' => 'role:admin|super.user', 'uses' => 'PasienController@update']); //update the pasien data from form

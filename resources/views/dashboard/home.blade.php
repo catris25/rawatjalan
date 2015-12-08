@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid" style="margin-top:1%;">
    <div class="row">
-       
+
     <div class="boxx">
       <h1 style="text-align:center;">Dashboard</h1>
     </div>
@@ -24,47 +24,48 @@
        @role('super.user')
        <p style="text-align:center; font-size:14px;">Selamat bekerja, <strong> Super User!</strong></p>
        <div class="container-fluid" style="width:80%;margin:auto; margin-top:3%;margin-bottom:3%;">
-         
+
          <h5 style="text-align:center;">Pendaftaran pasien ke poli (Cek BPJS)</h5>
-         
-         <form class="form-horizontal" role="form" method="GET">
+
+         <form class="form-horizontal" role="form" method="GET" >
+
              <div class="splitt" style="margin-left:2%;">
                 <div class="splitpt input-field">
-                  <input id="id_pasien" type="text" class="validate" name="id_pasien">
+
+                  <input id="id_pasien" type="text" class="validate" name="id_pasien" @if(isset($pasien)) value="{{$pasienid}}" @endif>
                   <label for="id_pasien">Masukkan Id Pasien</label>
                 </div>
                 <div class="splitpt input-field" style="margin-left:6%;">
-                  <input id="id_bpjs" class="validate" type="text" name="id_bpjs">
+                  <input id="id_bpjs" class="validate" type="text" name="id_bpjs" @if(isset($bpjs)) value="{{$bpjsid}}" @endif>
                   <label for="id_bpjs">Masukkan Id BPJS</label>
                 </div>
              </div>
            <div class="form-group">
             <div class="col-md-6 col-md-offset-5" style="margin-top:1%;">
-              <button type="submit" class="btn btn-primary">
+              <button type="submit" class="btn btn-primary" name="action">
                 Cek pasien
               </button>
             </div>
            </div>
-           </form> 
+           </form>
        </div>
-       @if (isset($bpjs) and isset($pasien))
+       @if (isset($bpjs) and isset($pasien)or empty($bpjs) and isset($pasien))
        <div class="boxcek" style="border-bottom:1px solid;">
         <h3>Hasil</h3>
        </div>
        @endif
        <div class="boxcek" style="margin-bottom:3%;">
-        @if (isset($bpjs) and isset($pasien))
+        @if (isset($bpjs) and isset($pasien) or empty($bpjs) and isset($pasien))
           {{$info}}
+          @if($tambah)
+          <a href="{{URL::to('dashboard/tambah-ke-poli')}}">
+            Tambahkan ke poli
+          </a>
+          @endif
         @endif
        </div>
-       
-
-        
-       
 
        @endrole
-
-               
 
    </div>
 </div>
