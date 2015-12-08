@@ -24,8 +24,14 @@ class UsersController extends Controller{
     //Admin Controller
 
     public function indexAdmin() {
-        $admin = Admin::all();
-        return view('indexAdmin')->with('admin', $admin);
+      $keyword = Input::get('keyword');
+      if(isset($keyword)){    //check if keyword has value
+        $kategori = Input::get('kategori');
+        $admin = Admin::where($kategori, 'LIKE', '%'.$keyword.'%')->get();
+        return view('auth.lihat-admin')->with('admin', $admin);
+      }
+      $admin = Admin::all();
+      return view('auth.lihat-admin')->with('admin', $admin);
     }
 
     public function getAdminRegister() {
@@ -33,6 +39,17 @@ class UsersController extends Controller{
     }
 
     public function postAdminRegister(NewUserRequest $request, User $users, Admin $admin) {
+
+        $this->validate($request,[
+          'nama_admin' => 'required',
+          'nik' => 'required',
+          'jenis_kelamin' =>'required',
+          'tanggal_lahir' => 'required',
+          'alamat' => 'required',
+          'telepon' => 'required',
+          'email' => 'required',
+          'password' => 'required'
+        ]);
 
         $format_tgl_info_old = Input::get('tanggal_lahir');
         $new_users = Admin::create([
@@ -52,23 +69,44 @@ class UsersController extends Controller{
 
         $lastInsertedId = $new_users->email;
         $userID = DB::table('users')->where('email', $lastInsertedId)->value('id');
-        var_dump($userID);
-        //Log::info($lastInsertedId);
 
         if($new_users){
-            //$userID = Input::get('email');
-            //$userID = $users->getId();
             $new_user = User::find($userID);
             $role = Role::find('RL001');
-            //$new_users = User::find('id');
             $new_user->attachRole($role);
-            //flash()->success('User Added Successfully!');
-
+            Session::flash('message', 'Admin berhasil ditambahkan!');
+            return redirect('admin');
         } else {
-            //flash()->error('An error occurred, try adding the User again!');
+            return redirect('admin/tambah');
         }
 
     }
+
+    public function editAdmin($id)
+    {
+        $admin = Admin::findOrFail($id);
+        return view('auth.edit-admin')->with('admin', $admin);
+    }
+
+    public function updateAdmin(Request $request, $id){
+      $admin = Admin::findOrFail($id);
+      $this->validate($request, [
+        'nama_admin' => 'required',
+        'nik' => 'required',
+        'jenis_kelamin' =>'required',
+        'tanggal_lahir' => 'required',
+        'alamat' => 'required',
+        'telepon' => 'required',
+        'email' => 'required',
+      ]);
+
+      $input = $request->all();
+      $admin->fill($input)->save();
+
+      Session::flash('edit_message', 'Admin '.$id.' berhasil dimutakhirkan!');
+      return redirect(action('UsersController@editAdmin', $admin->id));
+  }
+
 
 
     // Dokter Controller
@@ -121,8 +159,6 @@ class UsersController extends Controller{
         $lastInsertedId = $new_users->email;
         $userID = DB::table('users')->where('email', $lastInsertedId)->value('id');
 
-        //var_dump($userID);
-
         if($new_users){
             $new_user = User::find($userID);
             $role = Role::find('RL002');
@@ -146,8 +182,11 @@ class UsersController extends Controller{
         'nama_dokter' => 'required',
         'nik' => 'required',
         'jenis_kelamin' =>'required',
-        'tgl_lahir' => 'required',
-        'alamat' => 'required'
+        'tanggal_lahir' => 'required',
+        'alamat' => 'required',
+        'telepon' => 'required',
+        'email' => 'required',
+        'spesialisasi' => 'required',
       ]);
 
       $input = $request->all();

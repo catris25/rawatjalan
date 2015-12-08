@@ -4,7 +4,7 @@
   <div class="row">
   <div class="col-md-6 col-md-offset-3" style="padding-top:3%;padding-bottom:3%;">
   <div class="panel panel-default" style="background-color:#FBFBFB;margin: 0 auto;">
-  <div class="panel-heading" style="background-color:#FBFBFB; font-size:30px;text-align:center;">Form Data Dokter {{$dokter->id}}</div>
+  <div class="panel-heading" style="background-color:#FBFBFB; font-size:30px;text-align:center;">Form Data Admin {{$admin->id}}</div>
     <div class="panel-body">
      <ul>
       @foreach($errors->all()as $error)
@@ -25,14 +25,14 @@
 
            <div class="row">
              <div class="input-field col s12">
-               <input id="nama_admin" type="text" class="validate" name="nama_dokter" value="{{ $dokter->nama_dokter }}">
+               <input id="nama_admin" type="text" class="validate" name="nama_admin" value="{{ $admin->nama_admin }}">
                <label for="nama_admin">Nama</label>
              </div>
            </div>
 
            <div class="row">
              <div class="input-field col s12">
-               <input id="nik" type="text" class="validate" name="nik" value="{{ $dokter->nik }}">
+               <input id="nik" type="text" class="validate" name="nik" value="{{ $admin->nik }}">
                <label for="nik">NIK</label>
              </div>
            </div>
@@ -42,8 +42,8 @@
            <div class="row">
              <div class="input-field col s12">
              <select id="jenis_kelamin" name="jenis_kelamin">
-               <option value="L" @if ($dokter->jenis_kelamin == 'L') selected @endif>Laki-laki</option>
-               <option value="P"  @if ($dokter->jenis_kelamin == 'P') selected @endif>Perempuan</option>
+               <option value="L" @if ($admin->jenis_kelamin == 'L') selected @endif>Laki-laki</option>
+               <option value="P"  @if ($admin->jenis_kelamin == 'P') selected @endif>Perempuan</option>
              </select>
              <label class="jenis_kelamin">Jenis kelamin</label>
              </div>
@@ -51,35 +51,28 @@
 
            <div class="row">
              <div class="input-field col s12">
-               <input id="tgl_lahir" type="date" class="datepicker" name="tgl_lahir" value="{{ $dokter->tanggal_lahir }}">
-               <label for="tgl_lahir">Tanggal lahir</label>
+               <input id="tanggal_lahir" type="date" class="datepicker" name="tanggal_lahir" value="{{ $admin->tanggal_lahir }}">
+               <label for="tanggal_lahir">Tanggal lahir</label>
              </div>
            </div>
 
            <div class="row">
              <div class="input-field col s12">
-               <input id="alamat" type="text" class="validate" name="alamat" value="{{ $dokter->alamat }}">
+               <input id="alamat" type="text" class="validate" name="alamat" value="{{ $admin->alamat }}">
                <label for="alamat">Alamat</label>
              </div>
            </div>
 
            <div class="row">
              <div class="input-field col s12">
-               <input id="telepon" type="tel" class="validate" name="telepon" value="{{ $dokter->telepon }}">
+               <input id="telepon" type="tel" class="validate" name="telepon" value="{{ $admin->telepon }}">
                <label for="telepon">Nomor telepon</label>
              </div>
            </div>
 
            <div class="row">
              <div class="input-field col s12">
-               <input id="spesialisasi" type="tel" class="validate" name="spesialisasi" value="{{ $dokter->spesialisasi }}">
-               <label for="spesialisasi">Spesialisasi</label>
-             </div>
-           </div>
-
-           <div class="row">
-             <div class="input-field col s12">
-               <input id="email" type="tel" class="validate" name="email" value="{{ $dokter->email }}" readonly>
+               <input id="email" type="tel" class="validate" name="email" value="{{ $admin->email }}" readonly>
                <label for="email">E-mail (e-mail tidak dapat diganti)</label>
              </div>
            </div>
