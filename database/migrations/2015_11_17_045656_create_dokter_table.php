@@ -13,8 +13,8 @@ class CreateDokterTable extends Migration
     public function up()
     {
         Schema::create('dokter', function (Blueprint $table) {
-
-            $table->string('id',6);
+            $table->engine = "InnoDB";
+            $table->string('id',6)->primary();
             $table->string('nama_dokter',40);
             $table->string('jenis_kelamin', 1);
             $table->string('nik',16)->unique();
@@ -25,7 +25,6 @@ class CreateDokterTable extends Migration
             $table->string('email')->unique();
             $table->rememberToken();
             $table->timestamps();
-            $table->primary('id');
         });
     }
 

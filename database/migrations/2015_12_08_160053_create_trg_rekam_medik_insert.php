@@ -16,7 +16,7 @@ class CreateTrgRekamMedikInsert extends Migration
       CREATE TRIGGER trg_rekam_medik_insert BEFORE INSERT ON `rekam_medik` FOR EACH ROW
       BEGIN
       INSERT INTO rekam_medik_seq VALUES (NULL);
-      SET NEW.id = LPAD(LAST_INSERT_ID(), 4, "0");
+      SET NEW.kode_visit = LPAD(LAST_INSERT_ID(), 4, "0");
       END
       ');
     }
