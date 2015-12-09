@@ -20,7 +20,7 @@
 
 					<div class="col-md-8 col-md-offset-2">
 					<div class="col-md-12">
-					<form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/register') }}">
+					<form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/tambah') }}">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 						<div class="row">

@@ -35,9 +35,9 @@
 </ul>
 
 <ul id="rekammedik" class="dropdown-content">
-  <li><a href="/rawatjalan/public/rekammedik">Lihat Rekam Medik</a></li>
+  <li><a href="/rawatjalan/public/rekam-medik">Lihat Rekam Medik</a></li>
   <li class="divider"></li>
-  <li><a href="/rawatjalan/public/rekammedik/tambah">Tambah Rekam Medik</a></li>
+  <li><a href="/rawatjalan/public/rekam-medik/tambah">Tambah Rekam Medik</a></li>
 </ul>
 
 <ul id="mrekammedik" class="dropdown-content" style="width:100%;margin-left:-7%;">
