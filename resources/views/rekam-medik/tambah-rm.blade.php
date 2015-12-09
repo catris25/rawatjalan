@@ -20,8 +20,8 @@
   						<input type="hidden" name="_token" value="{{ csrf_token() }}">
               <div class="row">
   							<div class="input-field col s12">
-  								<input id="id_pasien" type="text" class="validate" name="id_pasien" value="{{ old('id_pasien') }}">
-                  <label for="id_pasien">ID Pasien</label>
+  								<input id="id" type="text" class="validate" name="id" value="{{ old('id') }}">
+                  <label for="id">ID Pasien</label>
   							</div>
   						</div>
 
@@ -34,29 +34,29 @@
 
               <div class="row">
   							<div class="input-field col s12">
-  								<input id="tgl_berobat" type="date" class="datepicker" name="tgl_berobat" value="{{ old('tgl_berobat') }}">
-                  <label for="tgl_berobat">Tanggal berobat</label>
+  								<input id="tgl_visit" type="date" class="datepicker" name="tgl_visit" value="{{ old('tgl_visit') }}">
+                  <label for="tgl_visit">Tanggal berobat</label>
   							</div>
   						</div>
 
               <div class="row">
   							<div class="input-field col s12">
   								<input id="tinggi_badan" type="number" class="validate" name="tinggi_badan" value="{{ old('tinggi_badan') }}">
-                  <label for="tinggi_badan">Tinggi badan</label>
+                  <label for="tinggi_badan">Tinggi badan (cm)</label>
   							</div>
   						</div>
 
               <div class="row">
   							<div class="input-field col s12">
   								<input id="berat_badan" type="number" class="validate" name="berat_badan" value="{{ old('berat_badan') }}">
-                  <label for="telepon">Nomor telepon</label>
+                  <label for="berat_badan">Berat badan (kg)</label>
   							</div>
   						</div>
 
               <div class="row">
   							<div class="input-field col s12">
   								<input id="tekanan_darah" type="text" class="validate" name="tekanan_darah" value="{{ old('tekanan_darah') }}">
-                  <label for="alergi">Alergi</label>
+                  <label for="tekanan_darah">Tekanan darah (mmHg)</label>
   							</div>
   						</div>
 
