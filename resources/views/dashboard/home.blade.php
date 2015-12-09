@@ -28,7 +28,6 @@
          <h5 style="text-align:center;">Pendaftaran pasien ke poli (Cek BPJS)</h5>
 
          <form class="form-horizontal" role="form" method="GET" >
-
              <div class="splitt" style="margin-left:2%;">
                 <div class="splitpt input-field">
 
