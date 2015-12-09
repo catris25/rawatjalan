@@ -14,6 +14,7 @@
 //Route::get('/','PagesController@home');
 Route::get('dashboard', 'DashboardController@home');
 Route::get('dashboard/tambah-ke-poli', 'DashboardController@home');
+Route::post('dashboard/cetakpoli', 'DashboardController@cetak');
 Route::get('roleerror', 'DashboardController@error');
 
 // Authentication routes...

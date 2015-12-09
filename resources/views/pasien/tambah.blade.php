@@ -14,7 +14,7 @@
        @endforeach
      </ul>
 
-       <div class="col-md-8 col-md-offset-2">
+       <div class="col-md-8 col-md-offset-2" style="margin-top:1%;">
        <div class="col-md-12">
          <form class="form-horizontal" role="form" method="POST" action="{{ url('pasien/tambah') }}">
   						<input type="hidden" name="_token" value="{{ csrf_token() }}">
