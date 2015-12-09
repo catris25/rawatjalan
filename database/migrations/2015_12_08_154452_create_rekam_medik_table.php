@@ -13,9 +13,8 @@ class CreateRekamMedikTable extends Migration
     public function up()
     {
         Schema::create('rekam_medik', function (Blueprint $table) {
-            $table->string('id', 12)->primary();
+            $table->string('id', 9);
             $table->string('kode_visit', 4);
-            $table->string('id_pasien', 7);
             $table->integer('usia_berobat');
             $table->date('tgl_visit');
             $table->integer('tinggi_badan')->nullable();
@@ -25,6 +24,13 @@ class CreateRekamMedikTable extends Migration
             $table->text('anamnesis')->nullable();
             $table->text('diagnosis');
             $table->text('tindakan')->nullable();
+            $table->string('id_dokter', 6);
+            $table->string('id_poli', 5);
+
+            $table->foreign('id')->references('id')->on('pasien')->onDelete('cascade');
+            // $table->foreign('id_dokter')->references->('id')->on('dokter')->onDelete('cascade');
+            // $table->foreign('id_poli')->references->('id')->on('poli')->onDelete('cascade');
+
             $table->timestamps();
         });
     }
