@@ -62,5 +62,5 @@ Route::post('poli/{id?}', ['as' => 'poli.edit', 'middleware' => 'role:admin|supe
 Route::get('rekam-medik', ['as' => 'rekam-medik.index','middleware' => 'role:admin|super.user|dokter','uses' => 'RekamMedikController@index']);
 Route::get('rekam-medik/tambah', ['as' => 'rekam-medik.tambah-rm','middleware' => 'role:admin|super.user','uses' => 'RekamMedikController@create']);
 Route::post('rekam-medik/tambah', ['as' => 'rekam-medik.tambah-rm','middleware' => 'role:admin|super.user','uses' => 'RekamMedikController@store']);
-Route::get('rekam-medik/{id?}', ['as' => 'rekam-medik.edit-rm','middleware' => 'role:admin|super.user','uses' => 'RekamMedikController@edit']);
-Route::post('rekam-medik/{id?}', ['as' => 'rekam-medik.edit-rm','middleware' => 'role:admin|super.user','uses' => 'RekamMedikController@update']);
+Route::get('rekam-medik/{id?}/{kode_visit?}', ['as' => 'rekam-medik.edit-rm','middleware' => 'role:admin|super.user','uses' => 'RekamMedikController@edit']);
+Route::post('rekam-medik/{id?}/{kode_visit?}', ['as' => 'rekam-medik.edit-rm','middleware' => 'role:admin|super.user','uses' => 'RekamMedikController@update']);

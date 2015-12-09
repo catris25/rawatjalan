@@ -69,16 +69,18 @@ class RekamMedikController extends Controller
     }
 
 
-    public function edit($id)
+    public function edit($id, $kode_visit)
     {
-        $rekamMedik = RekamMedik::findOrFail($id);
-        return view('rekam-medik.edit-rm')->with('rekamMedik', $rekamMedik);
+        $rekamMedik = RekamMedik::where('id',$id)->where('kode_visit', $kode_visit)->get();
+        // return view('rekam-medik.edit-rm')->with('rekamMedik', $rekamMedik);
+        return $rekamMedik;
     }
 
 
     public function update(Request $request, $id)
     {
-        $rekamMedik = RekamMedik::findOrFail($id);
+        $kode_visit = $request->input('kode_visit');
+        $rekamMedik = RekamMedik::where('id', $id)->where('kode_visit', $kode_visit);
         $this->validate($request, [
           'usia_berobat' =>'required',
           'tgl_visit' => 'required',
@@ -103,7 +105,7 @@ class RekamMedikController extends Controller
         $input = $request->all();
         $rekamMedik->fill($input)->save();
 
-        Session::flash('edit_message', 'Rekam Medik Pasien '.$id.' berhasil dimutakhirkan!');
+        Session::flash('edit_message', 'Rekam Medik'.$kode_visit .'Pasien '.$id.' berhasil dimutakhirkan!');
         return redirect(action('RekamMedikController@edit', $rekamMedik->id));
     }
 

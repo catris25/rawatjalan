@@ -59,7 +59,6 @@ class PoliController extends Controller
       $poli->fill($input)->save();
 
       Session::flash('edit_message', 'Poli '.$id.' berhasil dimutakhirkan!');
-      // return view('pasien.edit')->with('pasien', $pasien);
       return redirect(action('PoliController@edit', $poli->id));
     }
 

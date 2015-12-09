@@ -4,7 +4,7 @@
   <div class="row">
   <div class="col-md-6 col-md-offset-3" style="padding-top:3%;padding-bottom:3%;">
   <div class="panel panel-default" style="background-color:#FBFBFB;margin: 0 auto;">
-  <div class="panel-heading" style="background-color:#FBFBFB; font-size:30px;text-align:center;">Form Record Rekam Medik Pasien {{$rekamMedik->id}}</div>
+  <div class="panel-heading" style="background-color:#FBFBFB; font-size:30px;text-align:center;">Data Record Rekam Medik</div>
     <div class="panel-body">
      <ul>
       @foreach($errors->all()as $error)
@@ -25,8 +25,15 @@
 
            <div class="row">
              <div class="input-field col s12">
-               <input id="id" type="text" class="validate" name="id" value="{{ $rekamMedik->id }}" readonly>
+               <input id="id" type="text" class="validate" name="id" value="{{ $rekamMedik->kode_visit }}" readonly>
                <label for="id">Pasien</label>
+             </div>
+           </div>
+
+           <div class="row">
+             <div class="input-field col s12">
+               <input id="kode_visit" type="text" class="validate" name="kode_visit" value="{{ $rekamMedik->kode_visit }}" readonly>
+               <label for="kode_visit">Kode Visit</label>
              </div>
            </div>
 

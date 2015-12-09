@@ -24,6 +24,7 @@ class CreateRekamMedikTable extends Migration
             $table->text('anamnesis')->nullable();
             $table->text('diagnosis');
             $table->text('tindakan')->nullable();
+            $table->primary(['id', 'kode_visit']);
             // $table->string('id_dokter', 6);
             // $table->string('id_poli', 5);
 
