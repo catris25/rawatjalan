@@ -25,7 +25,7 @@
 
            <div class="row">
              <div class="input-field col s12">
-               <input id="id" type="text" class="validate" name="id" value="{{ $rekamMedik->kode_visit }}" readonly>
+               <input id="id" type="text" class="validate" name="id" value="{{ $rekamMedik->id }}" readonly>
                <label for="id">Pasien</label>
              </div>
            </div>

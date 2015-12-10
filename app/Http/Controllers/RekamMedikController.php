@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\RekamMedik;
 use Input;
 use Session;
+use DB;
 
 class RekamMedikController extends Controller
 {
@@ -71,9 +72,9 @@ class RekamMedikController extends Controller
 
     public function edit($id, $kode_visit)
     {
-        $rekamMedik = RekamMedik::where('id',$id)->where('kode_visit', $kode_visit)->get();
-        // return view('rekam-medik.edit-rm')->with('rekamMedik', $rekamMedik);
-        return $rekamMedik;
+        $rekamMedik = RekamMedik::where('id',$id)->where('kode_visit', $kode_visit)->get()->first();
+         return view('rekam-medik.edit-rm')->with('rekamMedik', $rekamMedik);
+        //return $rekamMedik;
     }
 
 
