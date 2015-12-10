@@ -10,6 +10,10 @@
     <link href="/rawatjalan/public/css/materialize.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Lato:700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
 
 
 </head>
@@ -65,6 +69,31 @@
 
     h5 {
         font-family:'Lato';
+    }
+
+    table {
+        font-family: 'Raleway';
+    }
+
+    thead {
+        text-align: center;
+        font-weight: bold;
+    }
+
+    form {
+        font-family: 'Roboto Slab';
+    }
+
+    .dropdown-content {
+        font-family: 'Droid Sans';
+    }
+
+    .brand-logo {
+        font-family: 'Droid Sans';
+    }
+
+    .dropdown-button {
+        font-family: 'Droid Sans';
     }
 </style>
 
