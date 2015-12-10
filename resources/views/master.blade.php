@@ -95,6 +95,10 @@
     .dropdown-button {
         font-family: 'Droid Sans';
     }
+
+    .boxcari {
+        width:80%;
+    }
 </style>
 
 <body>

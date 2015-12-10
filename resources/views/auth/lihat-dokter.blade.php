@@ -1,7 +1,7 @@
 @extends('master')
 @section('content')
-<div class="container">
-   <div class="well well-lg">
+<div class="container-fluid" style="margin-top:1%;">
+   <div class="row">
 
      @if(Session::has('message'))
      <div class="alert alert-success">
@@ -9,24 +9,28 @@
      </div>
      @endif
 
-       <h2>Daftar Dokter</h2>
-       <div class="well well-lg">
-         <div class="well well-lg">
+      <div class="boxx" style="margin-bottom:3%;">
+        <h1 style="text-align:center;">Daftar Dokter</h1>
+      </div>
+       <div class="row">
+         <div class="boxcari">
            <h5>Cari Dokter</h5>
            <form class="form-horizontal" role="form" method="GET">
-             <div class="form-group">
-
+              <div class="boxcari">
+              <div class="boxfind">
+                <input id="keyword" type="text" placeholder="Masukkan kata kunci" name="keyword" value="{{ old('keyword') }}">
+              </div>
                <select name="kategori" id="kategori">
                  <option value="id">ID Dokter</option>
                  <option value="nama_dokter">Nama</option>
                  <option value="nik">NIK</option>
                  <option value="spesialisasi">Spesialisasi</option>
                </select>
-               <input id="keyword" type="text" placeholder="Masukkan kata kunci" name="keyword" value="{{ old('keyword') }}">
+               
                <button type="submit" class="btn btn-primary">
                  Cari pasien
                </button>
-             </div>
+             
            </form>
          </div>
          <table class="table table-striped table-bordered">
