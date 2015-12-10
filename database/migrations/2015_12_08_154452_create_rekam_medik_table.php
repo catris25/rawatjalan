@@ -27,18 +27,18 @@ class CreateRekamMedikTable extends Migration
             $table->primary(['id', 'kode_visit']);
             $table->string('id_dokter', 6)->unique();
             $table->string('id_poli', 5)->unique();
-            $table->foreign('id')->references('id')->on('pasien')->onDelete('cascade');
+            //$table->foreign('id')->references('id')->on('pasien')->onDelete('cascade');
             // $table->foreign('id_dokter')->references->('id')->on('dokter')->onDelete('cascade');
             // $table->foreign('id_poli')->references->('id')->on('poli')->onDelete('cascade');
 
             $table->timestamps();
         });
 
-        // Schema::table('rekam_medik', function(Blueprint $table) {
-        //     $table->foreign('id')->references('id')->on('pasien')->onDelete('cascade');
-        //     $table->foreign('id_dokter')->references->('id')->on('dokter')->onDelete('cascade');
-        //     $table->foreign('id_poli')->references->('id')->on('poli')->onDelete('cascade');
-        // });
+        Schema::table('rekam_medik', function(Blueprint $table) {
+            $table->foreign('id')->references('id')->on('pasien')->onDelete('cascade');
+            $table->foreign('id_dokter')->references('id')->on('dokter')->onDelete('cascade');
+            $table->foreign('id_poli')->references('id')->on('poli')->onDelete('cascade');
+        });
     }
 
     /**
