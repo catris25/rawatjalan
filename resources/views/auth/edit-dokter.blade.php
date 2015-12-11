@@ -72,7 +72,14 @@
 
            <div class="row">
              <div class="input-field col s12">
-               <input id="spesialisasi" type="tel" class="validate" name="spesialisasi" value="{{ $dokter->spesialisasi }}">
+               <input id="id_poli" type="text" class="validate" name="id_poli" value="{{ $dokter->id_poli }}">
+               <label for="id_poli">Poli</label>
+             </div>
+           </div>
+
+           <div class="row">
+             <div class="input-field col s12">
+               <input id="spesialisasi" type="text" class="validate" name="spesialisasi" value="{{ $dokter->spesialisasi }}">
                <label for="spesialisasi">Spesialisasi</label>
              </div>
            </div>

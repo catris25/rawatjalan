@@ -147,6 +147,7 @@ class UsersController extends Controller{
           'alamat' => $request->input('alamat'),
           'telepon' => $request->input('telepon'),
           'tanggal_lahir' => date("Y-m-d", strtotime($format_tgl_info_old)),
+          'id_poli' => $request->input('id_poli'),
           'spesialisasi' => $request->input('spesialisasi'),
           'email' => Str::lower($request->input('email')),
         ]);
@@ -185,6 +186,7 @@ class UsersController extends Controller{
         'tanggal_lahir' => 'required',
         'alamat' => 'required',
         'telepon' => 'required',
+        'id_poli' => 'required',
         'email' => 'required',
         'spesialisasi' => 'required',
       ]);

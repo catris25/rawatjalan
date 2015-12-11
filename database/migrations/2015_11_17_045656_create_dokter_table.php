@@ -5,11 +5,6 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateDokterTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('dokter', function (Blueprint $table) {
@@ -21,6 +16,7 @@ class CreateDokterTable extends Migration
             $table->string('alamat',75);
             $table->string('telepon',12);
             $table->date('tanggal_lahir');
+            $table->string('id_poli', 5)->references('id')->on('poli')->onDelete('cascade');
             $table->string('spesialisasi',30);
             $table->string('email')->unique();
             $table->rememberToken();
@@ -28,11 +24,6 @@ class CreateDokterTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
           Schema::dropIfExists('dokter');

@@ -26,11 +26,11 @@
                  <option value="nik">NIK</option>
                  <option value="spesialisasi">Spesialisasi</option>
                </select>
-               
+
                <button type="submit" class="btn btn-primary">
                  Cari pasien
                </button>
-             
+
            </form>
          </div>
          <table class="table table-striped table-bordered">
@@ -44,6 +44,7 @@
                <td>Alamat</td>
                <td>No Telepon</td>
                <td>Spesialisasi</td>
+               <td>Poli</td>
                <td>E-mail</td>
              </tr>
            </thead>
@@ -57,6 +58,7 @@
            <td>{{$d->alamat}}</td>
            <td>{{$d->telepon}}</td>
            <td>{{$d->spesialisasi}}</td>
+           <td><a href="{{URL::to('poli/'.$d->id_poli)}}">{{$d->id_poli}}</a></td>
            <td>{{$d->email}}</td>
          </tr>
          @endforeach

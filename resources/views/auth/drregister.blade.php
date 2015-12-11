@@ -80,6 +80,13 @@
 
 						<div class="row">
 							<div class="input-field col s12">
+								<input id="id_poli" type="text" class="validate" name="id_poli" value="{{ old('id_poli') }}">
+								<label for="id_poli">Poli </label>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="input-field col s12">
 								<input id="email" type="email" class="validate" name="email" value="{{ old('email') }}">
 								<label for="email">E-Mail</label>
 							</div>
