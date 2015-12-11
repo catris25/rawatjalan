@@ -79,11 +79,14 @@
 						</div>
 
 						<div class="row">
-							<div class="input-field col s12">
-								<input id="id_poli" type="text" class="validate" name="id_poli" value="{{ old('id_poli') }}">
-								<label for="id_poli">Poli </label>
-							</div>
-						</div>
+	            <div class="input-field col s12">
+	          <select name="id_poli" id="id_poli">
+	            @foreach($poli as $po)
+	             <option value="{{$po->id}}">{{$po->nama_poli}}</option>
+	             @endforeach
+	          </select>
+	          <label for="id_poli">Poli</label>
+	           </div>
 
 						<div class="row">
 							<div class="input-field col s12">

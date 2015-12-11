@@ -83,8 +83,10 @@ class RekamMedikController extends Controller
     public function update(Request $request, $id)
     {
         $kode_visit = $request->input('kode_visit');
-        $rekamMedik = RekamMedik::where('id', $id)->where('kode_visit', $kode_visit);
+        $rekamMedik = RekamMedik::where('id', $id)->where('kode_visit', $kode_visit)->get()->first();
         $this->validate($request, [
+          'id' => 'required',
+          'id_dokter' => 'required',
           'usia_berobat' =>'required',
           'tgl_visit' => 'required',
           'diagnosis' => 'required',
@@ -108,8 +110,10 @@ class RekamMedikController extends Controller
         $input = $request->all();
         $rekamMedik->fill($input)->save();
 
-        Session::flash('edit_message', 'Rekam Medik'.$kode_visit .'Pasien '.$id.' berhasil dimutakhirkan!');
-        return redirect(action('RekamMedikController@edit', $rekamMedik->id));
+        Session::flash('message', 'Rekam Medik '.$id.'-'.$kode_visit.' berhasil dimutakhirkan!');
+        // return redirect(action('RekamMedikController@edit', $rekamMedik->id, $rekamMedik->kode_visit));
+        return redirect('rekam-medik');
+        // return $rekamMedik;
     }
 
 

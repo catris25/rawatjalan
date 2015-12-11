@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Admin;
 use App\Dokter;
+use App\Poli;
 use App\Http\Controllers\Controller;
 use Input;
 use Session;
@@ -123,7 +124,8 @@ class UsersController extends Controller{
     }
 
     public function getDokterRegister() {
-        return view('auth.drregister');
+        $poli = Poli::all();
+        return view('auth.drregister')->with('poli', $poli);
     }
 
     public function postDokterRegister(NewUserRequest $request, User $users, Dokter $dokter) {
@@ -136,6 +138,7 @@ class UsersController extends Controller{
           'telepon' => 'required',
           'email' => 'required',
           'spesialisasi' => 'required',
+          'id_poli' => 'required',
           'password' => 'required'
         ]);
 
@@ -173,8 +176,9 @@ class UsersController extends Controller{
 
     public function editDokter($id)
     {
+        $poli = Poli::all();
         $dokter = Dokter::findOrFail($id);
-        return view('auth.edit-dokter')->with('dokter', $dokter);
+        return view('auth.edit-dokter')->with('dokter', $dokter)->with('poli', $poli);
     }
 
     public function updateDokter(Request $request, $id){

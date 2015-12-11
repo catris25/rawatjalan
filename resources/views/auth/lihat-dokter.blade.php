@@ -20,19 +20,7 @@
               <div class="boxfindleft">
                 <input id="keyword" type="text" placeholder="Masukkan kata kunci" name="keyword" value="{{ old('keyword') }}">
               </div>
-<<<<<<< HEAD
-               <select name="kategori" id="kategori">
-                 <option value="id">ID Dokter</option>
-                 <option value="nama_dokter">Nama</option>
-                 <option value="nik">NIK</option>
-                 <option value="spesialisasi">Spesialisasi</option>
-               </select>
 
-               <button type="submit" class="btn btn-primary">
-                 Cari pasien
-               </button>
-
-=======
               <div class="boxfindmiddle">
                 <select name="kategori" id="kategori">
                   <option value="id">ID Dokter</option>
@@ -43,11 +31,10 @@
                </div>
                <div class="boxfindright">
                 <button type="submit" class="btn btn-primary">
-                  Cari pasien
+                  Cari dokter
                 </button>
                </div>
-             
->>>>>>> origin/master
+
            </form>
          </div>
          <table class="table table-striped table-bordered">
