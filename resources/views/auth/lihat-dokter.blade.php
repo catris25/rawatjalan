@@ -13,23 +13,26 @@
         <h1 style="text-align:center;">Daftar Dokter</h1>
       </div>
        <div class="row">
-         <div class="boxcari">
+         <div class="container-fluid" style="width:80%;margin:auto; margin-top:3%;margin-bottom:3%;">
            <h5>Cari Dokter</h5>
            <form class="form-horizontal" role="form" method="GET">
               <div class="boxcari">
-              <div class="boxfind">
+              <div class="boxfindleft">
                 <input id="keyword" type="text" placeholder="Masukkan kata kunci" name="keyword" value="{{ old('keyword') }}">
               </div>
-               <select name="kategori" id="kategori">
-                 <option value="id">ID Dokter</option>
-                 <option value="nama_dokter">Nama</option>
-                 <option value="nik">NIK</option>
-                 <option value="spesialisasi">Spesialisasi</option>
-               </select>
-               
-               <button type="submit" class="btn btn-primary">
-                 Cari pasien
-               </button>
+              <div class="boxfindmiddle">
+                <select name="kategori" id="kategori">
+                  <option value="id">ID Dokter</option>
+                  <option value="nama_dokter">Nama</option>
+                  <option value="nik">NIK</option>
+                  <option value="spesialisasi">Spesialisasi</option>
+                </select>
+               </div>
+               <div class="boxfindright">
+                <button type="submit" class="btn btn-primary">
+                  Cari pasien
+                </button>
+               </div>
              
            </form>
          </div>
