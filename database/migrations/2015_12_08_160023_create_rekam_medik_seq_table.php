@@ -13,7 +13,9 @@ class CreateRekamMedikSeqTable extends Migration
     public function up()
     {
       Schema::create('rekam_medik_seq', function (Blueprint $table) {
-          $table->increments('id');
+          $table->string('id',9);
+          $table->string('id_dokter',6);
+          $table->string('kode_visit',4);
 
       });
     }
