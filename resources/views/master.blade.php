@@ -96,8 +96,29 @@
         font-family: 'Droid Sans';
     }
 
+    .boxcaricontainer {
+        margin:auto;
+    }
+
     .boxcari {
         width:80%;
+        display:inline-block;
+        margin:auto;
+    }
+
+    .boxfindleft {
+        width:80%;
+        display: inline-block;
+    }
+
+    .boxfindmiddle {
+        width:15%;
+        display:inline-block;
+    }
+
+    .boxfindright {
+        width:4%;
+        display: inline-block;
     }
 </style>
 
