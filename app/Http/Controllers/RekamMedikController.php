@@ -38,6 +38,7 @@ class RekamMedikController extends Controller
     {
         $this->validate($request, [
           'id' => 'required',
+          'id_dokter' => 'required',
           'usia_berobat' =>'required',
           'tgl_visit' => 'required',
           'diagnosis' => 'required',
@@ -48,6 +49,7 @@ class RekamMedikController extends Controller
 
         $newRM = RekamMedik::create([
           'id' => $request->input('id'),
+          'id_dokter' => $request->input('id_dokter'),
           'usia_berobat' => $request->input('usia_berobat'),
           'tgl_visit' => date("Y-m-d", strtotime($format_tgl_info_old)),
           'tinggi_badan' => $request->input('tinggi_badan'),

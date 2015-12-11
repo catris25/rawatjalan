@@ -14,6 +14,7 @@ class CreateRekamMedikTable extends Migration
     {
         Schema::create('rekam_medik', function (Blueprint $table) {
             $table->string('id', 9);
+            $table->string('id_dokter', 6);
             $table->string('kode_visit', 4);
             $table->integer('usia_berobat');
             $table->date('tgl_visit');
@@ -24,9 +25,8 @@ class CreateRekamMedikTable extends Migration
             $table->text('anamnesis')->nullable();
             $table->text('diagnosis');
             $table->text('tindakan')->nullable();
-            $table->primary(['id', 'kode_visit']);
-            $table->string('id_dokter', 6)->unique();
-            $table->string('id_poli', 5)->unique();
+            $table->primary(['id', 'kode_visit', 'id_dokter']);
+            
             //$table->foreign('id')->references('id')->on('pasien')->onDelete('cascade');
             // $table->foreign('id_dokter')->references->('id')->on('dokter')->onDelete('cascade');
             // $table->foreign('id_poli')->references->('id')->on('poli')->onDelete('cascade');
@@ -37,7 +37,6 @@ class CreateRekamMedikTable extends Migration
         Schema::table('rekam_medik', function(Blueprint $table) {
             $table->foreign('id')->references('id')->on('pasien')->onDelete('cascade');
             $table->foreign('id_dokter')->references('id')->on('dokter')->onDelete('cascade');
-            $table->foreign('id_poli')->references('id')->on('poli')->onDelete('cascade');
         });
     }
 
