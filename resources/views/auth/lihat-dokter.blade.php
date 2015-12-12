@@ -20,6 +20,7 @@
               <div class="boxfindleft">
                 <input id="keyword" type="text" placeholder="Masukkan kata kunci" name="keyword" value="{{ old('keyword') }}">
               </div>
+
               <div class="boxfindmiddle">
                 <select name="kategori" id="kategori">
                   <option value="id">ID Dokter</option>
@@ -30,10 +31,10 @@
                </div>
                <div class="boxfindright">
                 <button type="submit" class="btn btn-primary">
-                  Cari pasien
+                  Cari dokter
                 </button>
                </div>
-             
+
            </form>
          </div>
          <table class="table table-striped table-bordered">
@@ -47,6 +48,7 @@
                <td>Alamat</td>
                <td>No Telepon</td>
                <td>Spesialisasi</td>
+               <td>Poli</td>
                <td>E-mail</td>
              </tr>
            </thead>
@@ -60,6 +62,7 @@
            <td>{{$d->alamat}}</td>
            <td>{{$d->telepon}}</td>
            <td>{{$d->spesialisasi}}</td>
+           <td><a href="{{URL::to('poli/'.$d->id_poli)}}">{{$d->id_poli}}</a></td>
            <td>{{$d->email}}</td>
          </tr>
          @endforeach
