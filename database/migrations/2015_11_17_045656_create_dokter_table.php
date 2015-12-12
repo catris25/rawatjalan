@@ -5,15 +5,9 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateDokterTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('dokter', function (Blueprint $table) {
-            $table->engine = "InnoDB";
             $table->string('id',6)->primary();
             $table->string('nama_dokter',40);
             $table->string('jenis_kelamin', 1);
@@ -21,18 +15,16 @@ class CreateDokterTable extends Migration
             $table->string('alamat',75);
             $table->string('telepon',12);
             $table->date('tanggal_lahir');
+            $table->string('id_poli', 5)->foreign('id_poli')->references('id')->on('poli');
             $table->string('spesialisasi',30);
             $table->string('email')->unique();
             $table->rememberToken();
             $table->timestamps();
+
         });
+
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
           Schema::dropIfExists('dokter');

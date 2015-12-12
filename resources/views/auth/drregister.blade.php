@@ -79,6 +79,16 @@
 						</div>
 
 						<div class="row">
+	            <div class="input-field col s12">
+	          <select name="id_poli" id="id_poli">
+	            @foreach($poli as $po)
+	             <option value="{{$po->id}}">{{$po->nama_poli}}</option>
+	             @endforeach
+	          </select>
+	          <label for="id_poli">Poli</label>
+	           </div>
+
+						<div class="row">
 							<div class="input-field col s12">
 								<input id="email" type="email" class="validate" name="email" value="{{ old('email') }}">
 								<label for="email">E-Mail</label>

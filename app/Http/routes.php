@@ -23,14 +23,14 @@ Route::post('/auth/login', 'Auth\AuthController@postLogin');
 Route::get('/logout', 'Auth\AuthController@getLogout');
 
 // Registration admin
-Route::get('admin', ['as' => 'auth.lihat-admin', 'middleware' => 'role:super.user', 'uses' => 'UsersController@indexAdmin']);
+Route::get('admin', ['as' => 'auth.lihat-admin', 'middleware' => 'role:super.user|dokter|admin', 'uses' => 'UsersController@indexAdmin']);
 Route::get('admin/tambah', ['as' => 'auth.adsignup', 'middleware' => 'role:super.user','uses' => 'UsersController@getAdminRegister']);
 Route::post('admin/tambah', ['as' => 'auth.adregister', 'middleware' => 'role:super.user', 'uses' => 'UsersController@postAdminRegister']);
 Route::get('admin/{id?}', ['as' => 'auth.edit-admin', 'middleware' => 'role:super.user', 'uses' => 'UsersController@editAdmin']);
 Route::post('admin/{id?}', ['as' => 'auth.edit-admin', 'middleware' => 'role:super.user', 'uses' => 'UsersController@updateAdmin']);
 
 //Registration dokter
-Route::get('dokter', ['as'=> 'auth.lihat-dokter', 'middleware' => 'role:super.user', 'uses' => 'UsersController@indexDokter']);
+Route::get('dokter', ['as'=> 'auth.lihat-dokter', 'middleware' => 'role:super.user|admin|dokter', 'uses' => 'UsersController@indexDokter']);
 Route::get('dokter/tambah', ['as' => 'auth.drregister', 'middleware' => 'role:super.user', 'uses' => 'UsersController@getDokterRegister']);
 Route::post('dokter/tambah', ['as' => 'auth.drregister', 'middleware' => 'role:super.user', 'uses' => 'UsersController@postDokterRegister']);
 Route::get('dokter/{id?}', ['as' => 'auth.edit-dokter', 'middleware' => 'role:super.user', 'uses' => 'UsersController@editDokter']);

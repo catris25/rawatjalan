@@ -26,11 +26,6 @@ class CreateRekamMedikTable extends Migration
             $table->text('diagnosis');
             $table->text('tindakan')->nullable();
             $table->primary(['id', 'kode_visit', 'id_dokter']);
-            
-            //$table->foreign('id')->references('id')->on('pasien')->onDelete('cascade');
-            // $table->foreign('id_dokter')->references->('id')->on('dokter')->onDelete('cascade');
-            // $table->foreign('id_poli')->references->('id')->on('poli')->onDelete('cascade');
-
             $table->timestamps();
         });
 
