@@ -2,20 +2,35 @@
 
   namespace App\Http\Controllers;
 
-  use Illuminate\Http\Request;
   use App\Http\Controllers\Controller;
   use App\Pasien;
   use App\BPJS;
+  use App\Dokter;
   use App\Poli;
-  use Input;
-  use Session;
+  use App\RMTemp;
   use DB;
   use Illuminate\Database\Eloquent\ModelNotFoundException;
+  use Illuminate\Http\Request;
+  use Illuminate\Support\Facades\Auth;
+  use Input;
+  use Session;
 
   class DashboardController extends Controller
   {
      public function home()
      {
+        if(Auth::user()->is('dokter')){
+            $email = Auth::user()->email;
+            $id_dokter = Dokter::where('email', $email)->value('id');
+            $temp = RMTemp::where('id_dokter', $id_dokter)->get();
+            if (count($temp)>0){
+                Session::flash('message', 'Anda memiliki notifikasi baru! Telah dilakukan pengubahan terhadap data berikut.');
+                return view('dashboard.home')->with('temp', $temp);
+            }
+            Session::flash('message', 'Anda tidak memiliki notifikasi baru!');
+            return view('dashboard.home');
+        }
+
         $id_pasien = Input::get('id_pasien');
         $id_bpjs = Input::get('id_bpjs');
 

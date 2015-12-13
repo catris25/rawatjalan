@@ -86,6 +86,7 @@ class RekamMedikController extends Controller
         //fetch the data from the form first
         $kode_visit = $request->input('kode_visit');
         $rekamMedik = RekamMedik::where('id', $id)->where('kode_visit', $kode_visit)->get()->first();
+
         $this->validate($request, [
           'id' => 'required',
           'id_dokter' => 'required',
@@ -102,6 +103,7 @@ class RekamMedikController extends Controller
 
             $temp = RMTemp::create([
               'id' => $request->input('id'),
+              'kode_visit' => $kode_visit,
               'id_dokter' => $request->input('id_dokter'),
               'usia_berobat' => $request->input('usia_berobat'),
               'tgl_visit' => date("Y-m-d", strtotime($format_tgl_info_old)),
@@ -116,7 +118,7 @@ class RekamMedikController extends Controller
 
             Session::flash('message', 'Pengubahan record rekam medik akan diproses! Silahkan menunggu konfirmasi dari dokter yang bersangkutan!');
             return redirect('rekam-medik');
-            
+
         }else if(Auth::user()->is('super.user')){
 
             //$format_tgl_info_old = Input::get('tgl_visit');
