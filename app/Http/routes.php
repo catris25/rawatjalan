@@ -64,3 +64,5 @@ Route::get('rekam-medik/tambah', ['as' => 'rekam-medik.tambah-rm','middleware' =
 Route::post('rekam-medik/tambah', ['as' => 'rekam-medik.tambah-rm','middleware' => 'role:admin|super.user','uses' => 'RekamMedikController@store']);
 Route::get('rekam-medik/{id?}/{kode_visit?}', ['as' => 'rekam-medik.edit-rm','middleware' => 'role:admin|super.user','uses' => 'RekamMedikController@edit']);
 Route::post('rekam-medik/{id?}/{kode_visit?}', ['as' => 'rekam-medik.edit-rm','middleware' => 'role:admin|super.user','uses' => 'RekamMedikController@update']);
+
+// Route::post('rekam-medik/{id?}/{kode_visit?}', ['as' => 'rekam-medik.edit-rm','middleware' => 'role:admin','uses' => 'RekamMedikController@updateOnConfirmation']);
