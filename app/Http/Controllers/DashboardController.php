@@ -139,7 +139,8 @@
          'resep' => $temp->resep,
          'anamnesis' => $temp->anamnesis,
          'diagnosis' => $temp->diagnosis,
-         'tindakan' => $temp->tindakan
+         'tindakan' => $temp->tindakan,
+         'status_validasi' => 1
        ]);
 
        //update RekamMedik

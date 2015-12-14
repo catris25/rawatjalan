@@ -55,7 +55,7 @@
        @foreach($rekamMedik as $rm)
        <tr>
          <td><a href="{{URL::to('pasien/'.$rm->id)}}">{{$rm->id}}</a></td>
-         <td><a href="{{URL::to('rekam-medik/'.$rm->id.'/'.$rm->kode_visit)}}"> {{$rm->kode_visit}}</a></td>
+         <td><a href="{{URL::to('rekam-medik/'.$rm->id.'-'.$rm->id_dokter.'-'.$rm->kode_visit)}}"> {{$rm->kode_visit}}</a></td>
          <td>{{$rm->usia_berobat}}</td>
          <td>{{$rm->tgl_visit}}</td>
          <td>{{$rm->tinggi_badan}}</td>

@@ -19,8 +19,17 @@
     @endif
 
     <div class="col-md-8 col-md-offset-2">
+      @if($rekamMedik->status_validasi==0)
+      <div class="alert alert-warning"> <p>Maaf record rekam medik {{$rekamMedik->id.'-'.$rekamMedik->id_dokter.'-'.$rekamMedik->kode_visit}}
+        saat ini tidak dapat diedit.</p>
+        <p>Harap tunggu validasi dari dokter {{$rekamMedik->id_dokter}} atas pengubahan sebelumnya.</p>
+      </div>
+      @endif
     <div class="col-md-12">
       <form class="form-horizontal" role="form" method="POST">
+          @if($rekamMedik->status_validasi==0)
+          <fieldset disabled>
+          @endif
            <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
            <div class="row">
@@ -114,6 +123,9 @@
              </button>
            </div>
          </div>
+         @if($rekamMedik->status_validasi==0)
+          </fieldset>
+         @endif
          </form>
     </div>
     </div>
