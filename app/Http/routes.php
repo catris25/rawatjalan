@@ -15,6 +15,9 @@
 Route::get('dashboard', 'DashboardController@home');
 Route::get('dashboard/tambah-ke-poli', 'DashboardController@home');
 Route::post('dashboard/cetakpoli', 'DashboardController@cetak');
+Route::get('dashboard/validasi/{id}-{id_dokter}-{kode_visit}', ['as' => 'auth.dashboard.validasi', 'middleware' => 'role:dokter', 'uses' => 'DashboardController@showTemp']);
+//Route::post('dashboard/validasi/{id}-{id_dokter}-{kode_visit}', ['as' => 'auth.dashboard.validasi', 'middleware' => 'role:dokter', 'uses' => 'DashboardController@validateTemp']);
+Route::get('dashboard/validasi/{id}-{id_dokter}-{kode_visit}/terima', ['as' => 'auth.dashboard.validasi', 'middleware' => 'role:dokter', 'uses' => 'DashboardController@validateTemp']);
 Route::get('roleerror', 'DashboardController@error');
 
 // Authentication routes...
