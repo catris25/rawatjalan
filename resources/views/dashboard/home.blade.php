@@ -17,14 +17,20 @@
        <p style="text-align:center; font-size:14px;">Selamat bekerja, <strong> Dokter!</strong></p>
        <div class="container">
        @if(Session::has('notify'))
-       <div class="alert alert-info">
-         {{Session::get('notify')}}
-
-       </div>
+       @if(isset($temp))
+        <div class="alert alert-warning">
+          {{Session::get('notify')}}
+        </div>
+        @else
+        <div class="alert alert-info">
+          {{Session::get('notify')}}
+        </div>
+       @endif
        @endif
        @if(isset($temp))
 
          <div class="well well-lg">
+           <p>Harap segera melakukan validasi terhadap pengubahan data Rekam Medik berikut.</p>
            @foreach($temp as $t)
            <div class="well well-md">
              <p><a href="{{URL::to('dashboard/validasi/'.$t->id.'-'.$t->id_dokter.'-'.$t->kode_visit)}}">

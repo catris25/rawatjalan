@@ -25,8 +25,6 @@
             $id_dokter = Dokter::where('email', $email)->value('id');
             $temp = RMTemp::where('id_dokter', $id_dokter)->get();
 
-            //$rekamMedik = RekamMedik::where('id_dokter', $id_dokter)->get();
-
             if (count($temp)>0){
                 Session::flash('notify', 'Anda memiliki notifikasi baru! Telah dilakukan pengubahan terhadap data berikut.');
                 return view('dashboard.home')->with('temp', $temp);
@@ -131,10 +129,7 @@
 
      public function validateTemp($id, $id_dokter, $kode_visit){
        $temp = RMTemp::where('id', $id)->where('id_dokter', $id_dokter)->where('kode_visit', $kode_visit)->first();
-       //$temp = RMTemp::findOrFail($id, $id_dokter, $kode_visit);
-       $rm = RekamMedik::where('id', $id)->where('id_dokter', $id_dokter)->where('kode_visit', $kode_visit)->first();
 
-       //$rm = RekamMedik::findOrFail($id, $id_dokter, $kode_visit);
        $updateRM = ([
          'usia_berobat' => $temp->usia_berobat,
          'tgl_visit' => $temp->tgl_visit,
@@ -147,8 +142,9 @@
          'tindakan' => $temp->tindakan
        ]);
 
-      //  $rm->fill($updateRM)->save();
-        RekamMedik::where('id', $id)->where('id_dokter', $id_dokter)->where('kode_visit', $kode_visit)->get()->first()->fill($updateRM)->save();
+       //update RekamMedik
+       RekamMedik::where('id', $id)->where('id_dokter', $id_dokter)->where('kode_visit', $kode_visit)->update($updateRM);
+       //delete the data on temp
        RMTemp::where('id', $id)->where('id_dokter', $id_dokter)->where('kode_visit', $kode_visit)->delete();
        Session::flash('message', 'Rekam Medik '.$id.'-'.$id_dokter.'-'.$kode_visit.' berhasil dimutakhirkan!');
        return view('dashboard.home');
