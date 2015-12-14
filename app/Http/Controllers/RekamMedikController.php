@@ -100,10 +100,10 @@ class RekamMedikController extends Controller
 
         //then check the type of user trying to update the data
         if(Auth::user()->is('admin')){
-
+            var_dump($kode_visit);
             $temp = RMTemp::create([
               'id' => $request->input('id'),
-              'kode_visit' => $kode_visit,
+              'kode_visit' =>  $request->input('kode_visit'),
               'id_dokter' => $request->input('id_dokter'),
               'usia_berobat' => $request->input('usia_berobat'),
               'tgl_visit' => date("Y-m-d", strtotime($format_tgl_info_old)),
@@ -115,6 +115,7 @@ class RekamMedikController extends Controller
               'diagnosis' => $request->input('diagnosis'),
               'tindakan' => $request->input('tindakan')
             ]);
+
 
             Session::flash('message', 'Pengubahan record rekam medik akan diproses! Silahkan menunggu konfirmasi dari dokter yang bersangkutan!');
             return redirect('rekam-medik');
