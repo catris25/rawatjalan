@@ -132,6 +132,37 @@
         width:4%;
         display: inline-block;
     }
+
+    .boxerror {
+        width:60%;
+        height:30%;
+        margin:0 auto;
+        position:absolute;
+        left:50%;
+        top:50%;
+        margin-left:-30%;
+        margin-top:-15%;
+        display: inline-block;
+    }
+
+    .beup {
+        height:60%;
+        text-align: center;
+        width:100%;
+        font-family: 'Lato';
+        font-size: 6.3vw;
+        border-bottom:3px solid;
+    }
+
+    .bedown {
+        height:19%;
+        text-align: center;
+        width:100%;
+        font-family: 'Lato';
+        font-size: 2vw;
+    }
+
+
 </style>
 
 <body>

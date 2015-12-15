@@ -2,10 +2,12 @@
 @section('title','Home')
 
 @section('content')
-    <div class="container">
-        <div class="content">
-            <h1>OH DAMN!</h1>
-            <p>You don't have permission to access this menu!</p>
+    <div class="boxerror">
+        <div class="beup">
+        	._.v
+        </div>
+        <div class="bedown">
+        	Maaf, sepertinya anda tidak memiliki hak akses ke fitur ini 
         </div>
     </div>
 
