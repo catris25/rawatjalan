@@ -1,17 +1,20 @@
 @extends('master')
 
 @section('content')
-<div class="container">
-   <div class="well well-lg">
-     <h5>Record Rekam Medik Pasien {{$temp->id.'-'.$temp->id_dokter.'-'.$temp->kode_visit}} </h5>
-     <p>Permintaan pengubahan record rekam medik oleh {{$temp->id_admin}}</p>
+<div class="container-fluid" style="margin-top:2%;">
+   <div class="row">
+     <div class="validasi">
+       <p>Record Rekam Medik Pasien {{$temp->id.'-'.$temp->id_dokter.'-'.$temp->kode_visit}} </p>
+     </div> 
+     <p style="text-align:center;margin-top:1%;">Permintaan pengubahan record rekam medik oleh {{$temp->id_admin}}</p>
+     <div class="validtab">
      <table class="table table-striped table-bordered">
         <thead>
             </div>
           <tr>
-            <td>Nama kolom</td>
-            <td>Data Lama</td>
-            <td>Data Baru</td>
+            <td style="text-align:center;">Nama kolom</td>
+            <td style="text-align:center;">Data Lama</td>
+            <td style="text-align:center;">Data Baru</td>
           </tr>
           </thead>
           <tr><td>ID</td> <td>{{$rm->id}}</td> <td>{{$temp->id}}</td></tr>
@@ -27,12 +30,15 @@
           <tr><td>Diagnosis</td><td>{{$rm->diagnosis}}</td><td>{{$temp->diagnosis}}</td></tr>
           <tr><td>Tindakan</td><td>{{$rm->tindakan}}</td><td>{{$temp->tindakan}}</td></tr>
       </table>
-      <p>Apakah Anda menerima pengubahan ini?</p>
-      <form class="form-horizontal" role="form" method="POST">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <input type="submit" class="btn btn-info" name="terima" value="Terima">
-        <input type="submit" class="btn btn-warning" name="tolak" value="Tolak">
-      </form>
+      </div>
+      <div class="validtab">
+        <p>Apakah Anda menerima pengubahan ini?</p>
+        <form class="form-horizontal" role="form" method="POST">
+          <input type="hidden" name="_token" value="{{ csrf_token() }}">
+          <input type="submit" class="btn btn-info" name="terima" value="Terima">
+          <input type="submit" class="btn btn-warning" name="tolak" value="Tolak">
+        </form>
+      </div>
    </div>
 </div>
 

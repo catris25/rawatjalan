@@ -79,12 +79,20 @@
         color:#000000;
     }
 
+    a {
+        transition:all 0.5s ease;
+    }
+
+    a:hover {
+        color:#000000;
+    }
+
     h5 {
         font-family:'Lato';
     }
 
     table {
-        font-family: 'Raleway';
+        font-family: 'Droid Sans';
     }
 
     thead {
@@ -173,6 +181,41 @@
         text-align: center;
     }
 
+    .validasi {
+        font-family: 'Lato';
+        width:70%;
+        margin:auto;
+        height:6%;
+        border-bottom:2px solid;
+    }
+
+    .validasi p {
+        font-size: 1.5vw;
+        text-align: center;
+    }
+
+    .validtab {
+        width:70%;
+        margin:auto;
+    }
+
+    .validsub {
+        width:70%;
+        margin:auto;
+    }
+
+    .rminfo {
+        width:100%;
+        margin:auto;
+        border-bottom:1px solid;
+        height:5%;
+    }
+
+    .rminfo p {
+        text-align: center;
+        font-family: 'Lato';
+        font-size: 12px;
+    }
 
 </style>
 
