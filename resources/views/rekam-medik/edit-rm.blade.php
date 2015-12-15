@@ -19,38 +19,41 @@
     @endif
 
     <div class="col-md-8 col-md-offset-2">
-
+      <div class="col-md-16">
       @if($rekamMedik->status_validasi==0 and count($temp)>0)
 
         @if($temp->status_cek==0)
         <div class="alert alert-warning">
-          <p>Maaf, record rekam medik {{$rekamMedik->id.'-'.$rekamMedik->id_dokter.'-'.$rekamMedik->kode_visit}}
+          <p style="text-align:center;">Maaf, record rekam medik {{$rekamMedik->id.'-'.$rekamMedik->id_dokter.'-'.$rekamMedik->kode_visit}}
           sedang menunggu validasi pengubahan dan tidak dapat diedit.</p>
-          <p>Harap tunggu validasi dari dokter {{$rekamMedik->id_dokter}} atas pengubahan sebelumnya.</p>
+          <p style="text-align:center;">Harap tunggu validasi dari dokter {{$rekamMedik->id_dokter}} atas pengubahan sebelumnya.</p>
         </div>
 
         @elseif($temp->status_cek==1 and $thisAdmin==true)
-        <div class="alert alert-warning">
+        <div class="rminfo">
           <p>Maaf, permintaan pengubahan record rekam medik {{$rekamMedik->id.'-'.$rekamMedik->id_dokter.'-'.$rekamMedik->kode_visit}}
           dari Anda tidak memperoleh validasi dari dokter {{$rekamMedik->id_dokter}}.</p>
         </div>
-        <p>Klik OK untuk mengembalikan data dan mengubah ulang.</p>
+        <p style="font-size:12px;text-align:center;">Klik OK untuk mengembalikan data dan mengubah ulang.</p>
         <form class="form-horizontal" role="form" method="POST">
+        <div class="col-md-6 col-md-offset-4">
           <input type="hidden" name="_token" value="{{ csrf_token() }}">
           <input type="submit" class="btn btn-info" name="ok" value="OK">
+        </div>
         </form>
 
         @else
         <div class="alert alert-warning">
-          <p>Maaf, record rekam medik {{$rekamMedik->id.'-'.$rekamMedik->id_dokter.'-'.$rekamMedik->kode_visit}}
+          <p style="text-align:center;">Maaf, record rekam medik {{$rekamMedik->id.'-'.$rekamMedik->id_dokter.'-'.$rekamMedik->kode_visit}}
             saat ini tidak dapat diedit karena sedang dalam pengkajian.</p>
         </div>
         @endif
 
       @endif
-
-
-    <div class="col-md-12">
+      </div>
+    </div>
+    <div class="col-md-8 col-md-offset-2" style="margin-top:2%;">
+    <div class="col-md-16">
       <form class="form-horizontal" role="form" method="POST">
           @if($rekamMedik->status_validasi==0)
           <fieldset disabled>
@@ -157,6 +160,6 @@
     </div>
     </div>
     </div>
+    </div>
   </div>
-</div>
 @endsection

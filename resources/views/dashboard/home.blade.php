@@ -60,15 +60,21 @@
        <!-- == DOKTER ROLE == -->
         @role('dokter')
         @if(isset($temp))
-          <div class="well well-lg">
-            <p>Harap segera melakukan validasi terhadap pengubahan data Rekam Medik berikut.</p>
+            <table class="table table-striped table-bordered">
+            <thead>
+              <tr>
+                <td style="text-align:center;">Harap segera melakukan validasi terhadap pengubahan data Rekam Medik berikut.</td>
+              </tr>
+            </thead>
+            <tbody>
             @foreach($temp as $t)
-            <div class="well well-md">
-              <p><a href="{{URL::to('dashboard/validasi/'.$t->id.'-'.$t->id_dokter.'-'.$t->kode_visit)}}">
-                Data Pasien {{$t->id.'-'.$t->id_dokter.'-'.$t->kode_visit}} </a></p>
-            </div>
+              <tr>
+                <td><a href="{{URL::to('dashboard/validasi/'.$t->id.'-'.$t->id_dokter.'-'.$t->kode_visit)}}">
+                Data Pasien {{$t->id.'-'.$t->id_dokter.'-'.$t->kode_visit}} </a></td>
+              </tr>
            @endforeach
-         </div>
+           </tbody>
+           </table>
         @endif
 
         @endrole
@@ -77,22 +83,28 @@
         <!-- == ADMIN ROLE == -->
         @role('admin')
         @if(isset($temp))
-          <div class="well well-lg">
-            <p>Permintaan pengubahan record rekam medik berikut ditolak</p>
+            <table class="table table-striped table-bordered">
+            <thead>
+              <tr>
+                <td style="text-align:center;">Permintaan pengubahan record rekam medik berikut ditolak</td>
+              </tr>
+            </thead>
+            <tbody>
             @foreach($temp as $t)
-            <div class="well well-md">
-              <p><a href="{{URL::to('rekam-medik/'.$t->id.'-'.$t->id_dokter.'-'.$t->kode_visit)}}">
-                Data Rekam Medik {{$t->id.'-'.$t->id_dokter.'-'.$t->kode_visit}} </a></p>
-            </div>
+              <tr>
+                <td><a href="{{URL::to('rekam-medik/'.$t->id.'-'.$t->id_dokter.'-'.$t->kode_visit)}}">
+                Data Rekam Medik {{$t->id.'-'.$t->id_dokter.'-'.$t->kode_visit}} </a></td>
+              </tr>
            @endforeach
-         </div>
+           </tbody>
+           </table>
         @endif
         @endrole
 
 
        <!-- == SUPERUSER OR ADMIN ROLE == -->
        @role('super.user|admin')
-       <div class="container-fluid" style="width:80%;margin:auto; margin-top:3%;margin-bottom:3%;">
+       <div class="container-fluid" style="width:100%;margin:auto; margin-top:3%;margin-bottom:3%;">
 
          <h5 style="text-align:center;">Pendaftaran pasien ke poli (Cek BPJS)</h5>
 
