@@ -4,10 +4,11 @@
 @section('content')
     <div class="boxerror">
         <div class="beup">
-        	._.v
+        	>_<
         </div>
         <div class="bedown">
-        	Maaf, sepertinya anda tidak memiliki hak akses ke fitur ini 
+        	<h1>Error 403 - Role Access Forbidden</h1>
+        	<h2>Maaf, sepertinya anda tidak memiliki hak akses untuk fitur ini</h2>
         </div>
     </div>
 
