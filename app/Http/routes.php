@@ -4,11 +4,6 @@
 |--------------------------------------------------------------------------
 | Application Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
 */
 
 //Route::get('/','PagesController@home');
@@ -16,7 +11,7 @@ Route::get('dashboard', 'DashboardController@home');
 Route::get('dashboard/tambah-ke-poli', 'DashboardController@home');
 Route::post('dashboard/cetakpoli', 'DashboardController@cetak');
 Route::get('dashboard/validasi/{id}-{id_dokter}-{kode_visit}', ['as' => 'auth.dashboard.validasi', 'middleware' => 'role:dokter', 'uses' => 'DashboardController@showTemp']);
-Route::get('dashboard/validasi/{id}-{id_dokter}-{kode_visit}/terima', ['as' => 'auth.dashboard.validasi', 'middleware' => 'role:dokter', 'uses' => 'DashboardController@validateTemp']);
+Route::post('dashboard/validasi/{id}-{id_dokter}-{kode_visit}', ['as' => 'auth.dashboard.validasi', 'middleware' => 'role:dokter', 'uses' => 'DashboardController@validateTemp']);
 Route::get('roleerror', 'DashboardController@error');
 
 // Authentication routes...

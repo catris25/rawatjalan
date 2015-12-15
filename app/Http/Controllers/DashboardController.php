@@ -128,28 +128,32 @@
      }
 
      public function validateTemp($id, $id_dokter, $kode_visit){
-       $temp = RMTemp::where('id', $id)->where('id_dokter', $id_dokter)->where('kode_visit', $kode_visit)->first();
+         if(Input::get('terima')){
+           $temp = RMTemp::where('id', $id)->where('id_dokter', $id_dokter)->where('kode_visit', $kode_visit)->first();
 
-       $updateRM = ([
-         'usia_berobat' => $temp->usia_berobat,
-         'tgl_visit' => $temp->tgl_visit,
-         'tinggi_badan' => $temp->tinggi_badan,
-         'berat_badan' => $temp->berat_badan,
-         'tekanan_darah' => $temp->tekanan_darah,
-         'resep' => $temp->resep,
-         'anamnesis' => $temp->anamnesis,
-         'diagnosis' => $temp->diagnosis,
-         'tindakan' => $temp->tindakan,
-         'status_validasi' => 1
-       ]);
+           $updateRM = ([
+             'usia_berobat' => $temp->usia_berobat,
+             'tgl_visit' => $temp->tgl_visit,
+             'tinggi_badan' => $temp->tinggi_badan,
+             'berat_badan' => $temp->berat_badan,
+             'tekanan_darah' => $temp->tekanan_darah,
+             'resep' => $temp->resep,
+             'anamnesis' => $temp->anamnesis,
+             'diagnosis' => $temp->diagnosis,
+             'tindakan' => $temp->tindakan,
+             'status_validasi' => 1
+           ]);
 
-       //update RekamMedik
-       RekamMedik::where('id', $id)->where('id_dokter', $id_dokter)->where('kode_visit', $kode_visit)->update($updateRM);
-       //delete the data on temp
-       RMTemp::where('id', $id)->where('id_dokter', $id_dokter)->where('kode_visit', $kode_visit)->delete();
-       Session::flash('message', 'Rekam Medik '.$id.'-'.$id_dokter.'-'.$kode_visit.' berhasil dimutakhirkan!');
-       return view('dashboard.home');
+           //update RekamMedik
+           RekamMedik::where('id', $id)->where('id_dokter', $id_dokter)->where('kode_visit', $kode_visit)->update($updateRM);
+           //delete the data on temp
+           RMTemp::where('id', $id)->where('id_dokter', $id_dokter)->where('kode_visit', $kode_visit)->delete();
+           Session::flash('message', 'Rekam Medik '.$id.'-'.$id_dokter.'-'.$kode_visit.' berhasil dimutakhirkan!');
+           return redirect('dashboard');
 
+         }else{
+            return redirect('dashboard');
+         }
      }
 
      public function error() {
