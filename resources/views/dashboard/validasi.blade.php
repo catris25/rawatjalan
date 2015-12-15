@@ -3,7 +3,8 @@
 @section('content')
 <div class="container">
    <div class="well well-lg">
-     <p>Pengubahan Record Rekam Medik Pasien {{$temp->id.'-'.$temp->id_dokter.'-'.$temp->kode_visit}} </p>
+     <h5>Record Rekam Medik Pasien {{$temp->id.'-'.$temp->id_dokter.'-'.$temp->kode_visit}} </h5>
+     <p>Permintaan pengubahan record rekam medik oleh {{$temp->id_admin}}</p>
      <table class="table table-striped table-bordered">
         <thead>
             </div>

@@ -21,35 +21,6 @@
   {
      public function home()
      {
-
-        if(Auth::user()->is('dokter')){
-          //$this->homeForDokter();
-          $email = Auth::user()->email;
-          $id_dokter = Dokter::where('email', $email)->value('id');
-          $temp = RMTemp::where('id_dokter', $id_dokter)->where('status_cek', 0)->get();
-
-          if (count($temp)>0){
-              Session::flash('notify', 'Anda memiliki notifikasi baru! Telah dilakukan pengubahan terhadap data berikut.');
-              return view('dashboard.home')->with('temp', $temp);
-
-          }
-          Session::flash('notify', 'Anda tidak memiliki notifikasi baru!');
-          return view('dashboard.home');
-
-        }else if(Auth::user()->is('admin')){
-          $email = Auth::user()->email;
-          $id_admin = Admin::where('email', $email)->value('id');
-          $temp = RMTemp::where('id_admin', $id_admin)->where('status_cek', 1)->get();
-
-          if (count($temp)>0){
-            Session::flash('notify', 'Anda memiliki notifikasi baru! Data Anda DITOLAAAKkk.');
-
-          }else{
-              Session::flash('notify', 'Anda tidak memiliki notifikasi baru!');
-          }
-
-        }
-
         $id_pasien = Input::get('id_pasien');
         $id_bpjs = Input::get('id_bpjs');
 
@@ -114,8 +85,26 @@
 
 
         }else if(empty($id_bpjs) and empty($id_pasien)){
+
           //if form is still empty
-          return view('dashboard.home')->with('temp', $temp);
+          if(Auth::user()->is('dokter')){
+            $email = Auth::user()->email;
+            $id_dokter = Dokter::where('email', $email)->value('id');
+            $temp = RMTemp::where('id_dokter', $id_dokter)->where('status_cek', 0)->get();
+
+          }else if(Auth::user()->is('admin')){
+            $email = Auth::user()->email;
+            $id_admin = Admin::where('email', $email)->value('id');
+            $temp = RMTemp::where('id_admin', $id_admin)->where('status_cek', 1)->get();
+          }
+
+          if(isset($temp) and count($temp)>0){
+              return view('dashboard.home')->with('temp', $temp);
+          }else{
+
+              return view('dashboard.home');
+          }
+
         }
      }
 

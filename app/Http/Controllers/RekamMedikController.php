@@ -76,14 +76,19 @@ class RekamMedikController extends Controller
 
     public function edit($id, $id_dokter, $kode_visit)
     {
-        $temp = RMTemp::where('id',$id)->where('kode_visit', $kode_visit)->get()->first();
+        $email = Auth::user()->email;
+        $id_admin = Admin::where('email', $email)->value('id');
+
+        $temp = RMTemp::where('id',$id)->where('id_dokter', $id_dokter)->where('kode_visit', $kode_visit)->get()->first();
+        $thisAdmin = false;
+        if(count($temp)>0 and $temp->id_admin==$id_admin){
+            $thisAdmin = true;
+        }
         $rekamMedik = RekamMedik::where('id',$id)->where('kode_visit', $kode_visit)->get()->first();
         if(isset($temp)){
-            return view('rekam-medik.edit-rm')->with('rekamMedik', $rekamMedik)->with('temp', $temp);
+            return view('rekam-medik.edit-rm')->with('rekamMedik', $rekamMedik)->with('temp', $temp)->with('id_admin', $id_admin)->with('thisAdmin', $thisAdmin);
         }
         return view('rekam-medik.edit-rm')->with('rekamMedik', $rekamMedik);
-
-        //return $rekamMedik;
     }
 
 

@@ -32,7 +32,7 @@
 
 
        <!-- NOTIFY -->
-       @if(Session::has('notify'))
+       <!-- @if(Session::has('notify'))
        @if(isset($temp))
         <div class="alert alert-warning">
           {{Session::get('notify')}}
@@ -42,7 +42,20 @@
           {{Session::get('notify')}}
         </div>
        @endif
+       @endif -->
+
+       <!-- NOTIFICATION FOR ADMIN AND DOKTER ROLE -->
+       @role('admin|dokter')
+       @if(isset($temp))
+        <div class="alert alert-warning">
+          <strong>Peringatan!</strong> Anda memiliki notifikasi baru!
+        </div>
+        @else
+        <div class="alert alert-info">
+          <strong>Info!</strong> Anda tidak memiliki notifikasi baru!
+        </div>
        @endif
+       @endrole
 
        <!-- == DOKTER ROLE == -->
         @role('dokter')
@@ -65,7 +78,7 @@
         @role('admin')
         @if(isset($temp))
           <div class="well well-lg">
-            <p>Data berikut ditolak</p>
+            <p>Permintaan pengubahan record rekam medik berikut ditolak</p>
             @foreach($temp as $t)
             <div class="well well-md">
               <p><a href="{{URL::to('rekam-medik/'.$t->id.'-'.$t->id_dokter.'-'.$t->kode_visit)}}">
@@ -75,6 +88,7 @@
          </div>
         @endif
         @endrole
+
 
        <!-- == SUPERUSER OR ADMIN ROLE == -->
        @role('super.user|admin')

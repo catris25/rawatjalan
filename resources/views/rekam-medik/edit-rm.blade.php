@@ -19,23 +19,36 @@
     @endif
 
     <div class="col-md-8 col-md-offset-2">
-      @if($rekamMedik->status_validasi==0)
-      <div class="alert alert-warning"> <p>Maaf record rekam medik {{$rekamMedik->id.'-'.$rekamMedik->id_dokter.'-'.$rekamMedik->kode_visit}}
-        saat ini tidak dapat diedit.</p>
-        <p>Harap tunggu validasi dari dokter {{$rekamMedik->id_dokter}} atas pengubahan sebelumnya.</p>
-      </div>
-      @endif
-      @if(isset($temp) and $temp->status_cek==1)
-      <div class="alert alert-warning"> <p>Maaf pengubahan record rekam medik {{$rekamMedik->id.'-'.$rekamMedik->id_dokter.'-'.$rekamMedik->kode_visit}}
-        tidak memperoleh validasi dari dokter {{$rekamMedik->id_dokter}}.</p>
-      </div>
 
-      <p>Apakah Anda menerima penolakan ini? Klik OK untuk mengembalikan data.</p>
-      <form class="form-horizontal" role="form" method="POST">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <input type="submit" class="btn btn-info" name="ok" value="OK">
-      </form>
+      @if($rekamMedik->status_validasi==0 and count($temp)>0)
+
+        @if($temp->status_cek==0)
+        <div class="alert alert-warning">
+          <p>Maaf, record rekam medik {{$rekamMedik->id.'-'.$rekamMedik->id_dokter.'-'.$rekamMedik->kode_visit}}
+          sedang menunggu validasi pengubahan dan tidak dapat diedit.</p>
+          <p>Harap tunggu validasi dari dokter {{$rekamMedik->id_dokter}} atas pengubahan sebelumnya.</p>
+        </div>
+
+        @elseif($temp->status_cek==1 and $thisAdmin==true)
+        <div class="alert alert-warning">
+          <p>Maaf, permintaan pengubahan record rekam medik {{$rekamMedik->id.'-'.$rekamMedik->id_dokter.'-'.$rekamMedik->kode_visit}}
+          dari Anda tidak memperoleh validasi dari dokter {{$rekamMedik->id_dokter}}.</p>
+        </div>
+        <p>Klik OK untuk mengembalikan data dan mengubah ulang.</p>
+        <form class="form-horizontal" role="form" method="POST">
+          <input type="hidden" name="_token" value="{{ csrf_token() }}">
+          <input type="submit" class="btn btn-info" name="ok" value="OK">
+        </form>
+
+        @else
+        <div class="alert alert-warning">
+          <p>Maaf, record rekam medik {{$rekamMedik->id.'-'.$rekamMedik->id_dokter.'-'.$rekamMedik->kode_visit}}
+            saat ini tidak dapat diedit karena sedang dalam pengkajian.</p>
+        </div>
+        @endif
+
       @endif
+
 
     <div class="col-md-12">
       <form class="form-horizontal" role="form" method="POST">
