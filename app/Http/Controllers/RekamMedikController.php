@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\RekamMedik;
+use App\Admin;
 use App\RMTemp;
 use Input;
 use Session;
@@ -75,17 +76,33 @@ class RekamMedikController extends Controller
 
     public function edit($id, $id_dokter, $kode_visit)
     {
+        $email = Auth::user()->email;
+        $id_admin = Admin::where('email', $email)->value('id');
+
+        $temp = RMTemp::where('id',$id)->where('id_dokter', $id_dokter)->where('kode_visit', $kode_visit)->get()->first();
+        $thisAdmin = false;
+        if(count($temp)>0 and $temp->id_admin==$id_admin){
+            $thisAdmin = true;
+        }
         $rekamMedik = RekamMedik::where('id',$id)->where('kode_visit', $kode_visit)->get()->first();
-         return view('rekam-medik.edit-rm')->with('rekamMedik', $rekamMedik);
-        //return $rekamMedik;
+        if(isset($temp)){
+            return view('rekam-medik.edit-rm')->with('rekamMedik', $rekamMedik)->with('temp', $temp)->with('id_admin', $id_admin)->with('thisAdmin', $thisAdmin);
+        }
+        return view('rekam-medik.edit-rm')->with('rekamMedik', $rekamMedik);
     }
 
 
     public function update(Request $request, $id, $id_dokter, $kode_visit)
     {
+        if(Input::get('ok')){
+            RMTemp::where('id', $id)->where('id_dokter', $id_dokter)->where('kode_visit', $kode_visit)->delete();
+            $updateRM = (['status_validasi'=>1]);
+            $rekamMedik = RekamMedik::where('id', $id)->where('id_dokter', $id_dokter)->where('kode_visit', $kode_visit)->update($updateRM);
+            return redirect('dashboard');
+        }
         //fetch the data from the form first
-        $kode_visit = $request->input('kode_visit');
         $rekamMedik = RekamMedik::where('id', $id)->where('id_dokter', $id_dokter)->where('kode_visit', $kode_visit)->get()->first();
+        $kode_visit = $request->input('kode_visit');
         $this->validate($request, [
           'id' => 'required',
           'id_dokter' => 'required',
@@ -103,6 +120,9 @@ class RekamMedikController extends Controller
             $kode_visit = $request->kode_visit;
             $id_dokter = $request->id_dokter;
             RekamMedik::where('id', $id)->where('id_dokter', $id_dokter)->where('kode_visit', $kode_visit)->update($updateRM);
+            //fetch email from admin
+            $email = Auth::user()->email;
+            $id_admin = Admin::where('email', $email)->value('id');
             $temp = RMTemp::create([
               'id' => $request->input('id'),
               'kode_visit' =>  $request->input('kode_visit'),
@@ -115,9 +135,9 @@ class RekamMedikController extends Controller
               'resep' => $request->input('resep'),
               'anamnesis' => $request->input('anamnesis'),
               'diagnosis' => $request->input('diagnosis'),
-              'tindakan' => $request->input('tindakan')
+              'tindakan' => $request->input('tindakan'),
+              'id_admin' => $id_admin
             ]);
-
 
             Session::flash('message', 'Pengubahan record rekam medik akan diproses! Silahkan menunggu konfirmasi dari dokter yang bersangkutan!');
             return redirect('rekam-medik');

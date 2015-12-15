@@ -3,7 +3,8 @@
 @section('content')
 <div class="container">
    <div class="well well-lg">
-     <p>Pengubahan Record Rekam Medik Pasien {{$temp->id.'-'.$temp->id_dokter.'-'.$temp->kode_visit}} </p>
+     <h5>Record Rekam Medik Pasien {{$temp->id.'-'.$temp->id_dokter.'-'.$temp->kode_visit}} </h5>
+     <p>Permintaan pengubahan record rekam medik oleh {{$temp->id_admin}}</p>
      <table class="table table-striped table-bordered">
         <thead>
             </div>
@@ -27,8 +28,11 @@
           <tr><td>Tindakan</td><td>{{$rm->tindakan}}</td><td>{{$temp->tindakan}}</td></tr>
       </table>
       <p>Apakah Anda menerima pengubahan ini?</p>
-      <p><a href="{{URL::to('dashboard/validasi/'.$temp->id.'-'.$temp->id_dokter.'-'.$temp->kode_visit.'/terima')}}">Ya</button></p>
-      <p><a href="{{URL::to('dashboard')}}">Tidak</button></p>
+      <form class="form-horizontal" role="form" method="POST">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <input type="submit" class="btn btn-info" name="terima" value="Terima">
+        <input type="submit" class="btn btn-warning" name="tolak" value="Tolak">
+      </form>
    </div>
 </div>
 

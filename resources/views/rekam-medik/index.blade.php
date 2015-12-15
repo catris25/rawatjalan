@@ -37,15 +37,15 @@
          <thead>
              </div>
            <tr>
-
+             <td>Record</td>
              <td>Pasien</td>
+             <td>Dokter</td>
              <td>Kode visit</td>
              <td>Usia berobat</td>
              <td>Tanggal</td>
              <td>Tinggi badan</td>
              <td>Berat badan</td>
              <td>Tekanan darah</td>
-             <td>Dokter</td>
              <td>Resep</td>
              <td>Anamnesis</td>
              <td>Diagnosis</td>
@@ -54,14 +54,15 @@
          </thead>
        @foreach($rekamMedik as $rm)
        <tr>
+         <td><a href="{{URL::to('rekam-medik/'.$rm->id.'-'.$rm->id_dokter.'-'.$rm->kode_visit)}}">{{$rm->id.'-'.$rm->id_dokter.'-'.$rm->kode_visit}}</a>
          <td><a href="{{URL::to('pasien/'.$rm->id)}}">{{$rm->id}}</a></td>
-         <td><a href="{{URL::to('rekam-medik/'.$rm->id.'-'.$rm->id_dokter.'-'.$rm->kode_visit)}}"> {{$rm->kode_visit}}</a></td>
+         <td><a href="{{URL::to('dokter/'.$rm->id_dokter)}}">{{$rm->id_dokter}}</a></td>
+         <td>{{$rm->kode_visit}}</td>
          <td>{{$rm->usia_berobat}}</td>
          <td>{{$rm->tgl_visit}}</td>
          <td>{{$rm->tinggi_badan}}</td>
          <td>{{$rm->berat_badan}}</td>
          <td>{{$rm->tekanan_darah}}</td>
-         <td><a href="{{URL::to('dokter/'.$rm->id_dokter)}}">{{$rm->id_dokter}}</a></td>
          <td>{{$rm->resep}}</td>
          <td>{{$rm->anamnesis}}</td>
          <td>{{$rm->diagnosis}}</td>

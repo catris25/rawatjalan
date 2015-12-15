@@ -13,10 +13,26 @@
        <strong>{{Auth::user()->email}}</strong></p>
        @endif
 
+       <div class="container">
+
+       <!-- == SUPERUSER ROLE == -->
+       @role('super.user')
+       <p style="text-align:center; font-size:14px;">Selamat bekerja, <strong> Super User!</strong></p>
+       @endrole
+
+       <!-- == ADMIN ROLE == -->
+       @role('admin')
+       <p style="text-align:center; font-size:14px;">Selamat bekerja, <strong> Admin!</strong></p>
+       @endrole
+
+       <!-- == SUPERUSER ROLE == -->
        @role('dokter')
        <p style="text-align:center; font-size:14px;">Selamat bekerja, <strong> Dokter!</strong></p>
-       <div class="container">
-       @if(Session::has('notify'))
+       @endrole
+
+
+       <!-- NOTIFY -->
+       <!-- @if(Session::has('notify'))
        @if(isset($temp))
         <div class="alert alert-warning">
           {{Session::get('notify')}}
@@ -26,32 +42,55 @@
           {{Session::get('notify')}}
         </div>
        @endif
-       @endif
-       @if(isset($temp))
+       @endif -->
 
-         <div class="well well-lg">
-           <p>Harap segera melakukan validasi terhadap pengubahan data Rekam Medik berikut.</p>
-           @foreach($temp as $t)
-           <div class="well well-md">
-             <p><a href="{{URL::to('dashboard/validasi/'.$t->id.'-'.$t->id_dokter.'-'.$t->kode_visit)}}">
-               Data Pasien {{$t->id.'-'.$t->id_dokter.'-'.$t->kode_visit}} </a></p>
-           </div>
-          @endforeach
+       <!-- NOTIFICATION FOR ADMIN AND DOKTER ROLE -->
+       @role('admin|dokter')
+       @if(isset($temp))
+        <div class="alert alert-warning">
+          <strong>Peringatan!</strong> Anda memiliki notifikasi baru!
+        </div>
+        @else
+        <div class="alert alert-info">
+          <strong>Info!</strong> Anda tidak memiliki notifikasi baru!
         </div>
        @endif
-
-      </div>
        @endrole
 
+       <!-- == DOKTER ROLE == -->
+        @role('dokter')
+        @if(isset($temp))
+          <div class="well well-lg">
+            <p>Harap segera melakukan validasi terhadap pengubahan data Rekam Medik berikut.</p>
+            @foreach($temp as $t)
+            <div class="well well-md">
+              <p><a href="{{URL::to('dashboard/validasi/'.$t->id.'-'.$t->id_dokter.'-'.$t->kode_visit)}}">
+                Data Pasien {{$t->id.'-'.$t->id_dokter.'-'.$t->kode_visit}} </a></p>
+            </div>
+           @endforeach
+         </div>
+        @endif
 
-       @role('super.user')
-       <p style="text-align:center; font-size:14px;">Selamat bekerja, <strong> Super User!</strong></p>
-       @endrole
+        @endrole
 
-       @role('admin')
-       <p style="text-align:center; font-size:14px;">Selamat bekerja, <strong> Admin!</strong></p>
-       @endrole
 
+        <!-- == ADMIN ROLE == -->
+        @role('admin')
+        @if(isset($temp))
+          <div class="well well-lg">
+            <p>Permintaan pengubahan record rekam medik berikut ditolak</p>
+            @foreach($temp as $t)
+            <div class="well well-md">
+              <p><a href="{{URL::to('rekam-medik/'.$t->id.'-'.$t->id_dokter.'-'.$t->kode_visit)}}">
+                Data Rekam Medik {{$t->id.'-'.$t->id_dokter.'-'.$t->kode_visit}} </a></p>
+            </div>
+           @endforeach
+         </div>
+        @endif
+        @endrole
+
+
+       <!-- == SUPERUSER OR ADMIN ROLE == -->
        @role('super.user|admin')
        <div class="container-fluid" style="width:80%;margin:auto; margin-top:3%;margin-bottom:3%;">
 
@@ -61,7 +100,7 @@
              <div class="splitt" style="margin-left:2%;">
                 <div class="splitpt input-field">
 
-                  <input id="id_pasien" type="text" class="validate" name="id_pasien" @if(isset($pasien)) value="{{$pasienid}}" @endif>
+                  <input id="id_pasien" type="text" class="validate" name="id_pasien" @if(isset($pasien)) value="{{$pasienid}}" @endif required>
                   <label for="id_pasien">Masukkan Id Pasien</label>
                 </div>
                 <div class="splitpt input-field" style="margin-left:6%;">
@@ -95,7 +134,7 @@
        </div>
 
        @endrole
-
+       </div>
    </div>
 </div>
 @endsection
