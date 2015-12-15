@@ -8,6 +8,7 @@
   use App\Dokter;
   use App\Poli;
   use App\RMTemp;
+  use App\RekamMedik;
   use DB;
   use Illuminate\Database\Eloquent\ModelNotFoundException;
   use Illuminate\Http\Request;
@@ -23,11 +24,12 @@
             $email = Auth::user()->email;
             $id_dokter = Dokter::where('email', $email)->value('id');
             $temp = RMTemp::where('id_dokter', $id_dokter)->get();
+
             if (count($temp)>0){
-                Session::flash('message', 'Anda memiliki notifikasi baru! Telah dilakukan pengubahan terhadap data berikut.');
+                Session::flash('notify', 'Anda memiliki notifikasi baru! Telah dilakukan pengubahan terhadap data berikut.');
                 return view('dashboard.home')->with('temp', $temp);
             }
-            Session::flash('message', 'Anda tidak memiliki notifikasi baru!');
+            Session::flash('notify', 'Anda tidak memiliki notifikasi baru!');
             return view('dashboard.home');
         }
 
@@ -113,6 +115,41 @@
         $status = 'Pasien Umum';
       }
       return view('cetak')->with('pasienid', $pasienid)->with('poli', $poli)->with('status',$status)->with('pasienname', $pasienname);
+     }
+
+
+     public function showTemp($id, $id_dokter, $kode_visit){
+         $email = Auth::user()->email;
+         $id_dokter = Dokter::where('email', $email)->value('id');
+         $temp = RMTemp::where('id', $id)->where('id_dokter', $id_dokter)->where('kode_visit', $kode_visit)->get()->first();
+
+         $rm = RekamMedik::where('id', $id)->where('id_dokter', $id_dokter)->where('kode_visit', $kode_visit)->get()->first();
+         return view('dashboard.validasi')->with('temp', $temp)->with('rm', $rm);
+     }
+
+     public function validateTemp($id, $id_dokter, $kode_visit){
+       $temp = RMTemp::where('id', $id)->where('id_dokter', $id_dokter)->where('kode_visit', $kode_visit)->first();
+
+       $updateRM = ([
+         'usia_berobat' => $temp->usia_berobat,
+         'tgl_visit' => $temp->tgl_visit,
+         'tinggi_badan' => $temp->tinggi_badan,
+         'berat_badan' => $temp->berat_badan,
+         'tekanan_darah' => $temp->tekanan_darah,
+         'resep' => $temp->resep,
+         'anamnesis' => $temp->anamnesis,
+         'diagnosis' => $temp->diagnosis,
+         'tindakan' => $temp->tindakan,
+         'status_validasi' => 1
+       ]);
+
+       //update RekamMedik
+       RekamMedik::where('id', $id)->where('id_dokter', $id_dokter)->where('kode_visit', $kode_visit)->update($updateRM);
+       //delete the data on temp
+       RMTemp::where('id', $id)->where('id_dokter', $id_dokter)->where('kode_visit', $kode_visit)->delete();
+       Session::flash('message', 'Rekam Medik '.$id.'-'.$id_dokter.'-'.$kode_visit.' berhasil dimutakhirkan!');
+       return view('dashboard.home');
+
      }
 
      public function error() {

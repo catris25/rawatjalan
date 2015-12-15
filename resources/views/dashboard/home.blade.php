@@ -16,50 +16,27 @@
        @role('dokter')
        <p style="text-align:center; font-size:14px;">Selamat bekerja, <strong> Dokter!</strong></p>
        <div class="container">
-       @if(Session::has('message'))
-       <div class="alert alert-info">
-         {{Session::get('message')}}
-
-       </div>
+       @if(Session::has('notify'))
+       @if(isset($temp))
+        <div class="alert alert-warning">
+          {{Session::get('notify')}}
+        </div>
+        @else
+        <div class="alert alert-info">
+          {{Session::get('notify')}}
+        </div>
+       @endif
        @endif
        @if(isset($temp))
+
          <div class="well well-lg">
-           <table class="table table-striped table-bordered">
-             <thead>
-                 </div>
-               <tr>
-                 <td>Pasien</td>
-                 <td>Kode visit</td>
-                 <td>Usia berobat</td>
-                 <td>Tanggal</td>
-                 <td>Tinggi badan</td>
-                 <td>Berat badan</td>
-                 <td>Tekanan darah</td>
-                 <td>Dokter</td>
-                 <td>Resep</td>
-                 <td>Anamnesis</td>
-                 <td>Diagnosis</td>
-                 <td>Tindakan</td>
-               </tr>
-             </thead>
+           <p>Harap segera melakukan validasi terhadap pengubahan data Rekam Medik berikut.</p>
            @foreach($temp as $t)
-           <tr>
-             <td>{{$t->id}}</td>
-             <td>{{$t->kode_visit}}</td>
-             <td>{{$t->usia_berobat}}</td>
-             <td>{{$t->tgl_visit}}</td>
-             <td>{{$t->tinggi_badan}}</td>
-             <td>{{$t->berat_badan}}</td>
-             <td>{{$t->tekanan_darah}}</td>
-             <td>{{$t->id_dokter}}</td>
-             <td>{{$t->resep}}</td>
-             <td>{{$t->anamnesis}}</td>
-             <td>{{$t->diagnosis}}</td>
-             <td>{{$t->tindakan}}</td>
-           </tr>
-           @endforeach
-         </tbody>
-       </table>
+           <div class="well well-md">
+             <p><a href="{{URL::to('dashboard/validasi/'.$t->id.'-'.$t->id_dokter.'-'.$t->kode_visit)}}">
+               Data Pasien {{$t->id.'-'.$t->id_dokter.'-'.$t->kode_visit}} </a></p>
+           </div>
+          @endforeach
         </div>
        @endif
 
