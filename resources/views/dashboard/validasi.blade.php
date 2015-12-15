@@ -32,8 +32,6 @@
         <input type="submit" class="btn btn-info" name="terima" value="Terima">
         <input type="submit" class="btn btn-warning" name="tolak" value="Tolak">
       </form>
-      <!-- <p><a href="{{URL::to('dashboard/validasi/'.$temp->id.'-'.$temp->id_dokter.'-'.$temp->kode_visit.'/terima')}}">Ya</button></p>
-      <p><a href="{{URL::to('dashboard')}}">Tidak</button></p> -->
    </div>
 </div>
 

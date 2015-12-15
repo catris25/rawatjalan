@@ -25,6 +25,18 @@
         <p>Harap tunggu validasi dari dokter {{$rekamMedik->id_dokter}} atas pengubahan sebelumnya.</p>
       </div>
       @endif
+      @if(isset($temp) and $temp->status_cek==1)
+      <div class="alert alert-warning"> <p>Maaf pengubahan record rekam medik {{$rekamMedik->id.'-'.$rekamMedik->id_dokter.'-'.$rekamMedik->kode_visit}}
+        tidak memperoleh validasi dari dokter {{$rekamMedik->id_dokter}}.</p>
+      </div>
+
+      <p>Apakah Anda menerima penolakan ini? Klik OK untuk mengembalikan data.</p>
+      <form class="form-horizontal" role="form" method="POST">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <input type="submit" class="btn btn-info" name="ok" value="OK">
+      </form>
+      @endif
+
     <div class="col-md-12">
       <form class="form-horizontal" role="form" method="POST">
           @if($rekamMedik->status_validasi==0)

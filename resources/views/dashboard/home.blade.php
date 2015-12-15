@@ -13,9 +13,25 @@
        <strong>{{Auth::user()->email}}</strong></p>
        @endif
 
+       <div class="container">
+
+       <!-- == SUPERUSER ROLE == -->
+       @role('super.user')
+       <p style="text-align:center; font-size:14px;">Selamat bekerja, <strong> Super User!</strong></p>
+       @endrole
+
+       <!-- == ADMIN ROLE == -->
+       @role('admin')
+       <p style="text-align:center; font-size:14px;">Selamat bekerja, <strong> Admin!</strong></p>
+       @endrole
+
+       <!-- == SUPERUSER ROLE == -->
        @role('dokter')
        <p style="text-align:center; font-size:14px;">Selamat bekerja, <strong> Dokter!</strong></p>
-       <div class="container">
+       @endrole
+
+
+       <!-- NOTIFY -->
        @if(Session::has('notify'))
        @if(isset($temp))
         <div class="alert alert-warning">
@@ -27,31 +43,40 @@
         </div>
        @endif
        @endif
-       @if(isset($temp))
 
-         <div class="well well-lg">
-           <p>Harap segera melakukan validasi terhadap pengubahan data Rekam Medik berikut.</p>
-           @foreach($temp as $t)
-           <div class="well well-md">
-             <p><a href="{{URL::to('dashboard/validasi/'.$t->id.'-'.$t->id_dokter.'-'.$t->kode_visit)}}">
-               Data Pasien {{$t->id.'-'.$t->id_dokter.'-'.$t->kode_visit}} </a></p>
-           </div>
-          @endforeach
-        </div>
-       @endif
+       <!-- == DOKTER ROLE == -->
+        @role('dokter')
+        @if(isset($temp))
+          <div class="well well-lg">
+            <p>Harap segera melakukan validasi terhadap pengubahan data Rekam Medik berikut.</p>
+            @foreach($temp as $t)
+            <div class="well well-md">
+              <p><a href="{{URL::to('dashboard/validasi/'.$t->id.'-'.$t->id_dokter.'-'.$t->kode_visit)}}">
+                Data Pasien {{$t->id.'-'.$t->id_dokter.'-'.$t->kode_visit}} </a></p>
+            </div>
+           @endforeach
+         </div>
+        @endif
 
-      </div>
-       @endrole
+        @endrole
 
 
-       @role('super.user')
-       <p style="text-align:center; font-size:14px;">Selamat bekerja, <strong> Super User!</strong></p>
-       @endrole
+        <!-- == ADMIN ROLE == -->
+        @role('admin')
+        @if(isset($temp))
+          <div class="well well-lg">
+            <p>Data berikut ditolak</p>
+            @foreach($temp as $t)
+            <div class="well well-md">
+              <p><a href="{{URL::to('rekam-medik/'.$t->id.'-'.$t->id_dokter.'-'.$t->kode_visit)}}">
+                Data Rekam Medik {{$t->id.'-'.$t->id_dokter.'-'.$t->kode_visit}} </a></p>
+            </div>
+           @endforeach
+         </div>
+        @endif
+        @endrole
 
-       @role('admin')
-       <p style="text-align:center; font-size:14px;">Selamat bekerja, <strong> Admin!</strong></p>
-       @endrole
-
+       <!-- == SUPERUSER OR ADMIN ROLE == -->
        @role('super.user|admin')
        <div class="container-fluid" style="width:80%;margin:auto; margin-top:3%;margin-bottom:3%;">
 
@@ -95,7 +120,7 @@
        </div>
 
        @endrole
-
+       </div>
    </div>
 </div>
 @endsection

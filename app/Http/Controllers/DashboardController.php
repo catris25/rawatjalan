@@ -3,6 +3,7 @@
   namespace App\Http\Controllers;
 
   use App\Http\Controllers\Controller;
+  use App\Admin;
   use App\Pasien;
   use App\BPJS;
   use App\Dokter;
@@ -20,17 +21,33 @@
   {
      public function home()
      {
-        if(Auth::user()->is('dokter')){
-            $email = Auth::user()->email;
-            $id_dokter = Dokter::where('email', $email)->value('id');
-            $temp = RMTemp::where('id_dokter', $id_dokter)->get();
 
-            if (count($temp)>0){
-                Session::flash('notify', 'Anda memiliki notifikasi baru! Telah dilakukan pengubahan terhadap data berikut.');
-                return view('dashboard.home')->with('temp', $temp);
-            }
-            Session::flash('notify', 'Anda tidak memiliki notifikasi baru!');
-            return view('dashboard.home');
+        if(Auth::user()->is('dokter')){
+          //$this->homeForDokter();
+          $email = Auth::user()->email;
+          $id_dokter = Dokter::where('email', $email)->value('id');
+          $temp = RMTemp::where('id_dokter', $id_dokter)->where('status_cek', 0)->get();
+
+          if (count($temp)>0){
+              Session::flash('notify', 'Anda memiliki notifikasi baru! Telah dilakukan pengubahan terhadap data berikut.');
+              return view('dashboard.home')->with('temp', $temp);
+
+          }
+          Session::flash('notify', 'Anda tidak memiliki notifikasi baru!');
+          return view('dashboard.home');
+
+        }else if(Auth::user()->is('admin')){
+          $email = Auth::user()->email;
+          $id_admin = Admin::where('email', $email)->value('id');
+          $temp = RMTemp::where('id_admin', $id_admin)->where('status_cek', 1)->get();
+
+          if (count($temp)>0){
+            Session::flash('notify', 'Anda memiliki notifikasi baru! Data Anda DITOLAAAKkk.');
+
+          }else{
+              Session::flash('notify', 'Anda tidak memiliki notifikasi baru!');
+          }
+
         }
 
         $id_pasien = Input::get('id_pasien');
@@ -98,8 +115,19 @@
 
         }else if(empty($id_bpjs) and empty($id_pasien)){
           //if form is still empty
-          return view('dashboard.home');
+          return view('dashboard.home')->with('temp', $temp);
         }
+     }
+
+     public function homeForDokter(){
+     }
+
+     public function homeForAdmin(){
+
+     }
+
+     public function homeForSuperUser(){
+
      }
 
      public function cetak() {
@@ -152,6 +180,10 @@
            return redirect('dashboard');
 
          }else{
+            $updateRMTemp = (['status_cek' => 1]);
+            // $updateRM = (['status_validasi' => 1]);
+            // RekamMedik::where('id', $id)->where('id_dokter', $id_dokter)->where('kode_visit', $kode_visit)->update($updateRM);
+            RMTemp::where('id', $id)->where('id_dokter', $id_dokter)->where('kode_visit', $kode_visit)->update($updateRMTemp);
             return redirect('dashboard');
          }
      }

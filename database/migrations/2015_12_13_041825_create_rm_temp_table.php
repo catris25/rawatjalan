@@ -21,6 +21,8 @@ class CreateRmTempTable extends Migration
           $table->text('anamnesis')->nullable();
           $table->text('diagnosis');
           $table->text('tindakan')->nullable();
+          $table->text('id_admin', 6);
+          $table->boolean('status_cek')->default(0);
           $table->primary(['id', 'kode_visit', 'id_dokter']);
           $table->timestamps();
       });
