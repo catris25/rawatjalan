@@ -33,6 +33,11 @@
            </form>
 
          </div>
+         <a href="{{URL::to('rekam-medik/cetak')}}"}>
+             Cetak
+          </a>
+         </form>
+
        <table class="table table-striped table-bordered">
          <thead>
              </div>

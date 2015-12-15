@@ -32,18 +32,19 @@
         </div>
 
 
-
          <div class="row">
            <div class="input-field col-md-6 col-md-offset-3">
          <select name="pilih_poli" id="pilih_poli">
            @foreach($poli as $po)
-            <option value="{{$po->nama_poli}}">{{$po->nama_poli}}</option>
+            <option value="{{$po->id}}">{{$po->nama_poli}}</option>
             @endforeach
          </select>
          <label for="pilih_poli">Poli</label>
           </div>
-          
         </div>
+
+
+
 
         <div class="form-group row">
           <div class="col-md-offset-5" style="margin-top:1%;">

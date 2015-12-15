@@ -108,16 +108,15 @@
         }
      }
 
-     public function homeForDokter(){
+
+     public function fetchDokter(){
+          if(Request::ajax()){
+              $input = Input::get('id_poli');
+              $dokter = Dokter::where('id_poli', $id_poli)->get();
+              return $dokter;
+          }
      }
 
-     public function homeForAdmin(){
-
-     }
-
-     public function homeForSuperUser(){
-
-     }
 
      public function cetak() {
       $id_pasien = Input::get('id_pasien');
