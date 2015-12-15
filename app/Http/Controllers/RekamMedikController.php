@@ -168,6 +168,11 @@ class RekamMedikController extends Controller
 
     }
 
+    public function cetak(){
+        $rekamMedik = RekamMedik::all();
+        return view('rekam-medik.cetak-rm')->with('rekamMedik', $rekamMedik);
+    }
+
     public function destroy($id)
     {
         //

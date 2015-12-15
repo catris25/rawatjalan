@@ -6,7 +6,7 @@
 |--------------------------------------------------------------------------
 */
 
-//Route::get('/','PagesController@home');
+//Dashboard routes
 Route::get('dashboard', ['as' => 'auth.dashboard.home', 'uses' =>'DashboardController@home']);
 Route::get('dashboard/tambah-ke-poli', ['as' => 'auth.dashboard.tambah-ke-poli', 'middleware' => 'role:admin|super.user', 'uses' => 'DashboardController@home']);
 Route::post('dashboard/cetakpoli', ['as' => 'cetak', 'middleware' => 'role:admin|super.user', 'uses' => 'DashboardController@cetak']);
@@ -53,6 +53,7 @@ Route::get('rekam-medik/tambah', ['as' => 'rekam-medik.tambah-rm','middleware' =
 Route::post('rekam-medik/tambah', ['as' => 'rekam-medik.tambah-rm','middleware' => 'role:admin|super.user','uses' => 'RekamMedikController@store']);
 Route::get('rekam-medik/{id?}-{id_dokter?}-{kode_visit?}', ['as' => 'rekam-medik.edit-rm','middleware' => 'role:admin|super.user','uses' => 'RekamMedikController@edit']);
 Route::post('rekam-medik/{id?}-{id_dokter?}-{kode_visit?}', ['as' => 'rekam-medik.edit-rm','middleware' => 'role:admin|super.user','uses' => 'RekamMedikController@update']);
+Route::get('rekam-medik/cetak', ['as' => 'rekam-medik.cetak-rm','middleware' => 'role:admin|super.user','uses' => 'RekamMedikController@cetak']);
 
 // Route::post('rekam-medik/{id?}/{kode_visit?}', ['as' => 'rekam-medik.edit-rm','middleware' => 'role:admin','uses' => 'RekamMedikController@updateOnConfirmation']);
 // Password reset link request routes...
