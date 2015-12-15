@@ -100,7 +100,7 @@
              <div class="splitt" style="margin-left:2%;">
                 <div class="splitpt input-field">
 
-                  <input id="id_pasien" type="text" class="validate" name="id_pasien" @if(isset($pasien)) value="{{$pasienid}}" @endif>
+                  <input id="id_pasien" type="text" class="validate" name="id_pasien" @if(isset($pasien)) value="{{$pasienid}}" @endif required>
                   <label for="id_pasien">Masukkan Id Pasien</label>
                 </div>
                 <div class="splitpt input-field" style="margin-left:6%;">
