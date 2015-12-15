@@ -22,12 +22,14 @@
               </div>
 
               <div class="boxfindmiddle">
-                <select name="kategori" id="kategori">
-                  <option value="id">ID Dokter</option>
-                  <option value="nama_dokter">Nama</option>
-                  <option value="nik">NIK</option>
-                  <option value="spesialisasi">Spesialisasi</option>
-                </select>
+                <div class="input-field">
+                  <select name="kategori" id="kategori">
+                    <option value="id">ID Dokter</option>
+                    <option value="nama_dokter">Nama</option>
+                    <option value="nik">NIK</option>
+                    <option value="spesialisasi">Spesialisasi</option>
+                  </select>
+                </div>
                </div>
                <div class="boxfindright">
                 <button type="submit" class="btn btn-primary">
