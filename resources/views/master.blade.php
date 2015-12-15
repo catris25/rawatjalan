@@ -135,13 +135,13 @@
 
     .boxerror {
         width:60%;
-        height:30%;
+        height:40%;
         margin:0 auto;
         position:absolute;
         left:50%;
         top:50%;
         margin-left:-30%;
-        margin-top:-15%;
+        margin-top:-20%;
         display: inline-block;
     }
 
@@ -150,7 +150,7 @@
         text-align: center;
         width:100%;
         font-family: 'Lato';
-        font-size: 6.3vw;
+        font-size: 6.5vw;
         border-bottom:3px solid;
     }
 
@@ -159,7 +159,18 @@
         text-align: center;
         width:100%;
         font-family: 'Lato';
-        font-size: 2vw;
+    }
+
+    .bedown h1 {
+        font-family: 'Lato';
+        font-size: 2.2vw;
+        text-align: center;
+    }
+
+    .bedown h2 {
+        font-family: 'Lato';
+        font-size: 1.4vw;
+        text-align: center;
     }
 
 
