@@ -35,6 +35,10 @@
         border-bottom:2px solid;
     }
 
+    .boxx h1 {
+        font-size: 4vw;
+    }
+
     .splitt {
         margin:auto;
         float:left;
@@ -65,6 +69,14 @@
     .boxcek h3 {
         font-size: 20px;
         font-family: 'Lato';
+    }
+
+    td a {
+        transition: all 0.5s ease;
+    }
+
+    td a:hover {
+        color:#000000;
     }
 
     h5 {
@@ -101,9 +113,9 @@
     }
 
     .boxcari {
-        width:80%;
+        width:86%;
+        margin:0 auto;
         display:inline-block;
-        margin:auto;
     }
 
     .boxfindleft {
