@@ -1,11 +1,9 @@
 <html>
 <head>
     <title> @yield('title') </title>
-    <!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">-->
-    <!-- Include roboto.css to use the Roboto web font, material.css to include the theme and ripples.css to style the ripple effect -->
+
     <link href="/rawatjalan/public/css/roboto.min.css" rel="stylesheet">
     <link href="/rawatjalan/public/css/bootstrap.css" rel="stylesheet">
-    <!--<link href="/rawatjalan/public/css/material.min.css" rel="stylesheet">-->
     <link href="/rawatjalan/public/css/ripples.min.css" rel="stylesheet">
     <link href="/rawatjalan/public/css/materialize.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
@@ -15,6 +13,7 @@
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
 
 
 <style>
@@ -260,8 +259,6 @@
 
 </style>
 
-</head>
-
 
 <body>
 
@@ -272,29 +269,19 @@
 <div class="footer center"><span class="glyphicon glyphicon-copyright-mark"></span> Copyright - Group 2 Anapersis 2015
 </div>
 
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<!--<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>-->
-
 <script src="/rawatjalan/public/js/ripples.min.js"></script>
-<!--<script src="/rawatjalan/public/js/material.min.js"></script>-->
 <script src="/rawatjalan/public/js/materialize.js"></script>
-<!-- <script>
-    $(document).ready(function() {
-        // This command is used to initialize some elements and make them work properly
-        $.material.init();
-    });
-</script> -->
 <script>
     $(document).ready(function() {
 
-    	$('select').material_select();
-    	$(".button-collapse").sideNav();
+        $('select').material_select();
+        $(".button-collapse").sideNav();
     });
 
 </script>
 
 
-	
+    
 
 
 <script>
@@ -305,6 +292,9 @@
       selectYears: 15 // Creates a dropdown of 15 years to control year
     });
 </script>
+</head>
+
+
 </body>
 
 </html>
