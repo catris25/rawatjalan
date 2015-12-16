@@ -30,20 +30,6 @@
        <p style="text-align:center; font-size:14px;">Selamat bekerja, <strong> Dokter!</strong></p>
        @endrole
 
-
-       <!-- NOTIFY -->
-       <!-- @if(Session::has('notify'))
-       @if(isset($temp))
-        <div class="alert alert-warning">
-          {{Session::get('notify')}}
-        </div>
-        @else
-        <div class="alert alert-info">
-          {{Session::get('notify')}}
-        </div>
-       @endif
-       @endif -->
-
        <!-- NOTIFICATION FOR ADMIN AND DOKTER ROLE -->
        @role('admin|dokter')
        @if(isset($temp))
@@ -69,7 +55,7 @@
             <tbody>
             @foreach($temp as $t)
               <tr>
-                <td><a href="{{URL::to('dashboard/validasi/'.$t->id.'-'.$t->id_dokter.'-'.$t->kode_visit)}}">
+                <td><a href=`"{{URL::to('dashboard/validasi/'.$t->id.'-'.$t->id_dokter.'-'.$t->kode_visit)}}"`>
                 Data Pasien {{$t->id.'-'.$t->id_dokter.'-'.$t->kode_visit}} </a></td>
               </tr>
            @endforeach
@@ -105,6 +91,9 @@
        <!-- == SUPERUSER OR ADMIN ROLE == -->
        @role('super.user|admin')
        <div class="container-fluid" style="width:100%;margin:auto; margin-top:3%;margin-bottom:3%;">
+         <a href="{{URL::to('dashboard/cetakrm')}}">
+           CETAK RM
+         </a>
 
          <h5 style="text-align:center;">Pendaftaran pasien ke poli (Cek BPJS)</h5>
 

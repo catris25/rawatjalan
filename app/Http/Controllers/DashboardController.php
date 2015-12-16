@@ -176,6 +176,12 @@
          }
      }
 
+     public function cetakRM(){
+         // $rekamMedik = RekamMedik::all();
+         // return view('rekam-medik.cetak-rm')->with('rekamMedik', $rekamMedik);
+         return view('rekam-medik.cetak-rm');
+     }
+
      public function error() {
         return view('errors.roleerror');
      }

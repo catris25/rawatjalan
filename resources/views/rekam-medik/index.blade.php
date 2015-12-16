@@ -15,32 +15,41 @@
 
          <div class="well well-lg">
            <h5>Cari Rekam Medik</h5>
+           <p>Input ID Record Rekam Medik</p>
            <form class="form-horizontal" role="form" method="GET">
+
              <div class="form-group">
+               <div class="input-field col s12">
+ 								<input id="id" type="text" class="validate" name="id" value="{{ old('id') }}">
+ 								<label for="id">ID Pasien</label>
+ 							</div>
+            </div>
 
-               <select name="kategori" id="kategori">
-                 <option value="id">ID Rekam Medik</option>
-                 <option value="id_pasien">ID Pasien</option>
-                 <option value="anamnesis">Anamnesis</option>
-                 <option value="diagnosis">Diagnosis</option>
-                 <option value="resep">Resep</option>
-               </select>
+            <div class="form-group">
+              <div class="input-field col s12">
+               <input id="id_dokter" type="text" class="validate" name="id_dokter" value="{{ old('id_dokter') }}">
+               <label for="id_dokter">ID Dokter</label>
+             </div>
+           </div>
 
-               <input id="keyword" type="text" placeholder="Masukkan kata kunci" name="keyword" value="{{ old('keyword') }}">
-               <button type="submit" class="btn btn-primary">
-                 Cari rekam medik
-               </button>
+           <div class="form-group">
+             <div class="input-field col s12">
+              <input id="kode_visit" type="text" class="validate" name="kode_visit" value="{{ old('kode_visit') }}">
+              <label for="kode_visit">Kode Visit</label>
+            </div>
+          </div>
+          
+          <div class="form-group">
+               <input type="submit" class="btn btn-primary" name="cari" value="cari">
+          </div>
+
            </form>
 
          </div>
-         <a href="{{URL::to('rekam-medik/cetak')}}"}>
-             Cetak
-          </a>
-         </form>
 
        <table class="table table-striped table-bordered">
          <thead>
-             </div>
+
            <tr>
              <td>Record</td>
              <td>Pasien</td>
@@ -77,6 +86,7 @@
      </tbody>
    </table>
    </div>
+ </div>
  </div>
 
  @endsection

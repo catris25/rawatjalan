@@ -43,12 +43,10 @@
 
 						<div class="row">
 							<div class="input-field col s12">
-								<input id="nik" type="text" class="validate" name="nik" value="{{ old('nik') }}">
+								<input id="nik" type="text" class="validate" name="nik" value="{{ old('nik') }}" maxlength="16">
 								<label for="nik">NIK</label>
 							</div>
 						</div>
-
-
 
 						<div class="row">
 							<div class="input-field col s12">
@@ -59,7 +57,7 @@
 
 						<div class="row">
 							<div class="input-field col s12">
-								<input id="telepon" type="text" class="validate" name="telepon" value="{{ old('telepon') }}">
+								<input id="telepon" type="tel" class="validate" name="telepon" value="{{ old('telepon') }}">
 								<label for="telepon">Nomor Telepon</label>
 							</div>
 						</div>
