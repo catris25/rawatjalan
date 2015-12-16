@@ -14,9 +14,9 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
 
-</head>
 <style>
     a:hover {
       text-decoration: none;
@@ -217,7 +217,51 @@
         font-size: 12px;
     }
 
+    .footer {
+        font-family:'Lato';
+        margin:auto;
+        width:25%;
+        height:5%;
+        border-bottom: 1px solid;
+        border-top: 1px solid;
+        color:#d4d4d4;
+        text-align:center;
+        font-size: 12px;
+        vertical-align: middle;
+        display: block;
+        transition: all 0.5s ease;
+    }
+
+    .footer:hover {
+        border-bottom:1px #212121 solid;
+        border-top:1px #212121 solid;
+        color:#212121;
+    }
+
+    .center {
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        
+        -webkit-box-align: center;
+        -moz-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        
+        -webkit-box-pack: center;
+        -moz-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+    }
+
 </style>
+
+</head>
+
 
 <body>
 
@@ -225,6 +269,8 @@
 
 @yield('content')
 
+<div class="footer center"><span class="glyphicon glyphicon-copyright-mark"></span> Copyright - Group 2 Anapersis 2015
+</div>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <!--<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>-->
@@ -240,21 +286,16 @@
 </script> -->
 <script>
     $(document).ready(function() {
+
     	$('select').material_select();
     	$(".button-collapse").sideNav();
     });
+
 </script>
+
+
 	
-<script>
-	$(document).ready(function() {
-    	$(".dropdown-button").dropdown({
-    		constrain-width: true;
-    		hover: true;
-    		belowOrigin: true;
-    	});
-    	
-    });
-</script>
+
 
 <script>
     $('.datepicker').pickadate({
