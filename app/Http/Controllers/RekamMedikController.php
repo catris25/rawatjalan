@@ -18,14 +18,19 @@ class RekamMedikController extends Controller
 
     public function index()
     {
-      $keyword = Input::get('keyword');
-      if(isset($keyword)){    //check if keyword has value
-        $kategori = Input::get('kategori');
-        $rekamMedik = RekamMedik::where($kategori, 'LIKE', '%'.$keyword.'%')->get();
-        return view('rekam-medik.index')->with('rekamMedik', $rekamMedik);
+
+      if(!empty(Input::get('cari'))){
+          $id = Input::get('id');
+          $id_dokter = Input::get('id_dokter');
+          $kode_visit = Input::get('kode_visit');
+
+          $rekamMedik = RekamMedik::where('id', 'LIKE', '%'.$id.'%')->where('id_dokter','LIKE', '%'.$id_dokter.'%')->where('kode_visit', 'LIKE', '%'.$kode_visit.'%')->get();
+          return view('rekam-medik.index')->with('rekamMedik', $rekamMedik);
       }
+
       //if keyword contains no value, return the following data
       $rekamMedik = RekamMedik::all();
+
       return view('rekam-medik.index')->with('rekamMedik', $rekamMedik);
     }
 
@@ -85,6 +90,11 @@ class RekamMedikController extends Controller
             $thisAdmin = true;
         }
         $rekamMedik = RekamMedik::where('id',$id)->where('kode_visit', $kode_visit)->get()->first();
+
+        //if parameter passed to rekamMedik is not right (not found)
+        if(!isset($rekamMedik) or !isset($id) or !isset($id_dokter) or !isset($kode_visit)){
+          return view("errors.404");
+        }
         if(isset($temp)){
             return view('rekam-medik.edit-rm')->with('rekamMedik', $rekamMedik)->with('temp', $temp)->with('id_admin', $id_admin)->with('thisAdmin', $thisAdmin);
         }
@@ -139,7 +149,7 @@ class RekamMedikController extends Controller
               'id_admin' => $id_admin
             ]);
 
-            Session::flash('message', 'Pengubahan record rekam medik akan diproses! Silahkan menunggu konfirmasi dari dokter yang bersangkutan!');
+            Session::flash('message', 'Permintaan pengubahan record rekam medik akan diproses! Silahkan menunggu konfirmasi dari dokter yang bersangkutan!');
             return redirect('rekam-medik');
 
         }else if(Auth::user()->is('super.user')){
@@ -168,10 +178,6 @@ class RekamMedikController extends Controller
 
     }
 
-    public function cetak(){
-        $rekamMedik = RekamMedik::all();
-        return view('rekam-medik.cetak-rm')->with('rekamMedik', $rekamMedik);
-    }
 
     public function destroy($id)
     {

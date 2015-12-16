@@ -56,30 +56,47 @@
 			<div class="boxxleft">
 				<div class="boxleftstripes" style="border-bottom:1px solid;">
 					<p id="demo"></p>
+					<p>Data Record Rekam Medik Tanggal {{$tgl_awal.' hingga '.$tgl_akhir }}</p>
+          <table class="table table-striped table-bordered">
+            <thead>
+                </div>
+              <tr>
+                <td>Record</td>
+                <td>Pasien</td>
+                <td>Dokter</td>
+                <td>Kode visit</td>
+                <td>Usia berobat</td>
+                <td>Tanggal</td>
+                <td>Tinggi badan</td>
+                <td>Berat badan</td>
+                <td>Tekanan darah</td>
+                <td>Resep</td>
+                <td>Anamnesis</td>
+                <td>Diagnosis</td>
+                <td>Tindakan</td>
+              </tr>
+            </thead>
+          @foreach($rekamMedik as $rm)
+          <tr>
+            <td>{{$rm->id.'-'.$rm->id_dokter.'-'.$rm->kode_visit}}</td>
+            <td>{{$rm->id}}</td>
+            <td>{{$rm->id_dokter}}</td>
+            <td>{{$rm->kode_visit}}</td>
+            <td>{{$rm->usia_berobat}}</td>
+            <td>{{$rm->tgl_visit}}</td>
+            <td>{{$rm->tinggi_badan}}</td>
+            <td>{{$rm->berat_badan}}</td>
+            <td>{{$rm->tekanan_darah}}</td>
+            <td>{{$rm->resep}}</td>
+            <td>{{$rm->anamnesis}}</td>
+            <td>{{$rm->diagnosis}}</td>
+            <td>{{$rm->tindakan}}</td>
+          </tr>
+          @endforeach
+        </tbody>
+      </table>
 				</div>
-				<div class="boxleftstripes" style="border-bottom:1px solid;">
-					<p><span class="spans"> Nama Pasien </span> : {{ $pasienname }}</p>
-					<p><span class="spans"> Nomor Rekam Medik </span> : {{ $pasienid }}</p>
-				</div>
-				<div class="boxleftstripes" style="border-bottom:1px solid;">
-					<p><span class="spans"> Status Pasien </span> : {{ $status }}</p>
-				</div>
-				<div class="boxleftstripes" style="border-bottom:1px solid;">
-
-				</div>
-				<div class="boxleftstripes" style="border-bottom:1px solid;">
-					<p><span class="spans"> Nama Poli </span> : {{ $poli }}</p>
-				</div>
-				<div class="boxleftstripes" style="height:20%;">
-					<p>
-						Antrian di Poli :
-					</p>
-				</div>
-			</div>
-			<div class="boxxright">
-				<p>Catatan : </p>
-			</div>
-		</div>
+      </div>
 		<script>
 			var d = new Date();
 			document.getElementById("demo").innerHTML = d.toString();

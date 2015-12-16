@@ -26,19 +26,19 @@
            <div class="row">
              <div class="input-field col s12">
                <input id="nama_admin" type="text" class="validate" name="nama_pasien" value="{{ $pasien->nama_pasien }}">
-               <label for="nama_admin">Nama</label>
+               <label for="nama_admin">Nama*</label>
              </div>
            </div>
 
 
            <div class="row">
              <div class="input-field col s12">
-               <input id="nik" type="text" class="validate" name="nik" value="{{ $pasien->nik }}">
-               <label for="nik">NIK</label>
+               <input id="nik" type="text" class="validate" name="nik" value="{{ $pasien->nik }}" pattern="\d*" minlength="16" maxlength="16">
+               <label for="nik">NIK*</label>
              </div>
            </div>
 
-           
+
 
            <div class="row">
              <div class="input-field col s12">
@@ -46,21 +46,21 @@
                <option value="L" @if ($pasien->jenis_kelamin == 'L') selected @endif>Laki-laki</option>
                <option value="P"  @if ($pasien->jenis_kelamin == 'P') selected @endif>Perempuan</option>
              </select>
-             <label class="jenis_kelamin">Jenis kelamin</label>
+             <label class="jenis_kelamin">Jenis kelamin*</label>
              </div>
            </div>
 
            <div class="row">
              <div class="input-field col s12">
                <input id="tgl_lahir" type="date" class="datepicker" name="tgl_lahir" value="{{ $pasien->tgl_lahir }}">
-               <label for="tgl_lahir">Tanggal lahir</label>
+               <label for="tgl_lahir">Tanggal lahir*</label>
              </div>
            </div>
 
            <div class="row">
              <div class="input-field col s12">
                <input id="alamat" type="text" class="validate" name="alamat" value="{{ $pasien->alamat }}">
-               <label for="alamat">Alamat</label>
+               <label for="alamat">Alamat*</label>
              </div>
            </div>
 
@@ -80,7 +80,7 @@
                <option value="AB" @if ($pasien->gol_darah == 'AB') selected @endif>AB</option>
                <option value="O" @if ($pasien->gol_darah == 'O') selected @endif>O</option>
              </select>
-             <label for="gol_darah">Golongan darah</label>
+             <label for="gol_darah">Golongan darah*</label>
              </div>
            </div>
 

@@ -43,7 +43,7 @@ class UsersController extends Controller{
 
         $this->validate($request,[
           'nama_admin' => 'required',
-          'nik' => 'required',
+          'nik' => 'required|max:16|min:16',
           'jenis_kelamin' =>'required',
           'tanggal_lahir' => 'required',
           'alamat' => 'required',
@@ -94,7 +94,7 @@ class UsersController extends Controller{
       $format_tgl_info_old = Input::get('tanggal_lahir');
       $this->validate($request, [
         'nama_admin' => 'required',
-        'nik' => 'required',
+        'nik' => 'required|max:16|min:16',
         'jenis_kelamin' =>'required',
         'tanggal_lahir' => 'required',
         'alamat' => 'required',
@@ -135,7 +135,7 @@ class UsersController extends Controller{
     public function postDokterRegister(NewUserRequest $request, User $users, Dokter $dokter) {
         $this->validate($request,[
           'nama_dokter' => 'required',
-          'nik' => 'required',
+          'nik' => 'required|max:16|min:16',
           'jenis_kelamin' =>'required',
           'tanggal_lahir' => 'required',
           'alamat' => 'required',
@@ -190,7 +190,7 @@ class UsersController extends Controller{
       $format_tgl_info_old = Input::get('tanggal_lahir');
       $this->validate($request, [
         'nama_dokter' => 'required',
-        'nik' => 'required',
+        'nik' => 'required|max:16|min:16',
         'jenis_kelamin' =>'required',
         'tanggal_lahir' => 'required',
         'alamat' => 'required',

@@ -180,6 +180,40 @@
          }
      }
 
+
+     public function cetakRM(){
+         $tgl_awal = Input::get('tgl_awal');
+         $tgl_akhir = Input::get('tgl_akhir');
+
+        if(isset($tgl_awal) and isset($tgl_akhir)){
+            $tgl_awal = date("Y-m-d", strtotime($tgl_awal));
+            $tgl_akhir = date("Y-m-d", strtotime($tgl_akhir));
+
+            $rekamMedik = RekamMedik::whereBetween('tgl_visit', array($tgl_awal, $tgl_akhir))->get();
+
+            return view('dashboard.cetak')->with('rekamMedik', $rekamMedik)->with('tgl_awal', $tgl_awal)->with('tgl_akhir', $tgl_akhir);
+            // return $rekamMedik;
+        }
+        if(Input::get('cetak')){
+            return "cetak";
+        }
+        return view('dashboard.cetak');
+      }
+
+      public function hlmcetakRM(){
+          $tgl_awal = Input::get('tgl_awal');
+          $tgl_akhir = Input::get('tgl_akhir');
+
+          $tgl_awal = date("Y-m-d", strtotime($tgl_awal));
+          $tgl_akhir = date("Y-m-d", strtotime($tgl_akhir));
+
+          $rekamMedik = RekamMedik::whereBetween('tgl_visit', array($tgl_awal, $tgl_akhir))->get();
+
+          return view('dashboard.cetak-layout')->with('rekamMedik', $rekamMedik)->with('tgl_awal', $tgl_awal)->with('tgl_akhir', $tgl_akhir);
+      }
+
+
+
      public function dropdown($id) {
       $dokter = Dokter::where('id_poli', $id)->get();
 

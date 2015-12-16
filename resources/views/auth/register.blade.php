@@ -26,7 +26,7 @@
 						<div class="row">
 							<div class="input-field col s12">
 								<input id="nama_admin" type="text" class="validate" name="nama_admin" value="{{ old('nama_admin') }}">
-								<label for="nama_admin">Nama</label>
+								<label for="nama_admin">Nama*</label>
 							</div>
 						</div>
 
@@ -37,56 +37,56 @@
                  				 <option value="L">Laki-laki</option>
                   				<option value="P">Perempuan</option>
                				 </select>
-								<label for="jenis_kelamin">Jenis kelamin</label>
+								<label for="jenis_kelamin">Jenis kelamin*</label>
 							</div>
 						</div>
 
 						<div class="row">
 							<div class="input-field col s12">
-								<input id="nik" type="text" class="validate" name="nik" value="{{ old('nik') }}">
-								<label for="nik">NIK</label>
+								<input id="nik" type="text" class="validate" name="nik" value="{{ old('nik') }}" pattern="\d*" minlength="16" maxlength="16">
+								<label for="nik">NIK*</label>
 							</div>
 						</div>
 
 						<div class="row">
 							<div class="input-field col s12">
 								<input id="alamat" type="text" class="validate" name="alamat" value="{{ old('alamat') }}">
-								<label for="alamat">Alamat</label>
+								<label for="alamat">Alamat*</label>
 							</div>
 						</div>
 
 						<div class="row">
 							<div class="input-field col s12">
-								<input id="telepon" type="tel" class="validate" name="telepon" value="{{ old('telepon') }}">
-								<label for="telepon">Nomor Telepon</label>
+								<input id="telepon" type="tel" class="validate" name="telepon" value="{{ old('telepon') }}" pattern="\d*">
+								<label for="telepon">Nomor Telepon*</label>
 							</div>
 						</div>
 
 						<div class="row">
 							<div class="input-field col s12">
 								<input id="tanggal_lahir" type="date" class="datepicker" name="tanggal_lahir" value="{{ old('tanggal_lahir') }}">
-								<label for="tanggal_lahir">Tanggal Lahir</label>
+								<label for="tanggal_lahir">Tanggal Lahir*</label>
 							</div>
 						</div>
 
 						<div class="row">
 							<div class="input-field col s12">
 								<input id="email" type="email" class="validate" name="email" value="{{ old('email') }}">
-								<label for="email">E-Mail</label>
+								<label for="email">E-Mail*</label>
 							</div>
 						</div>
 
 						<div class="row">
 							<div class="input-field col s12">
 								<input id="password" type="password" class="validate" name="password">
-								<label for="password">Password</label>
+								<label for="password">Password*</label>
 							</div>
 						</div>
 
 						<div class="row">
 							<div class="input-field col s12">
 								<input id="password_confirmation" type="password" class="validate" name="password_confirmation">
-								<label for="password_confirmation">Confirm Password</label>
+								<label for="password_confirmation">Confirm Password*</label>
 							</div>
 						</div>
 
