@@ -63,28 +63,35 @@
            <div class="row">
              <div class="input-field col s12">
                <input id="id" type="text" class="validate" name="id" value="{{ $rekamMedik->id }}" readonly>
-               <label for="id">Pasien</label>
+               <label for="id">Pasien*</label>
+             </div>
+           </div>
+
+           <div class="row">
+             <div class="input-field col s12">
+               <input id="id_dokter" type="text" class="validate" name="id_dokter" value="{{ $rekamMedik->id_dokter }}" readonly>
+               <label for="id_dokter">Dokter</label>
              </div>
            </div>
 
            <div class="row">
              <div class="input-field col s12">
                <input id="kode_visit" type="text" class="validate" name="kode_visit" value="{{ $rekamMedik->kode_visit }}" readonly>
-               <label for="kode_visit">Kode Visit</label>
+               <label for="kode_visit">Kode Visit*</label>
              </div>
            </div>
 
            <div class="row">
              <div class="input-field col s12">
-               <input id="usia_berobat" type="text" class="validate" name="usia_berobat" value="{{ $rekamMedik->usia_berobat }}">
-               <label for="usia_berobat">Usia berobat</label>
+               <input id="usia_berobat" type="text" class="validate" name="usia_berobat" value="{{ $rekamMedik->usia_berobat }}" readonly>
+               <label for="usia_berobat">Usia berobat*</label>
              </div>
            </div>
 
            <div class="row">
              <div class="input-field col s12">
                <input id="tgl_visit" type="date" class="datepicker" name="tgl_visit" value="{{ $rekamMedik->tgl_visit }}">
-               <label for="tgl_visit">Tanggal visit</label>
+               <label for="tgl_visit">Tanggal visit*</label>
              </div>
            </div>
 
@@ -111,13 +118,6 @@
 
            <div class="row">
              <div class="input-field col s12">
-               <input id="id_dokter" type="text" class="validate" name="id_dokter" value="{{ $rekamMedik->id_dokter }}" readonly>
-               <label for="id_dokter">Dokter</label>
-             </div>
-           </div>
-
-           <div class="row">
-             <div class="input-field col s12">
                <input id="resep" type="text" class="validate" name="resep" value="{{ $rekamMedik->resep }}">
                <label for="resep">Resep</label>
              </div>
@@ -133,14 +133,14 @@
            <div class="row">
              <div class="input-field col s12">
                <input id="diagnosis" type="text" class="validate" name="diagnosis" value="{{ $rekamMedik->diagnosis }}">
-               <label for="diagnosis">Diagnosis</label>
+               <label for="diagnosis">Diagnosis*</label>
              </div>
            </div>
 
            <div class="row">
              <div class="input-field col s12">
                <input id="tindakan" type="text" class="validate" name="tindakan" value="{{ $rekamMedik->tindakan }}">
-               <label for="tindakan">Tindakan</label>
+               <label for="tindakan">Tindakan*</label>
              </div>
            </div>
 
