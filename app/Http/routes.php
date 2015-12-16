@@ -10,10 +10,17 @@
 Route::get('dashboard', ['as' => 'auth.dashboard.home', 'uses' =>'DashboardController@home']);
 Route::get('dashboard/tambah-ke-poli', ['as' => 'auth.dashboard.tambah-ke-poli', 'middleware' => 'role:admin|super.user', 'uses' => 'DashboardController@home']);
 Route::post('dashboard/cetakpoli', ['as' => 'cetak', 'middleware' => 'role:admin|super.user', 'uses' => 'DashboardController@cetak']);
+<<<<<<< HEAD
 Route::get('dashboard/validasi/{id?}-{id_dokter?}-{kode_visit?}', ['as' => 'auth.dashboard.validasi', 'middleware' => 'role:dokter', 'uses' => 'DashboardController@showTemp']);
 Route::post('dashboard/validasi/{id?}-{id_dokter?}-{kode_visit?}', ['as' => 'auth.dashboard.validasi', 'middleware' => 'role:dokter', 'uses' => 'DashboardController@validateTemp']);
 Route::get('dashboard/cetakrm}', ['as' => 'rekam-medik.cetak', 'middleware' => 'role:admin|super.user', 'uses' => 'DashboardController@cetakRM']);
 Route::get('403',  ['as' => 'auth.dashboard.roleerror', 'uses' => 'DashboardController@error']);
+=======
+Route::get('dashboard/validasi/{id}-{id_dokter}-{kode_visit}', ['as' => 'auth.dashboard.validasi', 'middleware' => 'role:dokter', 'uses' => 'DashboardController@showTemp']);
+Route::post('dashboard/validasi/{id}-{id_dokter}-{kode_visit}', ['as' => 'auth.dashboard.validasi', 'middleware' => 'role:dokter', 'uses' => 'DashboardController@validateTemp']);
+Route::get('403',  ['as' => 'auth.dashboard.roleerror', 'uses' => 'DashboardController@nyoba']);
+Route::get('dashboard/dropdown/{id}', 'DashboardController@dropdown');
+>>>>>>> origin/master
 
 // Authentication routes...
 Route::get('/', 'Auth\AuthController@getLogin');

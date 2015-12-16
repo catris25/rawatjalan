@@ -3,6 +3,7 @@
   namespace App\Http\Controllers;
 
   use App\Http\Controllers\Controller;
+  use Response;
   use App\Admin;
   use App\Pasien;
   use App\BPJS;
@@ -36,7 +37,7 @@
             $tambah = false;
           }
           if($tambah) {
-            $poli = Poli::all(['nama_poli']);
+            $poli = Poli::all(['id']);
             return view('dashboard.tambah-ke-poli')->with('pasienid', $pasienid)->with('poli', $poli);
           } else {
             return view('dashboard.home')->with('pasien', $pasien)->with('info',$info)->with('tambah', $tambah)->with('pasienid', $pasienid);
@@ -76,7 +77,7 @@
           }
 
           if($tambah){
-            $poli = Poli::all(['nama_poli']);
+            $poli = Poli::all();
             return view('dashboard.tambah-ke-poli')->with('pasienid', $pasienid)->with('bpjsid', $bpjsid)->with('poli', $poli);
 
           }else{
@@ -176,10 +177,26 @@
          }
      }
 
+<<<<<<< HEAD
      public function cetakRM(){
          // $rekamMedik = RekamMedik::all();
          // return view('rekam-medik.cetak-rm')->with('rekamMedik', $rekamMedik);
          return view('rekam-medik.cetak-rm');
+=======
+     public function dropdown($id) {
+      $dokter = Dokter::where('id_poli', $id)->get();
+      $options = array();
+
+        foreach ($dokter as $dokt) {
+            $options += array($dokt->id => $dokt->nama_dokter);
+        }
+
+      return Response::json($options);
+     }
+
+     public function nyoba() {
+      return view('trydrop');
+>>>>>>> origin/master
      }
 
      public function error() {
