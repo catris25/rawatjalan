@@ -21,14 +21,14 @@
               <div class="row">
   							<div class="input-field col s12">
   								<input id="nama_pasien" type="text" class="validate" name="nama_pasien" value="{{ old('nama_pasien') }}">
-                  <label for="nama_pasien">Nama</label>
+                  <label for="nama_pasien">Nama*</label>
   							</div>
   						</div>
 
               <div class="row">
                 <div class="input-field col s12">
-                  <input id="nik" type="text" class="validate" name="nik" value="{{ old('nik') }}">
-                  <label for="nik">NIK</label>
+                  <input id="nik" type="text" class="validate" name="nik" value="{{ old('nik') }}" pattern="\d*" minlength="16" maxlength="16">
+                  <label for="nik">NIK*</label>
                 </div>
               </div>
 
@@ -40,27 +40,27 @@
                   <option value="L">Laki-laki</option>
                   <option value="P">Perempuan</option>
                 </select>
-                <label for="jenis_kelamin">Jenis Kelamin</label>
+                <label for="jenis_kelamin">Jenis Kelamin*</label>
                 </div>
   						</div>
 
               <div class="row">
   							<div class="input-field col s12">
   								<input id="tgl_lahir" type="date" class="datepicker" name="tgl_lahir" value="{{ old('tgl_lahir') }}">
-                  <label for="tgl_lahir">Tanggal lahir</label>
+                  <label for="tgl_lahir">Tanggal lahir*</label>
   							</div>
   						</div>
 
               <div class="row">
   							<div class="input-field col s12">
   								<input id="alamat" type="text" class="validate" name="alamat" value="{{ old('alamat') }}">
-                  <label for="alamat">Alamat</label>
+                  <label for="alamat">Alamat*</label>
   							</div>
   						</div>
 
               <div class="row">
   							<div class="input-field col s12">
-  								<input id="telepon" type="tel" class="validate" name="telepon" value="{{ old('telepon') }}">
+  								<input id="telepon" type="tel" class="validate" name="telepon" value="{{ old('telepon') }}" pattern="\d*">
                   <label for="telepon">Nomor telepon</label>
   							</div>
   						</div>
@@ -75,7 +75,7 @@
                     <option value="AB">AB</option>
                     <option value="O">O</option>
                   </select>
-                  <label for="gol_darah">Golongan darah</label>
+                  <label for="gol_darah">Golongan darah*</label>
                 </div>
   						</div>
 
