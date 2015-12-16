@@ -36,14 +36,25 @@
            <div class="input-field col-md-6 col-md-offset-3">
          <select name="pilih_poli" id="pilih_poli">
            @foreach($poli as $po)
-            <option value="{{$po->id}}">{{$po->nama_poli}}</option>
+            <option value="{{$po->id}}">{{$po->id}}</option>
             @endforeach
          </select>
          <label for="pilih_poli">Poli</label>
           </div>
         </div>
 
+        <div class="row">
+           <div class="input-field col-md-6 col-md-offset-3">
+         <select name="pilih_dokter" id="pilih_dokter">
+           
+            <option value=""></option>
+            
+         </select>
+         <label for="pilih_dokter">Dokter</label>
+          </div>
+        </div>  
 
+          <p id="hei">hEII</p>
 
 
         <div class="form-group row">
@@ -59,4 +70,50 @@
 
   </div>
 </div>
+
+<script>
+
+$(document).ready(function() {
+
+    $('#pilih_poli').on('change',function(e){
+        console.log(e);
+
+        window.alert('text');
+        var select = $('#pilih_dokter');
+        $("#pilih_dokter").append('<option>KHU</option>');
+        // var x = '<option>aaa</option>';
+        // $('select#pilih_dokter').append($x);
+        //$('#pilih_dokter').empty();
+       //$("pilih_dokter").append($("<option></option>").val(3).html("Three"));
+       //window.alert($(#pilih_dokter).val('zzz'));
+        //window.alert($("#pilih_dokter").val());
+        
+        // $.getJSON("/rawatjalan/public/dashboard/dropdown/" + $("#pilih_poli").val(),function(data){
+        //     //window.alert($("#pilih_poli").val());
+        //     //var dokter = $("#pilih_dokter");
+        //     //dokter.empty();
+
+        //     // var o = new Option(text,value);
+        //     // $('#pilih_dokter').append($(o));
+
+        //     //
+        //     var x = '';
+
+        //     $.each(data, function(index,element){
+        //         //window.alert(element);
+        //         $('#pilih_dokter').append($('<option>').text(element).attr('value', index));
+        
+        //         //x += '<option>aaa</option>';
+        //         //$dokter.append('<option value="aa">aaa</option>');
+        //         //$dokter.append('<option value="' + index +'">' + element + '</option>');
+        //     });
+        //     //$("#pilih_dokter").append(x);
+        //     //$("#pilih_dokter").trigger("change");
+        // });
+    });
+
+    });
+</script>
+
+
 @endsection
