@@ -56,6 +56,7 @@
 			<div class="boxxleft">
 				<div class="boxleftstripes" style="border-bottom:1px solid;">
 					<p id="demo"></p>
+					<p>Data Record Rekam Medik Tanggal {{$tgl_awal.' hingga '.$tgl_akhir }}</p>
           <table class="table table-striped table-bordered">
             <thead>
                 </div>
