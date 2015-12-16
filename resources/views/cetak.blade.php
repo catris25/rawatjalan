@@ -65,10 +65,10 @@
 					<p><span class="spans"> Status Pasien </span> : {{ $status }}</p>
 				</div>
 				<div class="boxleftstripes" style="border-bottom:1px solid;">
-
+				<p><span class="spans"> Nama Poli </span> : {{ $poli }}</p>
 				</div>
 				<div class="boxleftstripes" style="border-bottom:1px solid;">
-					<p><span class="spans"> Nama Poli </span> : {{ $poli }}</p>
+					<p><span class="spans"> Nama Dokter </span> : {{ $dokter }}</p>
 				</div>
 				<div class="boxleftstripes" style="height:20%;">
 					<p>

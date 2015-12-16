@@ -37,7 +37,7 @@
             $tambah = false;
           }
           if($tambah) {
-            $poli = Poli::all(['id']);
+            $poli = Poli::all();
             return view('dashboard.tambah-ke-poli')->with('pasienid', $pasienid)->with('poli', $poli);
           } else {
             return view('dashboard.home')->with('pasien', $pasien)->with('info',$info)->with('tambah', $tambah)->with('pasienid', $pasienid);
@@ -124,14 +124,17 @@
       $pasienid = DB::table('pasien')->where('id', $id_pasien)->value('id');
       $pasienname = DB::table('pasien')->where('id', $id_pasien)->value('nama_pasien');
       $statusbpjs = Input::get('optbpjs');
-      $poli = Input::get('pilih_poli');
+      $poliget = Input::get('pilih_poli');
+      $dokterget = Input::get('pilih_dokter');
+      $dokter = DB::table('dokter')->where('id', $dokterget)->value('nama_dokter');
+      $poli = DB::table('poli')->where('id', $poliget)->value('nama_poli');
 
       if($statusbpjs===1) {
         $status = 'Pasien BPJS';
       } else {
         $status = 'Pasien Umum';
       }
-      return view('cetak')->with('pasienid', $pasienid)->with('poli', $poli)->with('status',$status)->with('pasienname', $pasienname);
+      return view('cetak')->with('pasienid', $pasienid)->with('dokter',$dokter)->with('poli', $poli)->with('status',$status)->with('pasienname', $pasienname);
      }
 
 
@@ -179,13 +182,8 @@
 
      public function dropdown($id) {
       $dokter = Dokter::where('id_poli', $id)->get();
-      $options = array();
 
-        foreach ($dokter as $dokt) {
-            $options += array($dokt->id => $dokt->nama_dokter);
-        }
-
-      return Response::json($options);
+      return Response::json($dokter);
      }
 
      public function nyoba() {

@@ -91,6 +91,7 @@ class UsersController extends Controller{
 
     public function updateAdmin(Request $request, $id){
       $admin = Admin::findOrFail($id);
+      $format_tgl_info_old = Input::get('tanggal_lahir');
       $this->validate($request, [
         'nama_admin' => 'required',
         'nik' => 'required',
@@ -103,6 +104,9 @@ class UsersController extends Controller{
 
       $input = $request->all();
       $admin->fill($input)->save();
+      Admin::where('id', $id)->update(array(
+            'tanggal_lahir' => date("Y-m-d", strtotime($format_tgl_info_old))
+      ));
 
       Session::flash('edit_message', 'Admin '.$id.' berhasil dimutakhirkan!');
       return redirect(action('UsersController@editAdmin', $admin->id));
@@ -183,6 +187,7 @@ class UsersController extends Controller{
 
     public function updateDokter(Request $request, $id){
       $dokter = Dokter::findOrFail($id);
+      $format_tgl_info_old = Input::get('tanggal_lahir');
       $this->validate($request, [
         'nama_dokter' => 'required',
         'nik' => 'required',
@@ -197,6 +202,9 @@ class UsersController extends Controller{
 
       $input = $request->all();
       $dokter->fill($input)->save();
+      Dokter::where('id', $id)->update(array(
+            'tanggal_lahir' => date("Y-m-d", strtotime($format_tgl_info_old))
+      ));
 
       Session::flash('edit_message', 'Dokter '.$id.' berhasil dimutakhirkan!');
       return redirect(action('UsersController@editDokter', $dokter->id));
