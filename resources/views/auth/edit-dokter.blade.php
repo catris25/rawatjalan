@@ -56,7 +56,7 @@
 
            <div class="row">
              <div class="input-field col s12">
-               <input id="alamat" type="text" class="validate" name="alamat" value="{{ $dokter->alamat }}">
+               <textarea id="alamat" class="validate materialize-textarea" name="alamat" value="{{ old('alamat') }}"></textarea>
                <label for="alamat">Alamat*</label>
              </div>
            </div>

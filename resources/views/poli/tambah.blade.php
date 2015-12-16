@@ -31,7 +31,7 @@
 
               <div class="row">
                 <div class="input-field col s12">
-                  <input id="deskripsi" type="text" class="validate" name="deskripsi" value="{{ old('deskripsi') }}">
+                  <textarea id="deskripsi" class="validate materialize-textarea" name="deskripsi" value="{{ old('deskripsi') }}"></textarea>
                   <label for="deskripsi">Deskripsi poli</label>
                 </div>
               </div>

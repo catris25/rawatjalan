@@ -59,7 +59,7 @@
 
            <div class="row">
              <div class="input-field col s12">
-               <input id="alamat" type="text" class="validate" name="alamat" value="{{ $pasien->alamat }}">
+               <textarea id="alamat" class="validate materialize-textarea" name="alamat" value="{{ $pasien->alamat) }}">{{ $pasien->alamat) }}</textarea>
                <label for="alamat">Alamat*</label>
              </div>
            </div>
@@ -86,14 +86,14 @@
 
            <div class="row">
              <div class="input-field col s12">
-               <input id="alergi" type="text" class="validate" name="alergi" value="{{ $pasien->alergi }}">
+               <textarea id="alergi" class="validate materialize-textarea" name="alergi" value="{{ $pasien->alergi }}">{{ $pasien->alergi }}</textarea>
                <label for="alergi">Alergi</label>
              </div>
            </div>
 
            <div class="row">
              <div class="input-field col s12">
-               <input id="riwayat_penyakit" type="text" class="validate" name="riwayat_penyakit" value="{{ $pasien->riwayat_penyakit }}">
+               <textarea id="riwayat_penyakit" class="validate materialize-textarea" name="riwayat_penyakit" value="{{ $pasien->riwayat_penyakit }}">{{ $pasien->riwayat_penyakit }}</textarea>
                <label for="riwayat_penyakit">Riwayat penyakit</label>
              </div>
            </div>

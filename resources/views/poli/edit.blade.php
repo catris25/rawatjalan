@@ -33,7 +33,7 @@
 
            <div class="row">
              <div class="input-field col s12">
-               <input id="deskripsi" type="text" class="form-control" name="deskripsi" value="{{ $poli->deskripsi }}">
+               <textarea id="deskripsi" class="validate materialize-textarea" name="deskripsi" value="{{ $poli->deskripsi }}">{{ $poli->deskripsi }}</textarea>
                <label for="deskripsi">Deskripsi*</label>
              </div>
            </div>
