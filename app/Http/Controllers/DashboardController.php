@@ -177,12 +177,13 @@
          }
      }
 
-<<<<<<< HEAD
+
      public function cetakRM(){
          // $rekamMedik = RekamMedik::all();
          // return view('rekam-medik.cetak-rm')->with('rekamMedik', $rekamMedik);
          return view('rekam-medik.cetak-rm');
-=======
+      }
+
      public function dropdown($id) {
       $dokter = Dokter::where('id_poli', $id)->get();
       $options = array();
@@ -196,7 +197,6 @@
 
      public function nyoba() {
       return view('trydrop');
->>>>>>> origin/master
      }
 
      public function error() {
