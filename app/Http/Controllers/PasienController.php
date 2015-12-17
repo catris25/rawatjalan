@@ -75,7 +75,7 @@ class PasienController extends Controller
     public function update(Request $request, $id)
     {
         $pasien = Pasien::findOrFail($id);
-        $format_tgl_info_old = Input::get('tanggal_lahir');
+        $format_tgl_info_old = Input::get('tgl_lahir');
         $this->validate($request, [
           'nama_pasien' => 'required',
           'nik' => 'required',

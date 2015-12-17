@@ -91,9 +91,7 @@
        <!-- == SUPERUSER OR ADMIN ROLE == -->
        @role('super.user|admin')
        <div class="container-fluid" style="width:100%;margin:auto; margin-top:3%;margin-bottom:3%;">
-         <a href="{{URL::to('dashboard/cetakrm')}}">
-           CETAK RM
-         </a>
+
 
          <h5 style="text-align:center;">Pendaftaran pasien ke poli (Cek BPJS)</h5>
 

@@ -25,7 +25,7 @@
 
               <div class="boxfindmiddle">
                 <div class="input-field">
-                  <select name="kategori" id="kategori">
+                  <select name="kategori" id="kategori" class="browser-default">
                     <option value="id">ID Dokter</option>
                     <option value="nama_dokter">Nama</option>
                     <option value="nik">NIK</option>

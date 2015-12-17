@@ -131,7 +131,7 @@
     }
 
     .boxfindmiddle {
-        width:15%;
+        width:14%;
         display:inline-block;
     }
 
@@ -255,6 +255,36 @@
         -ms-flex-pack: center;
         -webkit-justify-content: center;
         justify-content: center;
+    }
+
+    .boxesrm {
+        width:100%;
+        margin:0 auto;
+        display:inline-block;
+        padding-left:5%;
+    }
+
+    .boxrm {
+        width:23%;
+        display: inline-block;
+    }
+
+    .boxcetak {
+        width:100%;
+        margin:0 auto;
+        display:inline-block;
+        padding-left: 5%;
+    }
+
+    .boxcetakdate {
+        width:40%;
+        display:inline-block;
+    }
+
+    .boxcetaksub {
+        margin-left: 1%;
+        width:15%;
+        display: inline-block;
     }
 
 </style>
