@@ -57,7 +57,7 @@
 
 						<div class="row">
 							<div class="input-field col s12">
-								<input id="telepon" type="tel" class="validate" name="telepon" value="{{ old('telepon') }}" pattern="\*d">
+								<input id="telepon" type="tel" class="validate" name="telepon" value="{{ old('telepon') }}" pattern="\d*">
 								<label for="telepon">Nomor Telepon*</label>
 							</div>
 						</div>

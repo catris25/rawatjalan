@@ -55,7 +55,7 @@
             <tbody>
             @foreach($temp as $t)
               <tr>
-                <td><a href=`"{{URL::to('dashboard/validasi/'.$t->id.'-'.$t->id_dokter.'-'.$t->kode_visit)}}"`>
+                <td><a href="{{URL::to('dashboard/validasi/'.$t->id.'-'.$t->id_dokter.'-'.$t->kode_visit)}}">
                 Data Pasien {{$t->id.'-'.$t->id_dokter.'-'.$t->kode_visit}} </a></td>
               </tr>
            @endforeach
