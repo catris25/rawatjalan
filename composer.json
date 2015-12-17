@@ -9,6 +9,7 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.1.*",
         "bican/roles": "2.1.*",
+        "silex/silex": "~1.1",
         "illuminate/html": "^5.0"
     },
     "require-dev": {
