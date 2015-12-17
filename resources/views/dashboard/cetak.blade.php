@@ -1,30 +1,37 @@
 @extends ('master')
 @section ('content')
-<div class="container">
 <div class="container-fluid" style="margin-top:1%;">
-	<div class="well well-lg">
-		<h3>CETAK REKAM MEDIK</h3>
-		<p>Masukkan rentang waktu</p>
-		<form class="form-horizontal" role="form" method="GET">
-			<div class="row">
-				<div class="input-field col s12">
-					<input id="tgl_awal" type="date" class="datepicker" name="tgl_awal" value="{{ old('tgl_awal') }}" required>
-					<label for="tgl_awal">Tanggal Awal</label>
+	<div class="row">
+		<div class="boxx">
+      		<h1 style="text-align:center;">Cetak Rekam Medik</h1>
+    	</div>
+    	<div class="row" style="width:70%; margin:0 auto; margin-top:3%;margin-bottom:3%;">
+			<form class="form-horizontal" role="form" method="GET">
+			<div class="boxcetak">
+				<div class="boxcetakdate">
+					<div class="input-field">
+						<input id="tgl_awal" type="date" class="datepicker" name="tgl_awal" value="{{ old('tgl_awal') }}" required>
+						<label for="tgl_awal">Tanggal Awal</label>
+					</div>
 				</div>
-			</p>hingga</p>
-				<div class="input-field col s12">
-					<input id="tgl_akhir" type="date" class="datepicker" name="tgl_akhir" value="{{ old('tgl_akhir') }}" required>
-					<label for="tgl_akhir">Tanggal Akhir</label>
+				<div class="boxcetakdate">
+					<div class="input-field">
+						<input id="tgl_akhir" type="date" class="datepicker" name="tgl_akhir" value="{{ old('tgl_akhir') }}" required>
+						<label for="tgl_akhir">Tanggal Akhir</label>
+					</div>
+				</div>
+				<div class="boxcetaksub">
+				<button type="submit" class="btn btn-primary" name="cari" id="cari">
+					CARI
+				</button>
 				</div>
 			</div>
-			<button type="submit" class="btn btn-primary" name="cari" id="cari">
-				CARI
-			</button>
-		</form>
-
+			</form>
+		</div>
 	</div>
 	@if(isset($rekamMedik))
 		@if(count($rekamMedik)<1)
+
 			<div class="alert alert-warning">
 				<strong>Maaf</strong>, hasil tidak ditemukan.
 			</div>
@@ -79,7 +86,6 @@
 		</div>
 		@endif
 	@endif
-</div>
 </div>
 
 @endsection

@@ -15,7 +15,7 @@
       </div>
 
          <div class="row" style="width:70%; margin:0 auto; margin-top:3%;margin-bottom:3%;">
-                      <h5>Cari Dokter</h5>
+            <h5>Cari Pasien</h5>
            <form class="form-horizontal" role="form" method="GET">
               <div class="boxcari">
               <div class="boxfindleft">
@@ -26,7 +26,7 @@
 
               <div class="boxfindmiddle">
                 <div class="input-field">
-                  <select name="kategori" id="kategori">
+                  <select name="kategori" id="kategori" class="browser-default">
                     <option value="id">ID Pasien</option>
                     <option value="nama_pasien">Nama</option>
                     <option value="nik">NIK</option>
