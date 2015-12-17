@@ -2,15 +2,21 @@
 
   namespace App\Http\Controllers;
 
-  use Illuminate\Http\Request;
   use App\Http\Controllers\Controller;
+  use Response;
+  use App\Admin;
   use App\Pasien;
   use App\BPJS;
+  use App\Dokter;
   use App\Poli;
-  use Input;
-  use Session;
+  use App\RMTemp;
+  use App\RekamMedik;
   use DB;
   use Illuminate\Database\Eloquent\ModelNotFoundException;
+  use Illuminate\Http\Request;
+  use Illuminate\Support\Facades\Auth;
+  use Input;
+  use Session;
 
   class DashboardController extends Controller
   {
@@ -31,7 +37,7 @@
             $tambah = false;
           }
           if($tambah) {
-            $poli = Poli::all(['nama_poli']);
+            $poli = Poli::all();
             return view('dashboard.tambah-ke-poli')->with('pasienid', $pasienid)->with('poli', $poli);
           } else {
             return view('dashboard.home')->with('pasien', $pasien)->with('info',$info)->with('tambah', $tambah)->with('pasienid', $pasienid);
@@ -71,7 +77,7 @@
           }
 
           if($tambah){
-            $poli = Poli::all(['nama_poli']);
+            $poli = Poli::all();
             return view('dashboard.tambah-ke-poli')->with('pasienid', $pasienid)->with('bpjsid', $bpjsid)->with('poli', $poli);
 
           }else{
@@ -80,24 +86,142 @@
 
 
         }else if(empty($id_bpjs) and empty($id_pasien)){
+
           //if form is still empty
-          return view('dashboard.home');
+          if(Auth::user()->is('dokter')){
+            $email = Auth::user()->email;
+            $id_dokter = Dokter::where('email', $email)->value('id');
+            $temp = RMTemp::where('id_dokter', $id_dokter)->where('status_cek', 0)->get();
+
+          }else if(Auth::user()->is('admin')){
+            $email = Auth::user()->email;
+            $id_admin = Admin::where('email', $email)->value('id');
+            $temp = RMTemp::where('id_admin', $id_admin)->where('status_cek', 1)->get();
+          }
+
+          if(isset($temp) and count($temp)>0){
+              return view('dashboard.home')->with('temp', $temp);
+          }else{
+
+              return view('dashboard.home');
+          }
+
         }
      }
+
+
+     public function fetchDokter(){
+          if(Request::ajax()){
+              $input = Input::get('id_poli');
+              $dokter = Dokter::where('id_poli', $id_poli)->get();
+              return $dokter;
+          }
+     }
+
 
      public function cetak() {
       $id_pasien = Input::get('id_pasien');
       $pasienid = DB::table('pasien')->where('id', $id_pasien)->value('id');
       $pasienname = DB::table('pasien')->where('id', $id_pasien)->value('nama_pasien');
       $statusbpjs = Input::get('optbpjs');
-      $poli = Input::get('pilih_poli');
+      $poliget = Input::get('pilih_poli');
+      $dokterget = Input::get('pilih_dokter');
+      $dokter = DB::table('dokter')->where('id', $dokterget)->value('nama_dokter');
+      $poli = DB::table('poli')->where('id', $poliget)->value('nama_poli');
 
       if($statusbpjs===1) {
         $status = 'Pasien BPJS';
       } else {
         $status = 'Pasien Umum';
       }
-      return view('cetak')->with('pasienid', $pasienid)->with('poli', $poli)->with('status',$status)->with('pasienname', $pasienname);
+      return view('cetak')->with('pasienid', $pasienid)->with('dokter',$dokter)->with('poli', $poli)->with('status',$status)->with('pasienname', $pasienname);
+     }
+
+
+     public function showTemp($id, $id_dokter, $kode_visit){
+         $email = Auth::user()->email;
+         $id_dokter = Dokter::where('email', $email)->value('id');
+         $temp = RMTemp::where('id', $id)->where('id_dokter', $id_dokter)->where('kode_visit', $kode_visit)->get()->first();
+
+         $rm = RekamMedik::where('id', $id)->where('id_dokter', $id_dokter)->where('kode_visit', $kode_visit)->get()->first();
+         return view('dashboard.validasi')->with('temp', $temp)->with('rm', $rm);
+     }
+
+     public function validateTemp($id, $id_dokter, $kode_visit){
+         if(Input::get('terima')){
+           $temp = RMTemp::where('id', $id)->where('id_dokter', $id_dokter)->where('kode_visit', $kode_visit)->first();
+
+           $updateRM = ([
+             'usia_berobat' => $temp->usia_berobat,
+             'tgl_visit' => $temp->tgl_visit,
+             'tinggi_badan' => $temp->tinggi_badan,
+             'berat_badan' => $temp->berat_badan,
+             'tekanan_darah' => $temp->tekanan_darah,
+             'resep' => $temp->resep,
+             'anamnesis' => $temp->anamnesis,
+             'diagnosis' => $temp->diagnosis,
+             'tindakan' => $temp->tindakan,
+             'status_validasi' => 1
+           ]);
+
+           //update RekamMedik
+           RekamMedik::where('id', $id)->where('id_dokter', $id_dokter)->where('kode_visit', $kode_visit)->update($updateRM);
+           //delete the data on temp
+           RMTemp::where('id', $id)->where('id_dokter', $id_dokter)->where('kode_visit', $kode_visit)->delete();
+           Session::flash('message', 'Rekam Medik '.$id.'-'.$id_dokter.'-'.$kode_visit.' berhasil dimutakhirkan!');
+           return redirect('dashboard');
+
+         }else{
+            $updateRMTemp = (['status_cek' => 1]);
+            // $updateRM = (['status_validasi' => 1]);
+            // RekamMedik::where('id', $id)->where('id_dokter', $id_dokter)->where('kode_visit', $kode_visit)->update($updateRM);
+            RMTemp::where('id', $id)->where('id_dokter', $id_dokter)->where('kode_visit', $kode_visit)->update($updateRMTemp);
+            return redirect('dashboard');
+         }
+     }
+
+
+     public function cetakRM(){
+         $tgl_awal = Input::get('tgl_awal');
+         $tgl_akhir = Input::get('tgl_akhir');
+
+        if(isset($tgl_awal) and isset($tgl_akhir)){
+            $tgl_awal = date("Y-m-d", strtotime($tgl_awal));
+            $tgl_akhir = date("Y-m-d", strtotime($tgl_akhir));
+
+            $rekamMedik = RekamMedik::whereBetween('tgl_visit', array($tgl_awal, $tgl_akhir))->get();
+
+            return view('dashboard.cetak')->with('rekamMedik', $rekamMedik)->with('tgl_awal', $tgl_awal)->with('tgl_akhir', $tgl_akhir);
+            // return $rekamMedik;
+        }
+        if(Input::get('cetak')){
+            return "cetak";
+        }
+        return view('dashboard.cetak');
+      }
+
+      public function hlmcetakRM(){
+          $tgl_awal = Input::get('tgl_awal');
+          $tgl_akhir = Input::get('tgl_akhir');
+
+          $tgl_awal = date("Y-m-d", strtotime($tgl_awal));
+          $tgl_akhir = date("Y-m-d", strtotime($tgl_akhir));
+
+          $rekamMedik = RekamMedik::whereBetween('tgl_visit', array($tgl_awal, $tgl_akhir))->get();
+
+          return view('dashboard.cetak-layout')->with('rekamMedik', $rekamMedik)->with('tgl_awal', $tgl_awal)->with('tgl_akhir', $tgl_akhir);
+      }
+
+
+
+     public function dropdown($id) {
+      $dokter = Dokter::where('id_poli', $id)->get();
+
+      return Response::json($dokter);
+     }
+
+     public function nyoba() {
+      return view('trydrop');
      }
 
      public function error() {

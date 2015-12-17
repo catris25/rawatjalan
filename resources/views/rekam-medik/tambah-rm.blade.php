@@ -21,28 +21,21 @@
               <div class="row">
   							<div class="input-field col s12">
   								<input id="id" type="text" class="validate" name="id" value="{{ old('id') }}">
-                  <label for="id">ID Pasien</label>
+                  <label for="id">ID Pasien*</label>
   							</div>
   						</div>
 
               <div class="row">
                 <div class="input-field col s12">
                   <input id="id_dokter" type="text" class="validate" name="id_dokter" value="{{ old('id_dokter') }}">
-                  <label for="id_dokter">ID Dokter</label>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="input-field col s12">
-                  <input id="usia_berobat" type="text" class="validate" name="usia_berobat" value="{{ old('usia_berobat') }}">
-                  <label for="usia_berobat">Usia</label>
+                  <label for="id_dokter">ID Dokter*</label>
                 </div>
               </div>
 
               <div class="row">
   							<div class="input-field col s12">
   								<input id="tgl_visit" type="date" class="datepicker" name="tgl_visit" value="{{ old('tgl_visit') }}">
-                  <label for="tgl_visit">Tanggal berobat</label>
+                  <label for="tgl_visit">Tanggal berobat*</label>
   							</div>
   						</div>
 
@@ -84,14 +77,14 @@
               <div class="row">
   							<div class="input-field col s12">
   								<input id="diagnosis" type="text" class="validate" name="diagnosis" value="{{ old('diagnosis') }}">
-                  <label for="diagnosis">Diagnosis</label>
+                  <label for="diagnosis">Diagnosis*</label>
   							</div>
   						</div>
 
               <div class="row">
   							<div class="input-field col s12">
   								<input id="tindakan" type="text" class="validate" name="tindakan" value="{{ old('tindakan') }}">
-                  <label for="tindakan">Tindakan</label>
+                  <label for="tindakan">Tindakan*</label>
   							</div>
   						</div>
 

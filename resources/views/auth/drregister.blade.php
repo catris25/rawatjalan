@@ -26,7 +26,7 @@
 						<div class="row">
 							<div class="input-field col s12">
 								<input id="nama_dokter" type="text" class="validate" name="nama_dokter" value="{{ old('nama_dokter') }}">
-								<label for="nama_dokter">Nama</label>
+								<label for="nama_dokter">Nama*</label>
 							</div>
 						</div>
 
@@ -37,44 +37,42 @@
                   				<option value="L">Laki-laki</option>
                   				<option value="P">Perempuan</option>
                 			</select>
-								<label for="jenis_kelamin">Jenis kelamin</label>
+								<label for="jenis_kelamin">Jenis kelamin*</label>
 							</div>
 						</div>
 
 						<div class="row">
 							<div class="input-field col s12">
-								<input id="nik" type="text" class="validate" name="nik" value="{{ old('nik') }}">
-								<label for="nik">NIK</label>
-							</div>
-						</div>
-
-
-
-						<div class="row">
-							<div class="input-field col s12">
-								<input id="alamat" type="text" class="validate" name="alamat" value="{{ old('alamat') }}">
-								<label for="alamat">Alamat</label>
+								<input id="nik" type="text" class="validate" name="nik" value="{{ old('nik') }}" maxlength="16"pattern="\d*" minlength="16">
+								<label for="nik">NIK*</label>
 							</div>
 						</div>
 
 						<div class="row">
 							<div class="input-field col s12">
-								<input id="telepon" type="text" class="validate" name="telepon" value="{{ old('telepon') }}">
-								<label for="telepon">Nomor Telepon</label>
+								<textarea id="alamat" class="validate materialize-textarea" name="alamat" value="{{ old('alamat') }}"></textarea>
+								<label for="alamat">Alamat*</label>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="input-field col s12">
+								<input id="telepon" type="tel" class="validate" name="telepon" value="{{ old('telepon') }}" pattern="\d*">
+								<label for="telepon">Nomor Telepon*</label>
 							</div>
 						</div>
 
 						<div class="row">
 							<div class="input-field col s12">
 								<input id="tanggal_lahir" type="date" class="datepicker" name="tanggal_lahir" value="{{ old('tanggal_lahir') }}">
-								<label for="tanggal_lahir">Tanggal Lahir</label>
+								<label for="tanggal_lahir">Tanggal Lahir*</label>
 							</div>
 						</div>
 
 						<div class="row">
 							<div class="input-field col s12">
 								<input id="spesialisasi" type="text" class="validate" name="spesialisasi" value="{{ old('spesialisasi') }}">
-								<label for="spesialisasi">Spesialisasi</label>
+								<label for="spesialisasi">Spesialisasi*</label>
 							</div>
 						</div>
 
@@ -85,27 +83,27 @@
 	             <option value="{{$po->id}}">{{$po->nama_poli}}</option>
 	             @endforeach
 	          </select>
-	          <label for="id_poli">Poli</label>
+	          <label for="id_poli">Poli*</label>
 	           </div>
 
 						<div class="row">
 							<div class="input-field col s12">
 								<input id="email" type="email" class="validate" name="email" value="{{ old('email') }}">
-								<label for="email">E-Mail</label>
+								<label for="email">E-Mail*</label>
 							</div>
 						</div>
 
 						<div class="row">
 							<div class="input-field col s12">
 								<input id="password" type="password" class="validate" name="password">
-								<label for="password">Password</label>
+								<label for="password">Password*</label>
 							</div>
 						</div>
 
 						<div class="row">
 							<div class="input-field col s12">
 								<input id="password_confirmation" type="password" class="validate" name="password_confirmation">
-								<label for="password_confirmation">Confirm Password</label>
+								<label for="password_confirmation">Confirm Password*</label>
 							</div>
 						</div>
 

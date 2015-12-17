@@ -58,6 +58,14 @@
   <li><a href="/rawatjalan/public/poli/tambah">Tambah Poli</a></li>
 </ul>
 
+<ul id="user" class="dropdown-content">
+  <li><a href="{{ url('/logout') }}">Logout</a></li>
+</ul>
+
+<ul id="muser" class="dropdown-content" style="width:100%;margin-left:-7%;">
+  <li><a href="{{ url('/logout') }}">Logout</a></li>
+</ul>
+
 <nav style="background-color:#009688;">
   <div class="nav-wrapper">
       <a href="/rawatjalan/public/dashboard" class="brand-logo" style="margin-left:1%;">Sistem Rawat Jalan</a>
@@ -73,7 +81,7 @@
 	        <li><a class="dropdown-button" href="#!" data-activates="mpasien">Pasien</a></li>
 	        <li><a class="dropdown-button" href="#!" data-activates="mrekammedik">Rekam Medik</a></li>
 	        <li><a class="dropdown-button" href="#!" data-activates="mpoli">Poli</a></li>
-	        <li><a href="{{ url('/logout') }}">Logout</a></li>
+	        <li><a class="dropdown-button" href="#!" data-activates="muser">{{Auth::user()->email}}</a></li>
 	      </ul>
 	      <ul class="right hide-on-med-and-down">
 	        <li><a class="dropdown-button" href="#!" data-activates="dokter">Dokter</a></li>
@@ -81,7 +89,7 @@
 	        <li><a class="dropdown-button" href="#!" data-activates="pasien">Pasien</a></li>
 	        <li><a class="dropdown-button" href="#!" data-activates="rekammedik">Rekam Medik</a></li>
 	        <li><a class="dropdown-button" href="#!" data-activates="poli">Poli</a></li>
-	        <li><a href="{{ url('/logout') }}">Logout</a></li>
+	        <li><a class="dropdown-button" href="#!" data-activates="user">{{Auth::user()->email}}</a></li>
 	      </ul>
       @endif
     </div>

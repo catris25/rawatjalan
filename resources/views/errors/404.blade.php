@@ -7,8 +7,8 @@
         	>_<
         </div>
         <div class="bedown">
-        	<h1>Error 403 - Role Access Forbidden</h1>
-        	<h2>Maaf, sepertinya anda tidak memiliki hak akses untuk fitur ini</h2>
+        	<h1>Error 404 - Page Not Found</h1>
+        	<h2>Maaf, sepertinya halaman yang anda cari tidak pernah ada</h2>
         </div>
     </div>
 
