@@ -60,7 +60,7 @@ return [
         ],
 
         'mysql' => [
-            'driver'    => 'pgsql',
+            'driver'    => 'mysql',
             'host'      => 'mysql.idhostinger.com',
             'database'  => 'u196028047_arjgg',
             'username'  => 'u196028047_admin',
