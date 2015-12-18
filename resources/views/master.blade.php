@@ -296,7 +296,7 @@
 
 @yield('content')
 
-<div class="footer center"><span class="glyphicon glyphicon-copyright-mark"></span> Copyright - Group 2 Anapersis 2015
+<div class="footer center"><span class="glyphicon glyphicon-copyright-mark"></span>Copyright - Group 2 Anapersis 2015
 </div>
 
 <script src="/rawatjalan/public/js/ripples.min.js"></script>
