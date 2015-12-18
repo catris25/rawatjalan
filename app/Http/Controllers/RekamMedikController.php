@@ -10,6 +10,7 @@ use App\RekamMedik;
 use App\Admin;
 use App\RMTemp;
 use App\Pasien;
+use App\Dokter;
 use Input;
 use Session;
 use DB;
@@ -45,6 +46,17 @@ class RekamMedikController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+          'id' => 'required|exists:pasien,id',
+          'id_dokter' => 'required|exists:dokter,id',
+          'tgl_visit' => 'required',
+          'diagnosis' => 'required',
+          'tindakan' => 'required'
+        ]);
+
+        $id_dokter = $request->input('id_dokter');
+
+        $id_pasien = $request->input('id_pasien');
 
         $today = new DateTime();
         $today = date('Y-m-d');
@@ -57,18 +69,12 @@ class RekamMedikController extends Controller
         $usia_pasien = $today->diff($tgl_lahir_pasien);
         // return "usianya ".$usia_pasien->format('%Y tahun %m bulan %d hari');
 
-        $this->validate($request, [
-          'id' => 'required',
-          'id_dokter' => 'required',
-          'tgl_visit' => 'required',
-          'diagnosis' => 'required',
-          'tindakan' => 'required'
-        ]);
 
         $format_tgl_info_old = Input::get('tgl_visit');
+
         $newRM = RekamMedik::create([
-          'id' => $request->input('id'),
-          'id_dokter' => $request->input('id_dokter'),
+          'id' => $id,
+          'id_dokter' => $id_dokter,
           'usia_berobat' => $usia_pasien->format('%Y'),
           'tgl_visit' => date("Y-m-d", strtotime($format_tgl_info_old)),
           'tinggi_badan' => $request->input('tinggi_badan'),
@@ -79,7 +85,7 @@ class RekamMedikController extends Controller
           'diagnosis' => $request->input('diagnosis'),
           'tindakan' => $request->input('tindakan')
         ]);
-        
+
         Session::flash('message', 'Record Rekam Medik baru berhasil ditambahkan!');
         return redirect('rekam-medik');
     }
