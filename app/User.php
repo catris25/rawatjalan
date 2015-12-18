@@ -14,7 +14,7 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
 class User extends Model implements AuthenticatableContract,
                                     AuthorizableContract,
-                                    CanResetPasswordContract,HasRoleAndPermissionContract ::can insteadof Authorizable;
+                                    CanResetPasswordContract,HasRoleAndPermissionContract
 {
     use Authenticatable, Authorizable, CanResetPassword, HasRoleAndPermission ::can insteadof Authorizable;
 
