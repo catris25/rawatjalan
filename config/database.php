@@ -61,10 +61,10 @@ return [
 
         'mysql' => [
             'driver'    => 'mysql',
-            'host'      => 'sql6.freesqldatabase.com',
-            'database'  => 'sql6100284',
-            'username'  => 'sql6100284',
-            'password'  => 'GNczFQuJB9',
+            'host'      => 'db4free.net',
+            'database'  => 'rawatjalangg',
+            'username'  => 'rawatjalangg',
+            'password'  => 'qwerty',
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
