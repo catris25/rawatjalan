@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTrgAdminTable extends Migration
+class CreateTrgAdminInsert extends Migration
 {
     /**
      * Run the migrations.
