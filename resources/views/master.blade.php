@@ -299,8 +299,8 @@
 <div class="footer center"><span class="glyphicon glyphicon-copyright-mark"></span> Copyright - Group 2 Anapersis 2015
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.6/js/ripples.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
+<script src="/rawatjalan/public/js/ripples.min.js"></script>
+<script src="/rawatjalan/public/js/materialize.js"></script>
 <script>
     $(document).ready(function() {
 
