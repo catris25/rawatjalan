@@ -38,7 +38,7 @@
           </div>
           
           <div class="boxrm">
-               <button type="submit" class="btn btn-primary" style="margin-left:10%;">
+               <button type="submit" class="btn btn-primary" style="margin-left:10%;" name="cari" value="cari">
                   Cari pasien
                 </button>
           </div>
