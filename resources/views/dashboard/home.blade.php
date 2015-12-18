@@ -13,47 +13,85 @@
        <strong>{{Auth::user()->email}}</strong></p>
        @endif
 
-       @role('dokter')
-       <p style="text-align:center; font-size:14px;">Selamat bekerja, <strong> Dokter!</strong></p>
        <div class="container">
-       @if(Session::has('notify'))
-       @if(isset($temp))
-        <div class="alert alert-warning">
-          {{Session::get('notify')}}
-        </div>
-        @else
-        <div class="alert alert-info">
-          {{Session::get('notify')}}
-        </div>
-       @endif
-       @endif
-       @if(isset($temp))
 
-         <div class="well well-lg">
-           <p>Harap segera melakukan validasi terhadap pengubahan data Rekam Medik berikut.</p>
-           @foreach($temp as $t)
-           <div class="well well-md">
-             <p><a href="{{URL::to('dashboard/validasi/'.$t->id.'-'.$t->id_dokter.'-'.$t->kode_visit)}}">
-               Data Pasien {{$t->id.'-'.$t->id_dokter.'-'.$t->kode_visit}} </a></p>
-           </div>
-          @endforeach
-        </div>
-       @endif
-
-      </div>
-       @endrole
-
-
+       <!-- == SUPERUSER ROLE == -->
        @role('super.user')
        <p style="text-align:center; font-size:14px;">Selamat bekerja, <strong> Super User!</strong></p>
        @endrole
 
+       <!-- == ADMIN ROLE == -->
        @role('admin')
        <p style="text-align:center; font-size:14px;">Selamat bekerja, <strong> Admin!</strong></p>
        @endrole
 
+       <!-- == SUPERUSER ROLE == -->
+       @role('dokter')
+       <p style="text-align:center; font-size:14px;">Selamat bekerja, <strong> Dokter!</strong></p>
+       @endrole
+
+       <!-- NOTIFICATION FOR ADMIN AND DOKTER ROLE -->
+       @role('admin|dokter')
+       @if(isset($temp))
+        <div class="alert alert-warning">
+          <strong>Peringatan!</strong> Anda memiliki notifikasi baru!
+        </div>
+        @else
+        <div class="alert alert-info">
+          <strong>Info!</strong> Anda tidak memiliki notifikasi baru!
+        </div>
+       @endif
+       @endrole
+
+       <!-- == DOKTER ROLE == -->
+        @role('dokter')
+        @if(isset($temp))
+            <table class="table table-striped table-bordered">
+            <thead>
+              <tr>
+                <td style="text-align:center;">Harap segera melakukan validasi terhadap pengubahan data Rekam Medik berikut.</td>
+              </tr>
+            </thead>
+            <tbody>
+            @foreach($temp as $t)
+              <tr>
+                <td><a href="{{URL::to('dashboard/validasi/'.$t->id.'-'.$t->id_dokter.'-'.$t->kode_visit)}}">
+                Data Pasien {{$t->id.'-'.$t->id_dokter.'-'.$t->kode_visit}} </a></td>
+              </tr>
+           @endforeach
+           </tbody>
+           </table>
+        @endif
+
+        @endrole
+
+
+        <!-- == ADMIN ROLE == -->
+        @role('admin')
+        @if(isset($temp))
+            <table class="table table-striped table-bordered">
+            <thead>
+              <tr>
+                <td style="text-align:center;">Permintaan pengubahan record rekam medik berikut ditolak</td>
+              </tr>
+            </thead>
+            <tbody>
+            @foreach($temp as $t)
+              <tr>
+                <td><a href="{{URL::to('rekam-medik/'.$t->id.'-'.$t->id_dokter.'-'.$t->kode_visit)}}">
+                Data Rekam Medik {{$t->id.'-'.$t->id_dokter.'-'.$t->kode_visit}} </a></td>
+              </tr>
+           @endforeach
+           </tbody>
+           </table>
+        @endif
+        @endrole
+
+
+       <!-- == SUPERUSER OR ADMIN ROLE == -->
        @role('super.user|admin')
-       <div class="container-fluid" style="width:80%;margin:auto; margin-top:3%;margin-bottom:3%;">
+       <div class="container-fluid" style="width:100%;margin:auto; margin-top:3%;margin-bottom:3%;">
+
 
          <h5 style="text-align:center;">Pendaftaran pasien ke poli (Cek BPJS)</h5>
 
@@ -61,7 +99,7 @@
              <div class="splitt" style="margin-left:2%;">
                 <div class="splitpt input-field">
 
-                  <input id="id_pasien" type="text" class="validate" name="id_pasien" @if(isset($pasien)) value="{{$pasienid}}" @endif>
+                  <input id="id_pasien" type="text" class="validate" name="id_pasien" @if(isset($pasien)) value="{{$pasienid}}" @endif required>
                   <label for="id_pasien">Masukkan Id Pasien</label>
                 </div>
                 <div class="splitpt input-field" style="margin-left:6%;">
@@ -95,7 +133,7 @@
        </div>
 
        @endrole
-
+       </div>
    </div>
 </div>
 @endsection

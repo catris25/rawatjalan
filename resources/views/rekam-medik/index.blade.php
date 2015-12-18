@@ -1,8 +1,8 @@
 @extends('master')
 
 @section('content')
-<div class="container">
-   <div class="well well-lg">
+<div class="container-fluid" style="margin-top:1%;">
+   <div class="row">
 
      @if(Session::has('message'))
      <div class="alert alert-success">
@@ -10,48 +10,63 @@
      </div>
      @endif
 
-       <h2>Daftar Rekam Medik</h2>
-       <div class="well well-lg">
+       <div class="boxx" style="margin-bottom:3%;">
+        <h1 style="text-align:center;">Daftar Rekam Medik</h1>
+      </div>
 
-         <div class="well well-lg">
+        <div class="row" style="width:70%; margin:0 auto; margin-top:3%;margin-bottom:3%;">
            <h5>Cari Rekam Medik</h5>
            <form class="form-horizontal" role="form" method="GET">
-             <div class="form-group">
+           <div class="boxesrm">
 
-               <select name="kategori" id="kategori">
-                 <option value="id">ID Rekam Medik</option>
-                 <option value="id_pasien">ID Pasien</option>
-                 <option value="anamnesis">Anamnesis</option>
-                 <option value="diagnosis">Diagnosis</option>
-                 <option value="resep">Resep</option>
-               </select>
+              <div class="boxrm">
+                <div class="input-field">
+ 								<input id="id" type="text" placeholder="Id pasien" class="validate" name="id" value="{{ old('id') }}">
+ 							  </div>
+              </div>
 
-               <input id="keyword" type="text" placeholder="Masukkan kata kunci" name="keyword" value="{{ old('keyword') }}">
-               <button type="submit" class="btn btn-primary">
-                 Cari rekam medik
-               </button>
+            <div class="boxrm">
+              <div class="input-field">
+               <input id="id_dokter" placeholder="Id dokter" type="text" class="validate" name="id_dokter" value="{{ old('id_dokter') }}">
+              </div>
+            </div>
+
+           <div class="boxrm">
+             <div class="input-field">
+              <input id="kode_visit" type="text" placeholder="Kode visit" class="validate" name="kode_visit" value="{{ old('kode_visit') }}">
+            </div>
+          </div>
+          
+          <div class="boxrm">
+               <button type="submit" class="btn btn-primary" style="margin-left:10%;" name="cari" value="cari">
+                  Cari pasien
+                </button>
+          </div>
+          </div>
            </form>
+          
+        </div>
 
-         </div>
        <table class="table table-striped table-bordered">
          <thead>
-             </div>
+
            <tr>
-             <td>Record</td>
-             <td>Pasien</td>
-             <td>Dokter</td>
-             <td>Kode visit</td>
-             <td>Usia berobat</td>
-             <td>Tanggal</td>
-             <td>Tinggi badan</td>
-             <td>Berat badan</td>
-             <td>Tekanan darah</td>
-             <td>Resep</td>
-             <td>Anamnesis</td>
-             <td>Diagnosis</td>
-             <td>Tindakan</td>
+             <td style="text-align:center;vertical-align:middle;">Record</td>
+             <td style="text-align:center;vertical-align:middle;">Pasien</td>
+             <td style="text-align:center;vertical-align:middle;">Dokter</td>
+             <td style="text-align:center;vertical-align:middle;">Kode visit</td>
+             <td style="text-align:center;vertical-align:middle;">Usia berobat</td>
+             <td style="text-align:center;vertical-align:middle;">Tanggal</td>
+             <td style="text-align:center;vertical-align:middle;">Tinggi badan</td>
+             <td style="text-align:center;vertical-align:middle;">Berat badan</td>
+             <td style="text-align:center;vertical-align:middle;">Tekanan darah</td>
+             <td style="text-align:center;vertical-align:middle;">Resep</td>
+             <td style="text-align:center;vertical-align:middle;">Anamnesis</td>
+             <td style="text-align:center;vertical-align:middle;">Diagnosis</td>
+             <td style="text-align:center;vertical-align:middle;">Tindakan</td>
            </tr>
          </thead>
+        <tbody>
        @foreach($rekamMedik as $rm)
        <tr>
          <td><a href="{{URL::to('rekam-medik/'.$rm->id.'-'.$rm->id_dokter.'-'.$rm->kode_visit)}}">{{$rm->id.'-'.$rm->id_dokter.'-'.$rm->kode_visit}}</a>
@@ -71,7 +86,8 @@
        @endforeach
      </tbody>
    </table>
-   </div>
+
+ </div>
  </div>
 
  @endsection

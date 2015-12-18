@@ -26,14 +26,14 @@
            <div class="row">
              <div class="input-field col s12">
                <input id="nama_admin" type="text" class="validate" name="nama_admin" value="{{ $admin->nama_admin }}">
-               <label for="nama_admin">Nama</label>
+               <label for="nama_admin">Nama*</label>
              </div>
            </div>
 
            <div class="row">
              <div class="input-field col s12">
-               <input id="nik" type="text" class="validate" name="nik" value="{{ $admin->nik }}">
-               <label for="nik">NIK</label>
+               <input id="nik" type="text" class="validate" name="nik" value="{{ $admin->nik }}" pattern="\d*" minlength="16" maxlength="16">
+               <label for="nik">NIK*</label>
              </div>
            </div>
 
@@ -45,28 +45,28 @@
                <option value="L" @if ($admin->jenis_kelamin == 'L') selected @endif>Laki-laki</option>
                <option value="P"  @if ($admin->jenis_kelamin == 'P') selected @endif>Perempuan</option>
              </select>
-             <label class="jenis_kelamin">Jenis kelamin</label>
+             <label class="jenis_kelamin">Jenis kelamin*</label>
              </div>
            </div>
 
            <div class="row">
              <div class="input-field col s12">
                <input id="tanggal_lahir" type="date" class="datepicker" name="tanggal_lahir" value="{{ $admin->tanggal_lahir }}">
-               <label for="tanggal_lahir">Tanggal lahir</label>
+               <label for="tanggal_lahir">Tanggal lahir*</label>
              </div>
            </div>
 
            <div class="row">
              <div class="input-field col s12">
-               <input id="alamat" type="text" class="validate" name="alamat" value="{{ $admin->alamat }}">
-               <label for="alamat">Alamat</label>
+               <textarea id="alamat" class="validate materialize-textarea" name="alamat" value="{{ old('alamat') }}"></textarea>
+               <label for="alamat">Alamat*</label>
              </div>
            </div>
 
            <div class="row">
              <div class="input-field col s12">
-               <input id="telepon" type="tel" class="validate" name="telepon" value="{{ $admin->telepon }}">
-               <label for="telepon">Nomor telepon</label>
+               <input id="telepon" type="tel" class="validate" name="telepon" value="{{ $admin->telepon }}" pattern="\d*">
+               <label for="telepon">Nomor telepon*</label>
              </div>
            </div>
 

@@ -75,6 +75,7 @@ class PasienController extends Controller
     public function update(Request $request, $id)
     {
         $pasien = Pasien::findOrFail($id);
+        $format_tgl_info_old = Input::get('tgl_lahir');
         $this->validate($request, [
           'nama_pasien' => 'required',
           'nik' => 'required',
@@ -85,6 +86,9 @@ class PasienController extends Controller
 
         $input = $request->all();
         $pasien->fill($input)->save();
+        Pasien::where('id', $id)->update(array(
+            'tgl_lahir' => date("Y-m-d", strtotime($format_tgl_info_old))
+        ));
 
         Session::flash('edit_message', 'Pasien '.$id.' berhasil dimutakhirkan!');
         return redirect(action('PasienController@edit', $pasien->id));
