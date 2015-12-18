@@ -61,10 +61,10 @@ return [
 
         'mysql' => [
             'driver'    => 'mysql',
-            'host'      => 'mysql.idhostinger.com',
-            'database'  => 'u196028047_arjgg',
-            'username'  => 'u196028047_admin',
-            'password'  => 'qwerty',
+            'host'      => 'sql6.freesqldatabase.com',
+            'database'  => 'sql6100284',
+            'username'  => 'sql6100284',
+            'password'  => 'GNczFQuJB9',
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
