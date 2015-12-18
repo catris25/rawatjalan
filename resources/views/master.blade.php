@@ -2,10 +2,10 @@
 <head>
     <title> @yield('title') </title>
 
-    <link href="/rawatjalan/public/css/roboto.min.css" rel="stylesheet">
-    <link href="/rawatjalan/public/css/bootstrap.css" rel="stylesheet">
-    <link href="/rawatjalan/public/css/ripples.min.css" rel="stylesheet">
-    <link href="/rawatjalan/public/css/materialize.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/bootstrap.material-design/0.4.4/css/roboto.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.6/css/ripples.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Lato:700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
@@ -296,11 +296,11 @@
 
 @yield('content')
 
-<div class="footer center"><span class="glyphicon glyphicon-copyright-mark"></span> Copyright - Group 2 Anapersis 2015
+<div class="footer center"><span class="glyphicon glyphicon-copyright-mark"></span>Copyright - Group 2 Anapersis 2015
 </div>
 
-<script src="/rawatjalan/public/js/ripples.min.js"></script>
-<script src="/rawatjalan/public/js/materialize.js"></script>
+<script src="js/ripples.min.js"></script>
+<script src="js/materialize.js"></script>
 <script>
     $(document).ready(function() {
 
