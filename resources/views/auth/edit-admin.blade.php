@@ -58,7 +58,7 @@
 
            <div class="row">
              <div class="input-field col s12">
-               <textarea id="alamat" class="validate materialize-textarea" name="alamat" value="{{ $admin->alamat }}">$admin->alamat</textarea>
+               <textarea id="alamat" class="validate materialize-textarea" name="alamat" value="{{ $admin->alamat }}">{{ $admin->alamat }}</textarea>
                <label for="alamat">Alamat*</label>
              </div>
            </div>
