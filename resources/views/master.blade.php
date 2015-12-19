@@ -3,9 +3,9 @@
     <title> @yield('title') </title>
 
     <link href="https://cdn.jsdelivr.net/bootstrap.material-design/0.4.4/css/roboto.min.css" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.6/css/ripples.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/ripples.min.css" rel="stylesheet">
+    <link href="css/materialize.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Lato:700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
