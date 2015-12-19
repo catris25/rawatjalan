@@ -4,31 +4,59 @@
 |--------------------------------------------------------------------------
 | Application Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
 */
 
-Route::get('/','PagesController@home');
-Route::get('dashboard', 'Dash\DashboardController@home');
+//Dashboard routes
+Route::get('dashboard', ['as' => 'auth.dashboard.home', 'uses' =>'DashboardController@home']);
+Route::get('dashboard/tambah-ke-poli', ['as' => 'auth.dashboard.tambah-ke-poli', 'middleware' => 'role:admin|super.user', 'uses' => 'DashboardController@home']);
+Route::post('dashboard/cetakpoli', ['as' => 'cetak', 'middleware' => 'role:admin|super.user', 'uses' => 'DashboardController@cetak']);
+Route::get('dashboard/validasi/{id?}-{id_dokter?}-{kode_visit?}', ['as' => 'auth.dashboard.validasi', 'middleware' => 'role:dokter', 'uses' => 'DashboardController@showTemp']);
+Route::post('dashboard/validasi/{id?}-{id_dokter?}-{kode_visit?}', ['as' => 'auth.dashboard.validasi', 'middleware' => 'role:dokter', 'uses' => 'DashboardController@validateTemp']);
+Route::get('rekam-medik/cetak', ['as' => 'auth.dashboard.cetak', 'middleware' => 'role:admin|super.user', 'uses' => 'DashboardController@cetakRM']);
+Route::post('rekam-medik/cetak', ['as' => 'auth.dashboard.cetak', 'middleware' => 'role:admin|super.user', 'uses' => 'DashboardController@hlmcetakRM']);
+Route::get('403',  ['as' => 'auth.dashboard.roleerror', 'uses' => 'DashboardController@error']);
+//Route::get('403',  ['as' => 'auth.dashboard.roleerror', 'uses' => 'DashboardController@nyoba']);
+Route::get('dashboard/dropdown/{id}', 'DashboardController@dropdown');
 
 // Authentication routes...
-Route::get('auth/login', 'Auth\AuthController@getLogin');
-Route::post('auth/login', 'Auth\AuthController@postLogin');
-Route::get('auth/logout', 'Auth\AuthController@getLogout');
+Route::get('/', 'Auth\AuthController@getLogin');
+Route::post('/auth/login', 'Auth\AuthController@postLogin');
+Route::get('/logout', 'Auth\AuthController@getLogout');
 
 // Registration admin
-Route::get('auth/register', ['as' => 'auth.adsignup','uses' => 'UsersController@getAdminRegister']);
-Route::post('auth/register', ['as' => 'auth.adregister', 'uses' => 'UsersController@postAdminRegister']);
+Route::get('admin', ['as' => 'auth.lihat-admin', 'middleware' => 'role:super.user|dokter|admin', 'uses' => 'UsersController@indexAdmin']);
+Route::get('admin/tambah', ['as' => 'auth.adsignup', 'middleware' => 'role:super.user','uses' => 'UsersController@getAdminRegister']);
+Route::post('admin/tambah', ['as' => 'auth.adregister', 'middleware' => 'role:super.user', 'uses' => 'UsersController@postAdminRegister']);
+Route::get('admin/{id?}', ['as' => 'auth.edit-admin', 'middleware' => 'role:super.user', 'uses' => 'UsersController@editAdmin']);
+Route::post('admin/{id?}', ['as' => 'auth.edit-admin', 'middleware' => 'role:super.user', 'uses' => 'UsersController@updateAdmin']);
 
 //Registration dokter
-Route::get('auth/drregister', ['as' => 'auth.drsignup','uses' => 'UsersController@getDokterRegister']);
-Route::post('auth/drregister', ['as' => 'auth.drregister', 'uses' => 'UsersController@postDokterRegister']);
+Route::get('dokter', ['as'=> 'auth.lihat-dokter', 'middleware' => 'role:super.user|admin|dokter', 'uses' => 'UsersController@indexDokter']);
+Route::get('dokter/tambah', ['as' => 'auth.drregister', 'middleware' => 'role:super.user', 'uses' => 'UsersController@getDokterRegister']);
+Route::post('dokter/tambah', ['as' => 'auth.drregister', 'middleware' => 'role:super.user', 'uses' => 'UsersController@postDokterRegister']);
+Route::get('dokter/{id?}', ['as' => 'auth.edit-dokter', 'middleware' => 'role:super.user', 'uses' => 'UsersController@editDokter']);
+Route::post('dokter/{id?}', ['as' => 'auth.edit-dokter', 'middleware' => 'role:super.user', 'uses' => 'UsersController@updateDokter']);
+
+//Pasien routes
+Route::get('pasien', ['as' => 'pasien.index', 'middleware' => 'role:admin|dokter|super.user', 'uses' => 'PasienController@index']); //view all patients
+Route::get('pasien/tambah', ['as' => 'pasien.tambah', 'middleware' => 'role:admin|super.user', 'uses' => 'PasienController@create']); //display the form
+Route::post('pasien/tambah', ['as' => 'pasien.tambah', 'middleware' => 'role:admin|super.user', 'uses' => 'PasienController@store']); //handle the form input
+Route::get('pasien/{id?}', ['as' => 'pasien.edit', 'middleware' => 'role:admin|super.user', 'uses' => 'PasienController@edit']); //show each patient page individually
+Route::post('pasien/{id?}', ['as' => 'pasien.edit', 'middleware' => 'role:admin|super.user', 'uses' => 'PasienController@update']); //update the pasien data from form
+
+//Poli routes
+Route::get('poli', ['as' => 'poli.index', 'middleware' => 'role:admin|dokter|super.user', 'uses' => 'PoliController@index']); //view all poli records
+Route::get('poli/tambah', ['as' => 'poli.tambah', 'middleware' => 'role:admin|super.user', 'uses' => 'PoliController@create']);
+Route::post('poli/tambah', ['as' => 'poli.tambah', 'middleware' => 'role:admin|super.user', 'uses' => 'PoliController@store']);
+Route::get('poli/{id?}', ['as' => 'poli.edit', 'middleware' => 'role:admin|super.user', 'uses' => 'PoliController@edit']);
+Route::post('poli/{id?}', ['as' => 'poli.edit', 'middleware' => 'role:admin|super.user', 'uses' => 'PoliController@update']);
 
 //Rekam Medik
-Route::get('auth/rekammedik', ['as' => 'auth.rm','middleware' => 'role:admin|superuser','uses' => 'RekamMedikController@home']);
+Route::get('rekam-medik', ['as' => 'rekam-medik.index','middleware' => 'role:admin|super.user|dokter','uses' => 'RekamMedikController@index']);
+Route::get('rekam-medik/tambah', ['as' => 'rekam-medik.tambah-rm','middleware' => 'role:admin|super.user','uses' => 'RekamMedikController@create']);
+Route::post('rekam-medik/tambah', ['as' => 'rekam-medik.tambah-rm','middleware' => 'role:admin|super.user','uses' => 'RekamMedikController@store']);
+Route::get('rekam-medik/{id?}-{id_dokter?}-{kode_visit?}', ['as' => 'rekam-medik.edit-rm','middleware' => 'role:admin|super.user','uses' => 'RekamMedikController@edit']);
+Route::post('rekam-medik/{id?}-{id_dokter?}-{kode_visit?}', ['as' => 'rekam-medik.edit-rm','middleware' => 'role:admin|super.user','uses' => 'RekamMedikController@update']);
 
 // Password reset link request routes...
 Route::get('password/email', 'Auth\PasswordController@getEmail');
