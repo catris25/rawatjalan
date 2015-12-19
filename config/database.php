@@ -56,10 +56,14 @@ return [
 
         'mysql' => [
             'driver'    => 'mysql',
-            'host'      => 'db4free.net',
-            'database'  => 'rawatjalangg',
-            'username'  => 'rawatjalangg',
-            'password'  => 'qwerty',
+            // 'host'      => 'db4free.net',
+            // 'database'  => 'rawatjalangg',
+            // 'username'  => 'rawatjalangg',
+            // 'password'  => 'qwerty',
+            'host'      => env('DB_HOST', 'localhost'),
+            'database'  => env('DB_DATABASE', 'cobarawatjalan'),
+            'username'  => env('DB_USERNAME', 'root'),
+            'password'  => env('DB_PASSWORD', ''),
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',

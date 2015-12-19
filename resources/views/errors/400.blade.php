@@ -9,7 +9,7 @@
         <div class="bedown">
         	<h1>Error 400 - Bad Request</h1>
         	<h2>Maaf, sepertinya anda tidak memiliki autentifikasi yang jelas</h2>
-        	<h2>Silahkan kembali ke <a href="/rawatjalan/public">sini</a> </h2>
+        	<h2>Silahkan kembali ke <a href="{{URL::to('/')}}">sini</a> </h2>
         </div>
     </div>
 
