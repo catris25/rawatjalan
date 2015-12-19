@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('content')
-@yield('title', 'Dashboard')
+
 <div class="container-fluid" style="margin-top:1%;">
    <div class="row">
 
