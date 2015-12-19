@@ -11,7 +11,7 @@ Sistem Informasi Rawat Jalan adalah aplikasi berbasis web yang ditujukan untuk m
 
 ## Official Release
 
-Aplikasi Sistem Informasi Rawat Jalan dapat diakses dan digunakan seperti sistem yang sebenarnya melalui url [Rawat Jalan](http:://www.rawatjalan.herokuapp.com).
+Aplikasi Sistem Informasi Rawat Jalan dapat diakses dan digunakan seperti sistem yang sebenarnya melalui url [Rawat Jalan](http://www.rawatjalan.herokuapp.com).
 
 
 ## Official Documentation
